@@ -86,6 +86,7 @@
             this.goBack()
           }).catch(() => {
             this.loading = false
+            this.getData()
           })
         }else{
           this.$notify('两次输入的密码不一致')
