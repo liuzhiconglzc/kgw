@@ -59,7 +59,8 @@ export default {
       }
     },
     register (){
-      this.$router.push({ name: 'Register' })
+      const replace = this.$route.params.replace
+      this.$router.replace({ name: 'Register', params: { replace: replace } })
     }
   }
 }

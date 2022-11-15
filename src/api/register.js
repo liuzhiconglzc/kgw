@@ -6,13 +6,13 @@ export function captchaImage() {
     url: '/captchaImage',
     method: 'get',
   })
-// 提交注册申请
-export function postRegmse(params){
+}
+
+// 注册
+export function register(params) {
   return request({
     url: '/register',
-    // url:'http://httpbin.org/post',
     method: 'post',
-    data:params,
+    data: params,
   })
-}
 }

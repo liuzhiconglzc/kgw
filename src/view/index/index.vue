@@ -43,16 +43,14 @@ export default {
       } else {
         this.$dialog.alert({
           showCancelButton: true,
-          cancelButtonText: '去注册',
+          cancelButtonText: '否',
           confirmButtonText: '是',
           message: '您暂未登录，请问是否登录？'
         })
           .then(() => {
             this.$router.push({ name: 'Login', params: { replace: 'Add' } })
           })
-          .catch(() => { 
-            this.$router.push({ name: 'Register' })
-          })
+          .catch(() => { })
       }
     },
     getData () {

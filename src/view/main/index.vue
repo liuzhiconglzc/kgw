@@ -122,7 +122,7 @@ export default {
       if (getToken()) {
         this.$router.push({ name: 'Mine' })
       } else {
-        this.$router.push({ name: 'Login', params: { replace: 'Mine' } })
+        this.$router.push({ name: 'Login', params: { replace: 'Question' } })
       }
     },
     itemClick () {
