@@ -4,7 +4,7 @@
       <van-form @submit="onSubmit" class="form_back">
         <van-field v-model="username" name="username" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
           :rules="[{ required: true }]" />
-        <van-field v-model="password" name="password" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off"
+        <van-field v-model="password" name="password" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\a-\z\A-\Z0-9]/g, '')" maxlength="8"
           :rules="[{ required: true }]" />
         <van-field v-model="password_again" name="password_again" type="password" label="确认密码*" placeholder="请再次输入密码" autocomplete="off"
           :rules="[{ required: true }]" />
