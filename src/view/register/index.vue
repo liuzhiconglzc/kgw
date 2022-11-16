@@ -3,9 +3,9 @@
       <van-nav-bar title="注册" :border="false" left-arrow fixed @click-left="goBack" />
       <van-form @submit="onSubmit" class="form_back">
         <van-field v-model="username" name="username" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
-          :rules="[{ required: true }]" />
-        <van-field v-model="password" name="password" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\a-\z\A-\Z0-9]/g, '')" maxlength="8"
-          :rules="[{ required: true }]" />
+          :rules="telRules" />
+        <van-field v-model="password" name="password" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off"
+          :rules="pwRules" />
         <van-field v-model="password_again" name="password_again" type="password" label="确认密码*" placeholder="请再次输入密码" autocomplete="off"
           :rules="[{ required: true }]" />
         <van-field v-model="nickname" name="nickname" label="姓名*" placeholder="请输入姓名"
@@ -65,6 +65,31 @@
         major: '',
         email: '',
         columns: [{ id: 0, text: '信息学院' }, { id: 1, text: '物理学院' }],
+        telRules: [{
+          required: true,
+          message: '手机号码不能为空',
+          trigger: 'onBlur'
+        }, {
+        // 自定义手机号校验规则
+            validator: value => {
+              return /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
+              .test(value)
+            },
+            message: '请输入正确格式的手机号码',
+            trigger: 'onBlur'
+        }],
+        pwRules: [{
+          required: true,
+          trigger: 'onBlur'
+        }, {
+        // 自定义密码校验规则
+            validator: value => {
+              return /^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/
+              .test(value)
+            },
+            message: '至少8位，由数字和字母组成',
+            trigger: 'onBlur'
+        }],
       }
     },
     created () {
@@ -107,7 +132,6 @@
         captchaImage().then(res => {
           this.img = "data:image/gif;base64," + res.img;
           this.uuid = res.uuid
-          console.log(this.uuid)
         })  
       }
     }
