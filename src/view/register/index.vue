@@ -1,33 +1,34 @@
   <template>
     <div class="back">
       <van-nav-bar title="注册" :border="false" left-arrow fixed @click-left="goBack" />
+      <div class="title">*必填</div>
       <van-form @submit="onSubmit" class="form_back">
-        <van-field v-model="username" name="username" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
+        <van-field v-model="username" name="username" label-width="7.5em" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
           :rules="telRules" />
-        <van-field v-model="password" name="password" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off"
+        <van-field v-model="password" name="password" label-width="7.5em" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off"
           :rules="pwRules" />
-        <van-field v-model="password_again" name="password_again" type="password" label="确认密码*" placeholder="请再次输入密码" autocomplete="off"
+        <van-field v-model="password_again" name="password_again" label-width="7.5em" type="password" label="确认密码*" placeholder="请再次输入密码" autocomplete="off"
           :rules="[{ required: true }]" />
-        <van-field v-model="nickname" name="nickname" label="姓名*" placeholder="请输入姓名"
+        <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名*" placeholder="请输入真实姓名"
           :rules="[{ required: true }]" />
-        <van-field v-model="title" name="title" label="职称" placeholder="请输入职称" />
-        <van-field v-model="school" name="school" label="学校(单位)*" placeholder="请输入学校(单位)"
+        <van-field v-model="title" name="title" label-width="7.5em" label="职称" placeholder="请输入职称" />
+        <van-field v-model="school" name="school" label-width="7.5em" label="学校(单位)*" placeholder="请输入学校或单位"
           :rules="[{ required: true }]" />
-        <van-field v-model="college" name="college" label="学院(部门)*" placeholder="请输入学院(部门)"
+        <van-field v-model="college" name="college" label-width="7.5em" label="学院(部门)*" placeholder="请输入学院或部门"
           :rules="[{ required: true }]" />
-        <van-field v-model="major" name="major" label="专业" placeholder="请输入专业" />
-        <van-field v-model="email" name="email" label="邮箱" placeholder="请输入邮箱" />
+        <van-field v-model="major" name="major" label-width="7.5em" label="专业" placeholder="请输入专业" />
+        <van-field v-model="email" name="email" label-width="7.5em" label="邮箱" placeholder="请输入邮箱" />
         <!-- <van-field v-model="college" is-link readonly name="picker" label="学院" placeholder="点击选择学院"
           @click="showPicker = true"/>
         <van-popup v-model="showPicker" round position="bottom">
           <van-picker show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel"/>
         </van-popup> -->
-        <van-field v-model="sms" name="sms" label="验证码*" placeholder="请输入验证码"
+        <van-field v-model="sms" name="sms" label-width="7.5em" label="验证码*" placeholder="请输入验证码"
           :rules="[{ required: true }]" />
         <!-- <van-field v-model="sms" center clearable label="验证码*" placeholder="请输入验证码">
           <template #right-icon>
-            <div class="main_logo" @click="imageClick">
-              <van-image width="84px" height="28px" :src="require('@/assets/main_logo.png')" />
+            <div class="img">
+              <van-image :src="img" @click="imageClick"></van-image>
             </div>
           </template> 
         </van-field>   -->
@@ -140,9 +141,16 @@
   
   <style lang="less" scoped>
   .back {
-    .form_back {
-      margin-top: 20px;
+    .title {
+      color: var(--themeColor);
+      font-size: 13px;
+      // margin-top: 5px;
+      text-align: center;
+      // padding: 0px 18px;
     }
+    // .form_back {
+    //   margin-top: 20px;
+    // }
     .login_btn {
       border-radius: 5px;
     }
@@ -151,9 +159,10 @@
       margin-top: 10px;
     }
     .img{
-      margin-left: 30%;
       width: 110px;
       height: 30px;
+      margin-left: 8.0em;
+      margin-top: 5px;
     }
   }
   :deep(.van-nav-bar__title) {

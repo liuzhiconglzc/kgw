@@ -27,7 +27,7 @@ export default {
   name: "Login",
   data () {
     return {
-      username: '13811111111',
+      username: '',
       password: '',
       loading: false
     }
