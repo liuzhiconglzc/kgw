@@ -4,7 +4,8 @@
       <template #title>
         <div class="main_logo" @click="titleClick">
           <template>
-            <van-image width="84px" height="28px" :src="require('@/assets/main_logo.png')" />
+            <van-image width="108px" height="32px" :src="require('@/assets/main_logo.png')" />
+            <!-- 原width="84px" height="28px" -->
           </template>
         </div>
       </template>
@@ -13,7 +14,8 @@
           <template #reference>
             <van-badge :dot="dot">
               <div class="more">
-                <van-image class="rotate" :class="[{'r1': shrinkPacket}, {'r2': !shrinkPacket}, {'r3': shrinkPackett}]" width="18px" height="15px" :src="require('@/assets/more.png')" />
+                <van-image class="rotate" :class="[{'r1': shrinkPacket}, {'r2': !shrinkPacket}, {'r3': shrinkPackett}]" width="28px" height="20px" :src="require('@/assets/more.png')" />
+                <!-- 原width="18px" height="15px"，放大了一些 -->
               </div>
             </van-badge>
           </template>          
@@ -165,9 +167,11 @@ export default {
   .more{
     width: 18px;
     height: 15px;
+    // fit:"cover";
     // transform: scale(1.8);
     // transform: scale(-1.8);
     // transition: all 5s;
+    
     .r1{
       transform:rotate(-5deg);
     }
