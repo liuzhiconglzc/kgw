@@ -15,11 +15,13 @@
         <div class="title">{{item.proTitle}}</div>
         <div class="date">
           <div class="date_back">{{item.createTime && item.createTime.substr(0, 10)}}</div>
+
           <div class="num" v-if="item.proId != 0">
+          <!-- 点赞-->
             <div class="num_item" @click.stop="numClick(0)">
-              <van-image class="num_item_img" fit="contain"
-                :src="require(`@/assets/list_like${item.isLike == '1' ? '_1' : ''}.png`)"></van-image>
-              <div class="num_item_text">{{item.likeNum}}</div>
+                <van-image class="num_item_img" fit="contain"
+                  :src="require(`@/assets/list_like${item.isLike == '1' ? '_1' : ''}.png`)"></van-image>
+                <div class="num_item_text">{{item.likeNum}}</div>
             </div>
             <div class="num_item" @click.stop="numClick(1)">
               <van-image class="num_item_img" fit="contain"
@@ -31,8 +33,9 @@
               </van-image>
               <div class="num_item_text">{{item.viewNum}}</div>
             </div>
+            <!-- 回复按钮，还没改 -->
             <div class="num_item">
-              <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_reply.png')">
+              <van-image class="num_item_img" @click="toreply" fit="contain" :src="require('@/assets/list_reply.png')">
               </van-image>
               <div class="num_item_text">{{item.answerNum}}</div>
             </div>
@@ -67,14 +70,15 @@
         </div>
       </div>
     </div>
-    <div class="reply_box" v-if="item.proId != 0">
-      <van-field class="reply_box_field" v-model="reply" autosize rows="1" type="textarea" maxlength="100"
+    <div class="reply_box" v-if="item.proId != 0" style="color:green">
+      <van-divider />
+      <br>
+      <van-field class="reply_box_field" ref="Replay" v-model="reply"  autosize rows="1" type="textarea" maxlength="100" 
         placeholder="请输入回复（100字以内）">
       </van-field>
       <div class="reply_box_btn" @click="replyClick">回复</div>
       <!-- <van-divider class="reply_box_line" /> -->
     </div>
-
   </div>
 </template>
 
@@ -172,14 +176,16 @@ export default {
     gotoLogin () {
       this.$router.push({ name: 'Login' })
     },
+    //去除like的身份验证
     numClick (type) {
-      if (getToken()) {
-        if (type == 0) {
+      if (type == 0) {
           this.likeHandle()
-        } else {
+        }
+      else if (getToken()) {
+        if (type != 0){
           this.collectHandle()
         }
-      } else {
+      }else {
         this.$dialog.alert({
           showCancelButton: true,
           cancelButtonText: '否',
@@ -191,6 +197,24 @@ export default {
           })
           .catch(() => { })
       }
+      // if (getToken()) {
+      //   if (type == 0) {
+      //     this.likeHandle()
+      //   } else {
+      //     this.collectHandle()
+      //   }
+      // } else {
+      //   this.$dialog.alert({
+      //     showCancelButton: true,
+      //     cancelButtonText: '否',
+      //     confirmButtonText: '是',
+      //     message: '您暂未登录，请问是否登录？'
+      //   })
+      //     .then(() => {
+      //       this.gotoLogin()
+      //     })
+      //     .catch(() => { })
+      // }
     },
     likeHandle () {
       if (this.item.isLike == 1) {
@@ -206,19 +230,26 @@ export default {
         this.collectAdd()
       }
     },
+    // like点击和取消，去除了登陆验证(⊙﹏⊙)
     likeAdd () {
-      likeAdd(this.item.proId.toString()).then(() => {
-        this.item.isLike = '1'
-        this.item.likeNum++
-        this.questionUpdate()
-      })
+      // likeAdd(this.item.proId.toString()).then(() => {
+      //   this.item.isLike = '1'
+      //   this.item.likeNum++
+      //   this.questionUpdate()
+      // })
+      this.item.isLike = '1'
+      this.item.likeNum++
+      this.questionUpdate()
     },
     likeCancel () {
-      likeCancel(this.item.proId.toString()).then(() => {
-        this.item.isLike = '0'
-        this.item.likeNum--
-        this.questionUpdate()
-      })
+      this.item.isLike = '0'
+      this.item.likeNum--
+      this.questionUpdate()
+      // likeCancel(this.item.proId.toString()).then(() => {
+      //   this.item.isLike = '0'
+      //   this.item.likeNum--
+      //   this.questionUpdate()
+      // })
     },
     collectAdd () {
       collectAdd(this.item.proId).then(() => {
@@ -243,14 +274,17 @@ export default {
 
 <style lang="less" scoped>
 .detail_back {
+  
   width: 100vw;
   height: 100%;
   background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
   .detail {
+    
     height: calc(100% - 44px);
     overflow: scroll;
     position: relative;
     .content {
+      border:2px solid  #66c6a194;//加边框
       border-radius: 10px;
       background: white;
       margin: 10px;
@@ -340,8 +374,9 @@ export default {
       }
     }
     .reply {
+      border:2px solid  #66c6a194;
       border-radius: 10px;
-      background: white;
+      background: rgb(255, 255, 255);
       margin: 10px;
       padding: 10px;
       &_cell {
@@ -383,6 +418,7 @@ export default {
     }
   }
   .reply_box {
+    border:2px solid  #66c6a194;//加边框
     position: absolute;
     bottom: 0;
     left: 0;
@@ -390,9 +426,10 @@ export default {
     // margin: 0;
     display: flex;
     align-items: center;
-    background: white;
+    background:rgb(255, 255, 255);
     &_field {
       flex: 1;
+      
     }
     &_line {
       position: absolute;
@@ -400,6 +437,7 @@ export default {
       left: 0;
       right: 0;
       margin: 0;
+      
     }
     &_btn {
       width: 50px;
@@ -410,7 +448,7 @@ export default {
       font-size: 14px;
       line-height: 30px;
       text-align: center;
-      color: white;
+      color:white;
     }
   }
 }
