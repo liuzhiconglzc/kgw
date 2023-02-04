@@ -4,7 +4,7 @@
       <template #title>
         <div class="main_logo" @click="titleClick">
           <template>
-            <van-image width="84px" height="28px" :src="require('@/assets/main_logo.png')" />
+            <van-image width="92px" height="28px" :src="require('@/assets/main_logo.png')" />
           </template>
         </div>
       </template>
@@ -13,14 +13,14 @@
           <template #reference>
             <van-badge :dot="dot">
               <div class="more">
-                <van-image class="rotate" :class="[{'r1': shrinkPacket}, {'r2': !shrinkPacket}, {'r3': shrinkPackett}]" width="18px" height="15px" :src="require('@/assets/more.png')" />
+                <van-image class="rotate" :class="[{'r1': shrinkPacket}, {'r2': !shrinkPacket}, {'r3': shrinkPackett}]" width="22px" height="18px" :src="require('@/assets/more.png')" />
               </div>
             </van-badge>
           </template>          
         </van-popover>
       </template>
       <template #right>
-        <van-image width="28px" height="28px" :src="require('@/assets/header.png')" />
+        <van-image width="32px" height="32px" :src="require('@/assets/header.png')" />
       </template>
     </van-nav-bar>
     <div class="tab">
@@ -113,7 +113,7 @@ export default {
     onSelect (action) {
       this.dot = false
       if (action.id === 1){
-        this.$router.push({ name: 'Detail', params: bannerSwipes[action.id] })
+        this.$router.push({ name: 'Interview', params: bannerSwipes[action.id] })
       }else{
         this.$router.push({ name: 'Interview', params: bannerSwipes[action.id] })
       }
@@ -163,8 +163,9 @@ export default {
     margin-top: 5px;
   }
   .more{
-    width: 18px;
-    height: 15px;
+    width: 21px;
+    height: 18px;
+    // margin-top: 7px;
     // transform: scale(1.8);
     // transform: scale(-1.8);
     // transition: all 5s;
@@ -210,6 +211,9 @@ export default {
 }
 :deep(.van-nav-bar__right .van-nav-bar__text) {
   color: #7f7f7f;
+}
+:deep(.van-nav-bar__left) {
+  margin-top: 5px;
 }
 :deep(.van-nav-bar__arrow) {
   color: var(--themeColor) !important;

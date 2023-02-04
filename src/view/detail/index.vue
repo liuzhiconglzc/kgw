@@ -31,7 +31,7 @@
               </van-image>
               <div class="num_item_text">{{item.viewNum}}</div>
             </div>
-            <div class="num_item">
+            <div class="num_item" @click.stop="numClick(2)">
               <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_reply.png')">
               </van-image>
               <div class="num_item_text">{{item.answerNum}}</div>
@@ -68,11 +68,11 @@
       </div>
     </div>
     <div class="reply_box" v-if="item.proId != 0">
-      <van-field class="reply_box_field" v-model="reply" autosize rows="1" type="textarea" maxlength="100"
+      <van-field ref="reply" class="reply_box_field" v-model="reply" autosize rows="1" type="textarea" maxlength="100"
         placeholder="请输入回复（100字以内）">
       </van-field>
       <div class="reply_box_btn" @click="replyClick">回复</div>
-      <!-- <van-divider class="reply_box_line" /> -->
+      <van-divider class="reply_box_line" />
     </div>
 
   </div>
@@ -91,7 +91,7 @@ export default {
       item: undefined,
       reply: '',
       replyList: [],
-      fromWechat: false
+      fromWechat: false,
     }
   },
   created () {
@@ -172,32 +172,50 @@ export default {
     gotoLogin () {
       this.$router.push({ name: 'Login' })
     },
+    // numClick (type) {
+    //   if (getToken()) {
+    //     if (type == 0) {
+    //       this.likeHandle()
+    //     } else if(type == 1) {
+    //       this.collectHandle()
+    //     } else {
+    //       this.replyHandle()
+    //     }
+    //   } else {
+    //     this.$dialog.alert({
+    //       showCancelButton: true,
+    //       cancelButtonText: '否',
+    //       confirmButtonText: '是',
+    //       message: '您暂未登录，请问是否登录？'
+    //     })
+    //       .then(() => {
+    //         this.gotoLogin()
+    //       })
+    //       .catch(() => { })
+    //   }
+    // },
     numClick (type) {
-      if (getToken()) {
-        if (type == 0) {
-          this.likeHandle()
-        } else {
-          this.collectHandle()
-        }
+      if (type == 0) {
+        this.likeHandle()
+      } else if(type == 1) {
+        this.collectHandle()
       } else {
-        this.$dialog.alert({
-          showCancelButton: true,
-          cancelButtonText: '否',
-          confirmButtonText: '是',
-          message: '您暂未登录，请问是否登录？'
-        })
-          .then(() => {
-            this.gotoLogin()
-          })
-          .catch(() => { })
+        this.replyHandle()
       }
     },
+    // likeHandle () {
+    //   if (getToken()) {
+    //     if (this.item.isLike == 1) {
+    //       this.likeCancel()
+    //     } else {
+    //       this.likeAdd()
+    //     }
+    //   } else {
+    //     this.likeAddUp()
+    //   }
+    // },
     likeHandle () {
-      if (this.item.isLike == 1) {
-        this.likeCancel()
-      } else {
-        this.likeAdd()
-      }
+      this.likeAdd()
     },
     collectHandle () {
       if (this.item.isCollect == 1) {
@@ -205,6 +223,9 @@ export default {
       } else {
         this.collectAdd()
       }
+    },
+    replyHandle () {
+      this.$refs.reply.focus()
     },
     likeAdd () {
       likeAdd(this.item.proId.toString()).then(() => {
@@ -316,7 +337,6 @@ export default {
         background: linear-gradient(to right, #66c6a1, white 90%);
       }
       .desc {
-        
         margin: 10px 0;
         color: #7f7f7f;
         font-size: 15px;

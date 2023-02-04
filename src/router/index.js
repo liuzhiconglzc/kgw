@@ -96,6 +96,14 @@ const routes = [
         },
       },
       {
+        path: '/password',
+        name: 'Password',
+        component: () => import('../view/password'),
+        meta: {
+          title: '重置密码',
+        },
+      },
+      {
         path: '/add',
         name: 'Add',
         component: () => import('../view/add'),
@@ -109,6 +117,14 @@ const routes = [
         component: () => import('../view/manager'),
         meta: {
           title: '联系管理员',
+        },
+      },
+      {
+        path: '/personal',
+        name: 'Personal',
+        component: () => import('../view/personal'),
+        meta: {
+          title: '个人设置',
         },
       },
     ],

@@ -114,10 +114,18 @@ export function uploadImage(data) {
   })
 }
 
+// // 点赞
+// export function likeAdd(id) {
+//   return request({
+//     url: `/system/like/add?proId=${id}`,
+//     method: 'post',
+//   })
+// }
+
 // 点赞
 export function likeAdd(id) {
   return request({
-    url: `/system/like/add?proId=${id}`,
+    url: `/api/system/like/add?proId=${id}`,
     method: 'post',
   })
 }

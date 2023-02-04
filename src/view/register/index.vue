@@ -11,6 +11,8 @@
           :rules="[{ required: true }]" />
         <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名*" placeholder="请输入真实姓名"
           :rules="[{ required: true }]" />
+        <van-field v-model="identity" is-link readonly name="identity" label-width="7.5em" label="身份*" placeholder="点击选择身份"
+          @click="showPicker = true" :rules="[{ required: true }]" />
         <van-field v-model="title" name="title" label-width="7.5em" label="职称" placeholder="请输入职称" />
         <van-field v-model="school" name="school" label-width="7.5em" label="学校(单位)*" placeholder="请输入学校或单位"
           :rules="[{ required: true }]" />
@@ -18,11 +20,9 @@
           :rules="[{ required: true }]" />
         <van-field v-model="major" name="major" label-width="7.5em" label="专业" placeholder="请输入专业" />
         <van-field v-model="email" name="email" label-width="7.5em" label="邮箱" placeholder="请输入邮箱" />
-        <!-- <van-field v-model="college" is-link readonly name="picker" label="学院" placeholder="点击选择学院"
-          @click="showPicker = true"/>
         <van-popup v-model="showPicker" round position="bottom">
           <van-picker show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel"/>
-        </van-popup> -->
+        </van-popup>
         <van-field v-model="sms" name="sms" label-width="7.5em" label="验证码*" placeholder="请输入验证码"
           :rules="[{ required: true }]" />
         <!-- <van-field v-model="sms" center clearable label="验证码*" placeholder="请输入验证码">
@@ -63,9 +63,10 @@
         img: '',
         uuid: '',
         school: '',
+        identity: '',
         major: '',
         email: '',
-        columns: [{ id: 0, text: '信息学院' }, { id: 1, text: '物理学院' }],
+        columns: [{ id: 0, text: '教师' }, { id: 1, text: '学生' }, { id: 2, text: '企业人员' }, { id: 3, text: '其他' }],
         telRules: [{
           required: true,
           message: '手机号码不能为空',
@@ -123,7 +124,7 @@
         this.showPicker = false
       },
       onConfirm (value) {
-        this.college = value.text
+        this.identity = value.text
         this.showPicker = false
       },
       imageClick (){

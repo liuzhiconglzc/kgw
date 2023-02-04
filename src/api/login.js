@@ -11,3 +11,12 @@ export function login(params) {
     data: params,
   })
 }
+
+// 忘记密码
+export function password(params) {
+  return request({
+    url: '/api/system/mine/forgetpw',
+    method: 'post',
+    data: params,
+  })
+}

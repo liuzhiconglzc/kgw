@@ -3,16 +3,16 @@
     <div class="search_back">
       <div class="search">
         <div class="search_left">
-          <van-field class="search_bar" v-model="keyword" :border="false" placeholder="请输入关键字" clearable />
+          <van-field class="search_bar" v-model="keyword" :border="false" placeholder="查找问题（输入关键字）" clearable />
         </div>
-        <div class="search_right"></div>
+        <!-- <div class="search_right"></div> -->
         <div class="search_btn" @click="searchClick">搜索</div>
       </div>
       <img class="category" :src="require('@/assets/category.png')" alt="category" @click="categoryClick">
     </div>
     <div class="question">
       <van-pull-refresh v-model="isRefreshing" @refresh="onRefresh">
-        <van-list v-model="isLoading" :finished="isFinished" finished-text="没有更多了" @load="onLoad">
+        <van-list ref="scrollList" v-model="isLoading" :finished="isFinished" finished-text="没有更多了" @load="onLoad">
           <div class="question_item" :class="{'question_item_last':questionIndex + 1 == questionList.length}"
             v-for="(question, questionIndex) in questionList" :key="question.proId"
             @click="cellClick(question, questionIndex)">
@@ -30,7 +30,7 @@
               <div class="header">
                 <div class="header_img">
                   <template>
-                    <van-image width="22px" height="22px" :src="require('@/assets/header_question.png')" />
+                    <van-image width="28px" height="28px" :src="require('@/assets/header_question.png')" />
                   </template>
                 </div>
                 <div class="header_right">
@@ -66,7 +66,10 @@
       </van-pull-refresh>     
     </div>
     <div class="tab_add" @click="add">
-      <van-image height="50" width="50" :src="require('@/assets/tab_add.png')" />
+      <van-image height="53" width="53" :src="require('@/assets/tab_add_1.png')" />
+    </div>
+    <div class="tab_top" @click="top">
+      <van-image height="40" width="40" :src="require('@/assets/tab_top.png')" />
     </div>
     <van-popup v-model="showPicker" round position="bottom">
       <div class="pop">
@@ -147,6 +150,14 @@ export default {
         .catch(() => { })
         }
     },
+    top () {
+      const elements = document.getElementsByClassName('van-pull-refresh')
+      Array.prototype.forEach.call(elements, function (item) {
+        if (item.scrollTop > 0) {
+          item.scrollTop = 0
+        }
+      });
+    },
     handleScroll () {
       const elements = document.getElementsByClassName('van-pull-refresh')
       let self = this
@@ -211,33 +222,44 @@ export default {
       this.selectIndex = index
       this.$router.push({ path: `/detail/${question.proId}` })
     },
+    // numClick (type, index) {
+    //   if (getToken()) {
+    //     if (type == 0) {
+    //       this.likeHandle(index)
+    //     } else if(type == 1){
+    //       this.collectHandle(index)
+    //     }
+    //   } else {
+    //     this.$dialog.alert({
+    //       showCancelButton: true,
+    //       cancelButtonText: '否',
+    //       confirmButtonText: '是',
+    //       message: '您暂未登录，请问是否登录？'
+    //     })
+    //       .then(() => {
+    //         this.$router.push({ name: 'Login' })
+    //       })
+    //       .catch(() => { })
+    //   }
+    // },
     numClick (type, index) {
-      if (getToken()) {
-        if (type == 0) {
-          this.likeHandle(index)
-        } else {
-          this.collectHandle(index)
-        }
-      } else {
-        this.$dialog.alert({
-          showCancelButton: true,
-          cancelButtonText: '否',
-          confirmButtonText: '是',
-          message: '您暂未登录，请问是否登录？'
-        })
-          .then(() => {
-            this.$router.push({ name: 'Login' })
-          })
-          .catch(() => { })
-      }
+      if (type == 0) {
+        this.likeHandle(index)
+      } else if(type == 1){
+        this.collectHandle(index)
+      } 
     },
+    // likeHandle (index) {
+    //   const item = this.questionList[index]
+    //   if (item.isLike == '1') {
+    //     this.likeCancel(item.proId, index)
+    //   } else {
+    //     this.likeAdd(item.proId, index)
+    //   }
+    // },
     likeHandle (index) {
       const item = this.questionList[index]
-      if (item.isLike == '1') {
-        this.likeCancel(item.proId, index)
-      } else {
-        this.likeAdd(item.proId, index)
-      }
+      this.likeAdd(item.proId, index)
     },
     collectHandle (index) {
       const item = this.questionList[index]
@@ -298,8 +320,8 @@ export default {
       position: relative;
       &_left {
         height: 30px;
-        border-radius: 17px 0 0 17px;
-        border-style: solid none solid solid;
+        border-radius: 17px 17px 17px 17px;
+        border-style: solid solid solid solid;
         border-width: 2px;
         border-color: var(--themeColor);
         display: flex;
@@ -321,14 +343,17 @@ export default {
         border-color: var(--themeColor);
       }
       &_btn {
-        height: 30px;
-        padding: 0 15px;
+        height: 29px;
+        padding: 0px 18px;
         line-height: 30px;
+        // letter-spacing: 1px;
         color: white;
         background: var(--themeColor);
         border-radius: 15px;
         position: absolute;
-        right: 0;
+        margin-bottom: 0.2px;
+        // margin-top: 5px;
+        right: 2.5px;
       }
     }
     .category {
@@ -339,7 +364,7 @@ export default {
   .question {
     flex: 1;
     overflow: scroll;
-    background: #f2f2f2;
+    background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
     &_item {
       margin-bottom: 15px;
       padding: 10px;
@@ -395,6 +420,7 @@ export default {
           &_img {
             overflow: hidden;
             margin-right: 10px;
+            margin-top: 4px;
           }
           &_right {
             display: flex;
@@ -431,16 +457,26 @@ export default {
     }
   }
   .tab_add{
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    // border-radius: 50%;
+    // box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    left: 50%;
-    margin-left: -25px;
+    right: 2.6%;
     z-index: 1;
-    bottom: 0px;
+    bottom: 4%;
+  }
+  .tab_top{
+    // border-radius: 50%;
+    // box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 4%;
+    z-index: 1;
+    bottom: 14%;
   }
   .pop {
     height: 44px;

@@ -2,7 +2,7 @@
   <div class="mine_back">
     <van-nav-bar title="我的" :border="false" fixed left-arrow @click-left="goBack" />
     <van-cell class="user" :border="false" :title="data.askUserName || ''" :label="data.askUserPhone || ''" value="个人设置"
-      is-link center>
+      is-link center @click="goPersonal">
       <template #icon>
         <van-image class="header" :src="data.askUserAvatar" fit="cover" width="44" height="44" round />
       </template>
@@ -84,6 +84,9 @@ export default {
   methods: {
     goBack () {
       this.$router.back()
+    },
+    goPersonal () {
+      this.$router.push({ name: 'Personal' }) 
     },
     getData () {
       mineNum().then(res => {

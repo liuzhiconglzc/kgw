@@ -80,7 +80,8 @@ export default {
       selectNames: [],
       professionNames: '',
       selectState: {},
-      reason: ''
+      reason: '',
+      fromWechat: false
     }
   },
   created () {
@@ -106,9 +107,19 @@ export default {
     }
     this.getClassifyList()
   },
+  beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      vm.fromWechat = vm.fromWechat || from.name == null
+    })
+    next()
+  },
   methods: {
     goBack () {
-      this.$router.back()
+      if (this.fromWechat) {
+        this.$router.replace({ name: 'Question' })
+      } else {
+        this.$router.back()
+      }
     },
     getDetail () {
       questionDetail(this.proId).then(res => {

@@ -16,6 +16,7 @@
       </div>
     </van-form>
     <div class="title" @click="register">新用户注册</div>
+    <div class="title1" @click="forgotPassword">忘记密码</div>
   </div>
 </template>
 
@@ -61,6 +62,10 @@ export default {
     register (){
       const replace = this.$route.params.replace
       this.$router.replace({ name: 'Register', params: { replace: replace } })
+    },
+    forgotPassword (){
+      const replace = this.$route.params.replace
+      this.$router.replace({ name: 'Password', params: { replace: replace } })
     }
   }
 }
@@ -83,6 +88,12 @@ export default {
     margin-top: 5px;
     text-align: right;
     padding: 2px 25px;
+  }
+  .title1 {
+    color: var(--themeColor);
+    margin-top: 5px;
+    text-align: right;
+    padding: 2px 41px;
   }
 }
 :deep(.van-nav-bar__title) {

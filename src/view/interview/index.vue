@@ -111,7 +111,7 @@ export default {
         margin: 10px 0;
         color: #7f7f7f;
         font-size: 14px;
-        white-space: pre-line;
+        white-space: pre-wrap;
         text-align: justify;
       }
     }
