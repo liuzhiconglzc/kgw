@@ -4,7 +4,12 @@
       <template #title>
         <div class="main_logo" @click="titleClick">
           <template>
+<<<<<<< HEAD
             <van-image width="92px" height="28px" :src="require('@/assets/main_logo.png')" />
+=======
+            <van-image width="108px" height="32px" :src="require('@/assets/main_logo.png')" />
+            <!-- 原width="84px" height="28px" -->
+>>>>>>> 12b3135bbdcc8b631f0d7274cd742c699d6763dc
           </template>
         </div>
       </template>
@@ -13,7 +18,12 @@
           <template #reference>
             <van-badge :dot="dot">
               <div class="more">
+<<<<<<< HEAD
                 <van-image class="rotate" :class="[{'r1': shrinkPacket}, {'r2': !shrinkPacket}, {'r3': shrinkPackett}]" width="22px" height="18px" :src="require('@/assets/more.png')" />
+=======
+                <van-image class="rotate" :class="[{'r1': shrinkPacket}, {'r2': !shrinkPacket}, {'r3': shrinkPackett}]" width="28px" height="20px" :src="require('@/assets/more.png')" />
+                <!-- 原width="18px" height="15px"，放大了一些 -->
+>>>>>>> 12b3135bbdcc8b631f0d7274cd742c699d6763dc
               </div>
             </van-badge>
           </template>          
@@ -163,12 +173,19 @@ export default {
     margin-top: 5px;
   }
   .more{
+<<<<<<< HEAD
     width: 21px;
     height: 18px;
     // margin-top: 7px;
+=======
+    width: 18px;
+    height: 15px;
+    // fit:"cover";
+>>>>>>> 12b3135bbdcc8b631f0d7274cd742c699d6763dc
     // transform: scale(1.8);
     // transform: scale(-1.8);
     // transition: all 5s;
+    
     .r1{
       transform:rotate(-5deg);
     }
