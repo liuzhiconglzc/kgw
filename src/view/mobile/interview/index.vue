@@ -17,7 +17,7 @@
           <div class="date_back">{{item.createTime && item.createTime.substr(0, 10)}}</div>
         </div>
         <div class="line"></div>
-        <div class="desc">{{item.proContent}}</div>
+        <div class="desc" :class="{'desc_1': item.proId == 0}">{{item.proContent}}</div>
         <van-swipe autoplay="3000" height="180" indicator-color="white" v-if="item.imageList">
           <van-swipe-item v-for="(item, index) in item.imageList" :key="index" @click="topClick(index)">
             <van-image width="100%" height="100%" fit="cover" :src="item" />
@@ -112,7 +112,11 @@ export default {
         color: #7f7f7f;
         font-size: 14px;
         white-space: pre-wrap;
+        word-spacing: 23px;
         text-align: justify;
+      }
+      .desc_1{
+        text-indent: 27px;
       }
     }
   }

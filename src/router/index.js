@@ -7,7 +7,7 @@ NProgress.configure({ showSpinner: false })
 
 Vue.use(Router)
 
-const routes = [
+const routesM = [
   {
     path: '',
     redirect: 'index',
@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/index',
     name: 'Index',
-    component: () => import('../view/index'),
+    component: () => import('../view/mobile/index'),
     meta: {
       title: '砍瓜网',
     },
@@ -23,7 +23,7 @@ const routes = [
   {
     path: '/main',
     name: 'Main',
-    component: () => import('../view/main'),
+    component: () => import('../view/mobile/main'),
     meta: {
       title: '砍瓜网',
     },
@@ -31,7 +31,7 @@ const routes = [
       {
         path: '/question',
         name: 'Question',
-        component: () => import('../view/question'),
+        component: () => import('../view/mobile/question'),
         meta: {
           title: '真实问题集',
           keepAlive: true,
@@ -40,24 +40,15 @@ const routes = [
       {
         path: '/list',
         name: 'List',
-        component: () => import('../view/list'),
+        component: () => import('../view/mobile/list'),
         meta: {
-          keepAlive: true,
-        },
-      },
-      {
-        path: '/web',
-        name: 'Web',
-        component: () => import('../view/web'),
-        meta: {
-          title: '现实场景库',
           keepAlive: true,
         },
       },
       {
         path: '/detail/:proId',
         name: 'Detail',
-        component: () => import('../view/detail'),
+        component: () => import('../view/mobile/detail'),
         meta: {
           title: '问题详情',
           keepAlive: true,
@@ -66,7 +57,7 @@ const routes = [
       {
         path: '/interview',
         name: 'Interview',
-        component: () => import('../view/interview'),
+        component: () => import('../view/mobile/interview'),
         meta: {
           title: '问题详情',
         },
@@ -74,7 +65,7 @@ const routes = [
       {
         path: '/mine',
         name: 'Mine',
-        component: () => import('../view/mine'),
+        component: () => import('../view/mobile/mine'),
         meta: {
           title: '我的',
         },
@@ -82,7 +73,7 @@ const routes = [
       {
         path: '/login',
         name: 'Login',
-        component: () => import('../view/login'),
+        component: () => import('../view/mobile/login'),
         meta: {
           title: '登录',
         },
@@ -90,7 +81,7 @@ const routes = [
       {
         path: '/register',
         name: 'Register',
-        component: () => import('../view/register'),
+        component: () => import('../view/mobile/register'),
         meta: {
           title: '注册',
         },
@@ -98,7 +89,7 @@ const routes = [
       {
         path: '/password',
         name: 'Password',
-        component: () => import('../view/password'),
+        component: () => import('../view/mobile/password'),
         meta: {
           title: '重置密码',
         },
@@ -106,7 +97,7 @@ const routes = [
       {
         path: '/add',
         name: 'Add',
-        component: () => import('../view/add'),
+        component: () => import('../view/mobile/add'),
         meta: {
           keepAlive: true,
         },
@@ -114,7 +105,7 @@ const routes = [
       {
         path: '/manager',
         name: 'Manager',
-        component: () => import('../view/manager'),
+        component: () => import('../view/mobile/manager'),
         meta: {
           title: '联系管理员',
         },
@@ -122,7 +113,7 @@ const routes = [
       {
         path: '/personal',
         name: 'Personal',
-        component: () => import('../view/personal'),
+        component: () => import('../view/mobile/personal'),
         meta: {
           title: '个人设置',
         },
@@ -130,6 +121,128 @@ const routes = [
     ],
   },
 ]
+
+const routesP = [
+  {
+    path: '',
+    redirect: 'index',
+  },
+  {
+    path: '/index',
+    name: 'Index',
+    component: () => import('../view/pc/index'),
+    meta: {
+      title: '砍瓜网',
+    },
+  },
+  {
+    path: '/main',
+    name: 'Main',
+    component: () => import('../view/pc/main'),
+    meta: {
+      title: '砍瓜网',
+    },
+    children: [
+      {
+        path: '/question',
+        name: 'Question',
+        component: () => import('../view/pc/question'),
+        meta: {
+          title: '真实问题集',
+          keepAlive: true,
+        },
+      },
+      {
+        path: '/list',
+        name: 'List',
+        component: () => import('../view/pc/list'),
+        meta: {
+          keepAlive: true,
+        },
+      },
+      {
+        path: '/detail/:proId',
+        name: 'Detail',
+        component: () => import('../view/pc/detail'),
+        meta: {
+          title: '问题详情',
+          keepAlive: true,
+        },
+      },
+      {
+        path: '/interview',
+        name: 'Interview',
+        component: () => import('../view/pc/interview'),
+        meta: {
+          title: '问题详情',
+        },
+      },
+      {
+        path: '/mine',
+        name: 'Mine',
+        component: () => import('../view/pc/mine'),
+        meta: {
+          title: '我的',
+        },
+      },
+      {
+        path: '/login',
+        name: 'Login',
+        component: () => import('../view/pc/login'),
+        meta: {
+          title: '登录',
+        },
+      },
+      {
+        path: '/register',
+        name: 'Register',
+        component: () => import('../view/pc/register'),
+        meta: {
+          title: '注册',
+        },
+      },
+      {
+        path: '/password',
+        name: 'Password',
+        component: () => import('../view/pc/password'),
+        meta: {
+          title: '重置密码',
+        },
+      },
+      {
+        path: '/add',
+        name: 'Add',
+        component: () => import('../view/pc/add'),
+        meta: {
+          keepAlive: true,
+        },
+      },
+      {
+        path: '/manager',
+        name: 'Manager',
+        component: () => import('../view/pc/manager'),
+        meta: {
+          title: '联系管理员',
+        },
+      },
+      {
+        path: '/personal',
+        name: 'Personal',
+        component: () => import('../view/pc/personal'),
+        meta: {
+          title: '个人设置',
+        },
+      },
+    ],
+  },
+]
+
+var routes = [];
+if (navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)) {
+  routes = routesM
+} else {
+  routes = routesP
+}
 
 routes.forEach((route) => {
   route.path = route.path || '/' + (route.name || '')
