@@ -345,8 +345,7 @@ export default {
         // border-radius: 3px;
         background: linear-gradient(to right, #66c6a1, white 90%);
       }
-      .desc {
-        
+      .desc {       
         margin: 10px 0;
         color: #7f7f7f;
         font-size: 15px;

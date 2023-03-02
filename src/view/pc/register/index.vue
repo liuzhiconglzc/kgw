@@ -1,6 +1,7 @@
 <template>
   <div class="back">
-    <van-nav-bar title="注册" :border="false" left-arrow fixed @click-left="goBack" />
+    <van-nav-bar title="注册" :border="false" left-arrow fixed @click-left="goBack">
+    </van-nav-bar>
     <div class="title">*必填</div>
     <van-form @submit="onSubmit" class="form_back">
       <van-field v-model="username" name="username" label-width="7.5em" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"

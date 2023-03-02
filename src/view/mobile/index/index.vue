@@ -12,6 +12,10 @@
     <!-- <div class="tip1">网站已被浏览<span class="visit_num">{{visitNum}}</span>次</div> -->
     <van-image class="image1" fit="contain" :src="require('@/assets/index_publish_1.png')" @click="jumpToAdd" />
     <!-- <div class="tip1">网站已发布真实问题<span class="visit_num">{{proNum}}</span>个</div> -->
+    <!-- <div class="tip3" @click="cardClick">原砍瓜网网址：</div>
+    <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn</div> -->
+    <a href='http://kangua.lnu.edu.cn' target="_blank" class="tip3">原砍瓜网网址：</a>
+    <a href='http://kangua.lnu.edu.cn' target="_blank" class="tip2">http://kangua.lnu.edu.cn</a>
   </div>
 </template>
 
@@ -32,6 +36,9 @@ export default {
     this.getData()
   },
   methods: {
+    cardClick () {
+      location.href = "http://kangua.lnu.edu.cn"
+    },
     jumpToQuestion () {
       this.$router.push({ name: 'Question' })   
     },
@@ -99,16 +106,27 @@ export default {
     margin-top: 5px;
   }
   .image {
-    margin: 14% 30px 10px;
+    margin: 13% 30px 10px;
     z-index: 1;
     margin-bottom: 35px;
   }
   .image1 {
-    margin: 20px 30px 5px;
+    margin: 5px 30px 5px;
   }
   .tip1 {
     font-size: 15px;
     margin-bottom: 15px;
+    font-weight: bolder;
+  }
+  .tip2 {
+    font-size: 15px;
+    color: var(--themeColor);
+    font-weight: bolder;
+  }
+  .tip3 {
+    margin-top: 10px;
+    font-size: 15px;
+    color: var(--themeColor);
     font-weight: bolder;
   }
   .visit_num{

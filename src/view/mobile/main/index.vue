@@ -112,11 +112,7 @@ export default {
     },
     onSelect (action) {
       this.dot = false
-      if (action.id === 1){
-        this.$router.push({ name: 'Interview', params: bannerSwipes[action.id] })
-      }else{
-        this.$router.push({ name: 'Interview', params: bannerSwipes[action.id] })
-      }
+      this.$router.push({ name: 'Interview', params: bannerSwipes[action.id] })
     },
     jumpToLogin () {
       if (getToken()) {
