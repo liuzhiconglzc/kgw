@@ -1,5 +1,6 @@
 <template>
   <div class="main_back">
+<<<<<<< Updated upstream
     <van-nav-bar :border="false" fixed @click-left="leftClick" @click-right="jumpToLogin">
       <template #title>
         <div class="main_logo" @click="titleClick">
@@ -23,10 +24,39 @@
         <van-image width="32px" height="32px" :src="require('@/assets/header.png')" />
       </template>
     </van-nav-bar>
+=======
+    <div class="top">
+      <div class="top_back">
+        <el-image style="width: 104px; height: 33px; margin-top: 30px; margin-left: 150px;" :src="require('@/assets/pc/view_logo.png')" />
+        <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style="position:absolute; width: 250px; height: 23px; margin-top: 33px; margin-left: 68px;z-index: 1;border: none;">
+        </el-input>
+        <el-image style="position:absolute; width: 450px; height: 33px; margin-top: 30px; margin-left: 30px;" :src="require('@/assets/pc/view_search.png')"  @click="search"/>
+        <el-image style="position:absolute; width: 108px; height: 32px; margin-top: 30px; margin-left: 510px;" :src="require('@/assets/pc/view_add.png')" />
+        <el-image style="position:absolute; width: 93px; height: 33px; margin-top: 30px; margin-left: 700px;" :src="require('@/assets/pc/view_login.png')" />
+      </div>
+      <div class="tab_back">
+        <template>
+          <el-tabs :stretch="false" 
+           style="color: white; height: 30px; width: 500px;caret-color: transparent;margin-left: 150px;">
+            <el-tab-pane label="首页" name="first"/>
+            <el-tab-pane label="浏览问题" name="second"/>
+            <el-tab-pane label="砍瓜网简介" name="third"/>
+            <el-tab-pane label="真实问题释义" name="fourth"/>
+            <el-tab-pane label="联系管理员" name="fifth"/>
+          </el-tabs>
+        </template>
+        <div class="mine">
+          <el-image style="width: 30px; height: 30px;margin-top: 5px;margin-left: 120px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>      
+        </div>
+        <div class="tip">我的</div>
+      </div>
+    </div>
+>>>>>>> Stashed changes
     <div class="tab">
       <keep-alive :include="includes">
         <router-view></router-view>
       </keep-alive>
+<<<<<<< Updated upstream
       <!-- <van-tabbar route v-model="active" active-color="#07c160" inactive-color="#7b7b7b" @change="onTabChange"
         v-if="$route.meta.isShowTabBar">
         <van-tabbar-item class="tab_btn" replace to="/question" @click="itemClick">
@@ -45,6 +75,8 @@
           </template>
         </van-tabbar-item>
       </van-tabbar> -->
+=======
+>>>>>>> Stashed changes
     </div>
   </div>
 </template>
@@ -52,11 +84,22 @@
 <script>
 import { getToken } from '@/utils/auth'
 import { bannerSwipes } from '@/components/data'
+<<<<<<< Updated upstream
 
 export default {
   name: "Main",
   data () {
     return {
+=======
+import mixin from "@/utils/mixin.js";
+
+export default {
+  name: "Main",
+  mixins: [mixin],
+  data () {
+    return {
+      keyword: '',
+>>>>>>> Stashed changes
       active: 0,
       showPopover: false,
       dot: true,
@@ -87,6 +130,12 @@ export default {
     }
   },
   methods: {
+<<<<<<< Updated upstream
+=======
+    search () {
+      this.$EventBus.$emit('searchValue', this.keyword)
+    },
+>>>>>>> Stashed changes
     startRotate() {
       // clearInterval(this.timer);
       this.shrinkPackett = false
@@ -155,6 +204,15 @@ export default {
 .main_back {
   height: 100%;
   display: flex;
+<<<<<<< Updated upstream
+=======
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left top;
+  overflow: hidden;
+>>>>>>> Stashed changes
   .main_logo{
     margin-top: 5px;
   }
@@ -176,6 +234,7 @@ export default {
       transform:rotate(0deg);
     }
   }
+<<<<<<< Updated upstream
   .tab {
     flex: 1;
     margin-top: 46px;
@@ -202,6 +261,89 @@ export default {
 //   height: 53px;
 //   box-shadow: 0px -2px 10px 0px rgba(0, 0, 0, 0.2);
 // }
+=======
+  .top{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    .top_back{
+      // display: flex;
+      overflow: hidden;
+      width: 100%;
+      height: 100px;
+      background: white;
+    }
+    .tab_back{
+      display: flex;
+      // margin-top: 130px;
+      height: 40px;
+      background: #42b285;
+      .tip{
+        color: white;
+        margin-left: 5px;
+        margin-top: 10px;
+      }
+    }
+  }
+  .tab {
+    flex: 1;
+    margin-top: 140px;
+    // height: 100%;
+    // margin-left: 200px;
+    background: #f2f2f2;
+    .right{
+      margin-top: 15px;
+      margin-left: 765px;
+      position: fixed;
+      z-index: 999;
+      .mobile{
+        display: flex;
+        width: 225px;
+        height: 165px;
+        background: linear-gradient(to bottom, #42B285, white 40%);
+        &_left{
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      .ip{
+        width: 225px;
+        height: 100px;
+        background: white;
+        margin-top: 15px;
+        &_top{
+          display: flex;
+          padding-top: 20px; 
+          margin-left: 20px;
+        }
+        .tip1 {
+          font-size: 10px;
+          margin-left: 5px;
+          color: #42B285;
+        }
+        .tip2 {
+          font-size: 10px;
+          margin-left: 20px;
+          color: #42B285;
+        }
+        .title {
+          text-align: center;
+          color: white;
+          width: 150px;
+          margin-left: 20px;
+          margin-top: 10px;
+          font-size: 10px;
+          padding: 2px 10px;
+          border-radius: 3px;
+          background: #42B285;
+        }
+      }
+    }
+  }
+}
+>>>>>>> Stashed changes
 :deep(.van-nav-bar__title) {
   font-size: 20px;
   color: var(--themeColor);
@@ -216,4 +358,22 @@ export default {
   color: var(--themeColor) !important;
   font-size: 20px;
 }
+<<<<<<< Updated upstream
+=======
+::v-deep .el-tabs__active-bar {
+  background-color: white; // 跟随 element  系统颜色  自己修改
+  height: 4px;
+  border-radius: 2px;
+}
+::v-deep .el-tabs__nav-wrap::after {
+  height: 0;
+}
+::v-deep .el-tabs__item {
+    color: white;
+}
+.search /deep/ .el-input__inner {
+  border: none;
+}
+
+>>>>>>> Stashed changes
 </style>
