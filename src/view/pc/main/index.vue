@@ -1,30 +1,5 @@
 <template>
   <div class="main_back">
-<<<<<<< Updated upstream
-    <van-nav-bar :border="false" fixed @click-left="leftClick" @click-right="jumpToLogin">
-      <template #title>
-        <div class="main_logo" @click="titleClick">
-          <template>
-            <van-image width="92px" height="28px" :src="require('@/assets/main_logo.png')" />
-          </template>
-        </div>
-      </template>
-      <template #left>
-        <van-popover v-model="showPopover" placement="bottom-start" overlay :actions="actions" @select="onSelect">        
-          <template #reference>
-            <van-badge :dot="dot">
-              <div class="more">
-                <van-image class="rotate" :class="[{'r1': shrinkPacket}, {'r2': !shrinkPacket}, {'r3': shrinkPackett}]" width="22px" height="18px" :src="require('@/assets/more.png')" />
-              </div>
-            </van-badge>
-          </template>          
-        </van-popover>
-      </template>
-      <template #right>
-        <van-image width="32px" height="32px" :src="require('@/assets/header.png')" />
-      </template>
-    </van-nav-bar>
-=======
     <div class="top">
       <div class="top_back">
         <el-image style="width: 104px; height: 33px; margin-top: 30px; margin-left: 150px;" :src="require('@/assets/pc/view_logo.png')" />
@@ -51,32 +26,10 @@
         <div class="tip">我的</div>
       </div>
     </div>
->>>>>>> Stashed changes
     <div class="tab">
       <keep-alive :include="includes">
         <router-view></router-view>
       </keep-alive>
-<<<<<<< Updated upstream
-      <!-- <van-tabbar route v-model="active" active-color="#07c160" inactive-color="#7b7b7b" @change="onTabChange"
-        v-if="$route.meta.isShowTabBar">
-        <van-tabbar-item class="tab_btn" replace to="/question" @click="itemClick">
-          <template #icon="props">
-            <img class="tab_btn_img" :src="require(`@/assets/tab_real${props.active ? '_1' : ''}.png`)" />
-          </template>
-        </van-tabbar-item>
-        <van-tabbar-item class="tab_add">
-          <template>
-            <img height="40" width="40" :src="require('@/assets/tab_add.png')" />
-          </template>
-        </van-tabbar-item>
-        <van-tabbar-item class="tab_btn" replace to="/web">
-          <template #icon="props">
-            <img class="tab_btn_img" :src="require(`@/assets/tab_reality${props.active ? '_1' : ''}.png`)" />
-          </template>
-        </van-tabbar-item>
-      </van-tabbar> -->
-=======
->>>>>>> Stashed changes
     </div>
   </div>
 </template>
@@ -84,13 +37,6 @@
 <script>
 import { getToken } from '@/utils/auth'
 import { bannerSwipes } from '@/components/data'
-<<<<<<< Updated upstream
-
-export default {
-  name: "Main",
-  data () {
-    return {
-=======
 import mixin from "@/utils/mixin.js";
 
 export default {
@@ -99,7 +45,6 @@ export default {
   data () {
     return {
       keyword: '',
->>>>>>> Stashed changes
       active: 0,
       showPopover: false,
       dot: true,
@@ -130,12 +75,9 @@ export default {
     }
   },
   methods: {
-<<<<<<< Updated upstream
-=======
     search () {
       this.$EventBus.$emit('searchValue', this.keyword)
     },
->>>>>>> Stashed changes
     startRotate() {
       // clearInterval(this.timer);
       this.shrinkPackett = false
@@ -204,15 +146,12 @@ export default {
 .main_back {
   height: 100%;
   display: flex;
-<<<<<<< Updated upstream
-=======
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: left top;
   overflow: hidden;
->>>>>>> Stashed changes
   .main_logo{
     margin-top: 5px;
   }
@@ -234,34 +173,6 @@ export default {
       transform:rotate(0deg);
     }
   }
-<<<<<<< Updated upstream
-  .tab {
-    flex: 1;
-    margin-top: 46px;
-    // &_btn {
-    //   display: flex;
-    //   flex-direction: row;
-    //   margin-top: 5px;
-    //   flex: 10;
-    //   &_img {
-    //     height: 30px;
-    //     width: 110px;
-    //   }
-    // }
-    // &_add {
-    //   width: 100px;
-    //   display: flex;
-    //   flex-direction: row;
-    //   margin-top: 2px;
-    //   flex: 1;
-    // }
-  }
-}
-// :deep(.van-tabbar) {
-//   height: 53px;
-//   box-shadow: 0px -2px 10px 0px rgba(0, 0, 0, 0.2);
-// }
-=======
   .top{
     width: 100%;
     position: fixed;
@@ -343,7 +254,6 @@ export default {
     }
   }
 }
->>>>>>> Stashed changes
 :deep(.van-nav-bar__title) {
   font-size: 20px;
   color: var(--themeColor);
@@ -358,8 +268,6 @@ export default {
   color: var(--themeColor) !important;
   font-size: 20px;
 }
-<<<<<<< Updated upstream
-=======
 ::v-deep .el-tabs__active-bar {
   background-color: white; // 跟随 element  系统颜色  自己修改
   height: 4px;
@@ -375,5 +283,4 @@ export default {
   border: none;
 }
 
->>>>>>> Stashed changes
 </style>
