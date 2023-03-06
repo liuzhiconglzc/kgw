@@ -136,11 +136,16 @@
             </div>
             <div class="retext_t">
               <el-input
+                ref="reply"
                 type="textarea"
                 autosize
+                clearable
                 :rows="2"
                 placeholder="请输入回复内容"
-                v-model="textarea">
+                v-model="textarea"
+                maxlength="100"
+                show-word-limit
+                >
               </el-input>
               <el-button type="primary" class="retext_t_b" @click="replyClick">回复</el-button>
             </div>
@@ -197,6 +202,7 @@ import { getToken } from '@/utils/auth'
 import { ImagePreview } from 'vant'
 import { questionDetail, questionReply, likeAdd, likeCancel, collectAdd, collectCancel } from '@/api/question'
 import forbiddenArray from "@/utils/badword";
+import { mkdirSync } from 'fs';
 
 export default {
   name: "Detail",
@@ -209,8 +215,9 @@ export default {
       isLike: 0,
       restate: false,
       srcList: [],
-      textarea: ''
-    }
+      textarea: '',
+      }
+    
   },
   created () {
     this.isLike = this.$route.query.isLike
@@ -235,12 +242,6 @@ export default {
         this.$router.back()
       }
     },
-    // imageClick (index) {
-    //   ImagePreview({
-    //     images: this.item.imageList,
-    //     startPosition: index
-    //   });
-    // },
     getDetail (proId) {
       questionDetail(proId).then(res => {
         this.item = res.data
@@ -253,8 +254,16 @@ export default {
     replyClick () {
       if (!getToken()) {
         this.noLoginDialog()
-      } else if (this.reply.length == 0) {
-        this.$notify('请输入回复内容')
+      } else if (this.textarea.length == 0) {
+        // this.$notify('请输入回复内容')
+        this.$alert('请输入回复内容', '提交错误', {
+          confirmButtonText: '确定',
+        });
+        // this.$notify({
+        //   title: '提示',
+        //   message: '请输入回复内容',
+        //   duration: 0,
+        // });
       } else {
         const isBad = forbiddenArray.some(item => {
           if (this.reply.includes(item)) {
@@ -283,7 +292,7 @@ export default {
     questionReply () {
       const params = {}
       params.proId = this.item.proId
-      params.answer = this.reply
+      params.answer = this.textarea
       questionReply(params).then(res => {
         this.$toast.success('回复成功')
         this.reply = ''
@@ -794,6 +803,7 @@ export default {
       }
     }
   }
+
 
 ::-webkit-scrollbar {
   width: 1px;
