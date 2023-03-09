@@ -3,15 +3,15 @@
     <div class="top">
       <div class="top_back">
         <el-image style="width: 104px; height: 33px; margin-top: 30px; margin-left: 150px;" :src="require('@/assets/pc/view_logo.png')" />
-        <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style="position:absolute; width: 250px; height: 23px; margin-top: 33px; margin-left: 68px;z-index: 1;border: none;">
+        <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style="position:absolute; width: 300px; height: 23px; margin-top: 33px; margin-left: 68px;z-index: 1;border: none;">
         </el-input>
         <el-image style="position:absolute; width: 450px; height: 33px; margin-top: 30px; margin-left: 30px;" :src="require('@/assets/pc/view_search.png')"  @click="search"/>
-        <el-image style="position:absolute; width: 108px; height: 32px; margin-top: 30px; margin-left: 510px;" :src="require('@/assets/pc/view_add.png')" />
-        <el-image style="position:absolute; width: 93px; height: 33px; margin-top: 30px; margin-left: 700px;" :src="require('@/assets/pc/view_login.png')" />
+        <el-image style="position:absolute; width: 108px; height: 32px; margin-top: 30px; margin-left: 550px;" :src="require('@/assets/pc/view_add.png')"  @click="jumpToAdd"/>
+        <el-image style="position:absolute; width: 93px; height: 33px; margin-top: 30px; margin-left: 750px;" :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
       </div>
       <div class="tab_back">
         <template>
-          <el-tabs :stretch="false" 
+          <el-tabs :stretch="false" v-model="activeName" @tab-click="handleClick"
            style="color: white; height: 30px; width: 500px;caret-color: transparent;margin-left: 150px;">
             <el-tab-pane label="首页" name="first"/>
             <el-tab-pane label="浏览问题" name="second"/>
@@ -20,8 +20,8 @@
             <el-tab-pane label="联系管理员" name="fifth"/>
           </el-tabs>
         </template>
-        <div class="mine">
-          <el-image style="width: 30px; height: 30px;margin-top: 5px;margin-left: 120px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>      
+        <div class="mine" @click="jumpToLogin">
+          <el-image style="width: 30px; height: 30px;margin-top: 5px;margin-left: 220px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>      
         </div>
         <div class="tip">我的</div>
       </div>
@@ -47,15 +47,12 @@ export default {
       keyword: '',
       active: 0,
       showPopover: false,
-      dot: true,
-      actions: [{ id: 0, text: '“砍瓜网”简介' }, { id: 1, text: '真实问题' }],
-      shrinkPacket: undefined,
-      shrinkPackett: undefined,
-      needRefresh: true
+      needRefresh: true,
+      activeName: 'second'
     }
   },
   created(){
-    this.startRotate();
+    // this.startRotate();
     // setTimeout(this.endRotate,10000);
   },
   watch: {
@@ -75,25 +72,16 @@ export default {
     }
   },
   methods: {
+    handleClick (tab) {
+      if (tab.index == 0) {
+        this.$router.push({ path: '/' })
+      } else if (tab.index == 1) {
+        this.$router.push({ name: 'Question' })
+      }
+    },
     search () {
       this.$EventBus.$emit('searchValue', this.keyword)
-    },
-    startRotate() {
-      // clearInterval(this.timer);
-      this.shrinkPackett = false
-      this.timer = setInterval(()=>{
-        this.shrinkPacket = !this.shrinkPacket
-      },150);
-      setTimeout(this.endRotate,5000);
-    },
-    endRotate() {
-      clearInterval(this.timer);
-      this.timer = setInterval(()=>{
-        this.shrinkPacket = !this.shrinkPacket
-      },150);
-      clearInterval(this.timer);
-      this.shrinkPackett = true
-      setTimeout(this.startRotate,5000);
+      this.$router.push({ name: 'Question' })
     },
     titleClick () {
       this.$router.push({ path: '/' })
@@ -118,24 +106,20 @@ export default {
       }
       this.needRefresh = true
     },
-    onTabChange (index) {
-      if (index == 1) {
-        if (getToken()) {
-          this.$router.push({ name: 'Add', query: { state: 0 } })
-        } else {
-          this.$dialog.alert({
-            showCancelButton: true,
-            cancelButtonText: '否',
-            confirmButtonText: '是',
-            message: '您暂未登录，请问是否登录？'
-          })
-            .then(() => {
-              this.$router.push({ name: 'Login', params: { replace: 'Add' } })
-            })
-            .catch(() => { })
-        }
+    jumpToAdd () {
+      if (getToken()) {
+        this.$router.push({ name: 'Add', query: { state: 0 } })
       } else {
-        this.needRefresh = false
+        this.$dialog.alert({
+          showCancelButton: true,
+          cancelButtonText: '否',
+          confirmButtonText: '是',
+          message: '您暂未登录，请问是否登录？'
+        })
+          .then(() => {
+            this.$router.push({ name: 'Login', params: { replace: 'Add' } })
+          })
+          .catch(() => { })
       }
     }
   }
@@ -152,27 +136,6 @@ export default {
   transform: translate(-50%, -50%);
   transform-origin: left top;
   overflow: hidden;
-  .main_logo{
-    margin-top: 5px;
-  }
-  .more{
-    width: 21px;
-    height: 18px;
-    // margin-top: 7px;
-    // transform: scale(1.8);
-    // transform: scale(-1.8);
-    // transition: all 5s;
-    
-    .r1{
-      transform:rotate(-5deg);
-    }
-    .r2{
-      transform:rotate(5deg);
-    }
-    .r3{
-      transform:rotate(0deg);
-    }
-  }
   .top{
     width: 100%;
     position: fixed;
@@ -201,9 +164,11 @@ export default {
   .tab {
     flex: 1;
     margin-top: 140px;
-    // height: 100%;
     // margin-left: 200px;
     background: #f2f2f2;
+    // height: calc(100% - 0px);
+    // display: flex;
+    // flex-direction: column;
     .right{
       margin-top: 15px;
       margin-left: 765px;

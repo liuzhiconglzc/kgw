@@ -1,10 +1,10 @@
 <template>
   <div class="question_back">
     <div class="search_back">
-      <div class="search">
+      <div class="search" style="color: #42b285; font-size: 16px;">
         全部
       </div>
-      <div>问题分类</div>
+      <div style="font-size: 16px;">问题分类</div>
       <img class="category" :src="require('@/assets/pc/category.png')" alt="category" @click="categoryClick">
     </div>
     <div class="question">
@@ -34,7 +34,7 @@
               <div class="header">
                 <div class="header_img">
                   <template>
-                    <van-image width="28px" height="28px" :src="require('@/assets/header_question.png')" />
+                    <van-image width="25px" height="25px" :src="require('@/assets/header_question.png')" />
                   </template>
                 </div>
                 <div class="header_right">
@@ -319,7 +319,7 @@ methods: {
 .question_back {
 // width: 100vw;
 margin-left: 150px;
-width: 700px;
+width: 800px;
 height: calc(100% - 0px);
 display: flex;
 flex-direction: column;
@@ -376,7 +376,7 @@ margin-top: 15px;
     }
   }
   .category {
-    width: 30px;
+    width: 20px;
     margin-left: 10px;
   }
 }
@@ -430,7 +430,7 @@ margin-top: 15px;
       margin: 5px 0;
       &_img:first-child {
         // width: 32%;
-        width: 120px;
+        width: 180px;
         height: 80px;
         margin-right: 2%;
         border-radius: 5px;
@@ -532,7 +532,7 @@ margin-top: 15px;
 }
 .right{
     // margin-top: 15px;
-    margin-left: 715px;
+    margin-left: 815px;
     position: fixed;
     z-index: 999;
     .mobile{

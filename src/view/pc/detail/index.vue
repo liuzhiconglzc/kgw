@@ -1,80 +1,4 @@
 <template>
-  <!-- <div class="detail_back" v-if="item">
-    <van-nav-bar title="问题详情" :border="false" fixed left-arrow @click-left="goBack" />
-    <div class="detail" v-if="item.proTitle">
-      <div class="content">
-        <div class="header">
-          <div class="header_img">
-            <template>
-              <van-image width="28px" height="28px" :src="require('@/assets/header.png')" />
-            </template>
-          </div>
-          <div class="header_name">{{item.askUserName}}</div>
-        </div>
-        <div class="title">{{item.proTitle}}</div>
-        <div class="date">
-          <div class="date_back">{{item.createTime && item.createTime.substr(0, 10)}}</div>
-          <div class="num" v-if="item.proId != 0">
-            <div class="num_item" @click.stop="numClick(0)">
-              <van-image class="num_item_img" fit="contain"
-                :src="require(`@/assets/list_like${item.isLike == '1' ? '_1' : ''}.png`)"></van-image>
-              <div class="num_item_text">{{item.likeNum}}</div>
-            </div>
-            <div class="num_item" @click.stop="numClick(1)">
-              <van-image class="num_item_img" fit="contain"
-                :src="require(`@/assets/list_collect${item.isCollect == '1' ? '_1' : ''}.png`)"></van-image>
-              <div class="num_item_text">{{item.collectNum}}</div>
-            </div>
-            <div class="num_item">
-              <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_view.png')">
-              </van-image>
-              <div class="num_item_text">{{item.viewNum}}</div>
-            </div>
-            <div class="num_item" @click.stop="numClick(2)">
-              <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_reply.png')">
-              </van-image>
-              <div class="num_item_text">{{item.answerNum}}</div>
-            </div>
-          </div>
-        </div>
-        <div class="line" v-if="item.proId == 0"></div>
-        <div class="pro_title" v-if="item.proId != 0">社会现实场景</div>
-        <div class="desc" :class="{'desc_1': item.proId != 0}">{{item.proRealityScene}}</div>
-        <div class="pro_title" v-if="item.proId != 0">真实问题</div>
-        <div class="desc" :class="{'desc_1': item.proId != 0}">{{item.proSpecific}}</div>
-        <div class="files" v-if="item.imageList && item.imageList.length > 0">
-          <van-image class="files_img" v-for="(image, index) in item.imageList" :key="index" fit="cover" :src="image"
-            @click="imageClick(index)">
-          </van-image>
-        </div>
-      </div>
-      <div class="reply" v-if="replyList.length > 0 && item.proId != 0">
-        <div class="reply_header">{{`共${replyList.length}回复`}}</div>
-        <div class="reply_cell" v-for="item in replyList" :key="item.id">
-          <div class="reply_cell_header">
-            <template>
-              <van-image :src="require('@/assets/header_detail.png')" />
-            </template>
-          </div>
-          <div class="reply_cell_right">
-            <div class="reply_cell_right_top">
-              <div class="reply_cell_right_top_name">{{item.userName}}</div>
-              <div class="reply_cell_right_top_date">{{item.createTime}}</div>
-            </div>
-            <div class="reply_cell_content">{{item.answer}} </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="reply_box" v-if="item.proId != 0">
-      <van-field ref="reply" class="reply_box_field" v-model="reply" autosize rows="1" type="textarea" maxlength="100"
-        placeholder="请输入回复（100字以内）">
-      </van-field>
-      <div class="reply_box_btn" @click="replyClick">回复</div>
-      <van-divider class="reply_box_line" />
-    </div>
-
-  </div> -->
   <div class="de">
     <div class="detail_back" v-if="item">
       <el-main>
@@ -430,7 +354,7 @@ export default {
 .de{
   // width: 100vw;
   margin-left: 150px;
-  width: 700px;
+  width: 800px;
   height: calc(100% - 0px);
   // overflow-y: hidden;
   display: flex;
@@ -445,7 +369,7 @@ export default {
         // top: 0;
         background-color: white;
         // z-index:999;
-        width: 700px;
+        width: 800px;
         // margin-top: -100px;
       }
   .detail_back {
@@ -493,7 +417,7 @@ export default {
         height: 25px;
         transition: all 0.5s;
         cursor: pointer;
-        margin-left: 480px;
+        margin-left: 580px;
         
       }
 
@@ -752,7 +676,7 @@ export default {
 }
 .right{
     // margin-top: 15px;
-    margin-left: 715px;
+    margin-left: 815px;
     position: fixed;
     z-index: 999;
     .mobile{
