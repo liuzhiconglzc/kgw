@@ -23,13 +23,13 @@
         <div class="mine" @click="jumpToLogin">
           <el-image style="width: 30px; height: 30px;margin-top: 5px;margin-left: 220px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>      
         </div>
-        <div class="tip">我的</div>
+        <div class="tip" @click="jumpToLogin">我的</div>
       </div>
     </div>
     <div class="tab">
       <keep-alive :include="includes">
         <router-view></router-view>
-      </keep-alive>
+        </keep-alive>
     </div>
   </div>
 </template>
@@ -77,6 +77,13 @@ export default {
         this.$router.push({ path: '/' })
       } else if (tab.index == 1) {
         this.$router.push({ name: 'Question' })
+      } else if (tab.index == '2' ) {
+        this.$router.push({ name: 'Interview', params: bannerSwipes[0] })
+        // tab.index == '' 
+      } else if (tab.index == '3'){
+        this.$router.push({ name: 'Interviewa'})
+      }else {
+        this.$router.push({name: 'Managera'})
       }
     },
     search () {
