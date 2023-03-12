@@ -1,57 +1,56 @@
 <template>
   <div class="list_back" :class="{'review_back': state == 3}">
     <div class="question">
-      <van-nav-bar :title="pageTitle" :border="false" fixed left-arrow @click-left="goBack" />
+      <el-menu :default-active="1" text-color="#42B285" active-text-color="#42B285" mode="horizontal" @select="handleSelect" style="width: 700px;">
+          <el-menu-item index="1" style="height: 50px;width: 100px;margin-top: -10px;font-weight:bold;font-size:16px;">全部</el-menu-item>
+          <el-menu-item v-if="state==0||state==1" index="2" style="height: 50px;width: 100px;margin-top: -10px;font-weight:bold;font-size:16px;">已删除</el-menu-item>
+      </el-menu>
       <van-pull-refresh v-model="isRefreshing" @refresh="onRefresh">
-        <van-list v-model="isLoading" :finished="isFinished" finished-text="没有更多了" @load="onLoad">
+        <van-list v-model="isLoading" :finished="isFinished" @load="onLoad">
           <div class="question_item" :class="{'question_item_last':questionIndex + 1 == questionList.length}"
             v-for="(question, questionIndex) in questionList" :key="question.proId"
             @click="cellClick(question, questionIndex)">
             <div class="question_item_top" v-if="question.proTop > 0">【置顶】</div>
-            <div class="question_item_title" :class="{'question_item_title_top': question.proTop > 0}">
-              {{question.proTitle}}</div>
-            <div class="question_item_desc">{{question.proRealityScene}}</div>
-            <div class="question_item_files" v-if="question.imageList && question.imageList.length > 0">
-              <van-image class="question_item_files_img" v-for="(image, imageIndex) in question.imageList"
-                :key="imageIndex" fit="cover" :src="image">
-              </van-image>
+            <div class="question_item_title" :class="{'question_item_title_top': question.proTop > 0}">{{question.proTitle}}</div>
+            <div style="display: inline-block;">
+              <div class="question_item_files" v-if="state==4">
+                <van-image class="question_item_files_img" v-for="(image, imageIndex) in question.imageList"
+                  :key="imageIndex" fit="cover" :src="image">
+                </van-image>
+              </div>
+              <div class="question_item_desc" v-if="state==4">{{question.proRealityScene}}</div>              
             </div>
             <div class="question_item_bottom">
               <div class="header">
-                <div class="header_img">
-                  <template>
-                    <van-image width="22px" height="22px" :src="require('@/assets/header_question.png')" />
-                  </template>
-                </div>
                 <div class="header_right">
-                  <div class="header_right_name">{{question.askUserName}}</div>
                   <div class="header_right_date">{{question.createTime && question.createTime.substr(0, 10)}}</div>
-                </div>
+                  </div>
+                  <div class="num">
+                    <div class="num_item" @click.stop="numClick(0, questionIndex)">
+                      <van-image class="num_item_img" fit="contain"
+                        :src="require(`@/assets/list_like${question.isLike == '1' ? '_1' : ''}.png`)"></van-image>
+                      <div class="num_item_text">{{question.likeNum}}</div>
+                    </div>
+                    <div class="num_item" @click.stop="numClick(1, questionIndex)">
+                      <van-image class="num_item_img" fit="contain"
+                        :src="require(`@/assets/list_collect${question.isCollect == '1' ? '_1' : ''}.png`)"></van-image>
+                      <div class="num_item_text">{{question.collectNum}}</div>
+                    </div>
+                    <div class="num_item">
+                      <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_view.png')">
+                      </van-image>
+                      <div class="num_item_text">{{question.viewNum}}</div>
+                    </div>
+                    <div class="num_item">
+                      <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_reply.png')">
+                      </van-image>
+                      <div class="num_item_text">{{question.answerNum}}</div>
+                    </div>
+                  </div>                  
               </div>
-              <div class="num" v-if="state == 1 || state == 4">
-                <div class="num_item" @click.stop="numClick(0, questionIndex)">
-                  <van-image class="num_item_img" fit="contain"
-                    :src="require(`@/assets/list_like${question.isLike == '1' ? '_1' : ''}.png`)"></van-image>
-                  <div class="num_item_text">{{question.likeNum}}</div>
-                </div>
-                <div class="num_item" @click.stop="numClick(1, questionIndex)">
-                  <van-image class="num_item_img" fit="contain"
-                    :src="require(`@/assets/list_collect${question.isCollect == '1' ? '_1' : ''}.png`)"></van-image>
-                  <div class="num_item_text">{{question.collectNum}}</div>
-                </div>
-                <div class="num_item">
-                  <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_view.png')">
-                  </van-image>
-                  <div class="num_item_text">{{question.viewNum}}</div>
-                </div>
-                <div class="num_item">
-                  <van-image class="num_item_img" fit="contain" :src="require('@/assets/list_reply.png')">
-                  </van-image>
-                  <div class="num_item_text">{{question.answerNum}}</div>
-                </div>
-              </div>
-              <div class="review" v-if="state == 3">去审核</div>
+              <div class="review" v-if="state == 3" @click="goreview">前往审核</div>
             </div>
+            <hr class="hr-edge-weak">
           </div>
         </van-list>
       </van-pull-refresh>
@@ -146,6 +145,9 @@ export default {
           self.scrollTop = item.scrollTop
         }
       });
+    },
+    goreview(){
+      
     },
     getQuestionList (isLoad) {
       questionList(this.params).then(res => {
@@ -250,19 +252,29 @@ export default {
 
 <style lang="less" scoped>
 .list_back {
-  width: 100vw;
-  height: 100%;
+  height: calc(100% - 0px);
   display: flex;
-  flex-direction: column;
+  // transform: translate(-7px,-391px);
+  // transform-origin: left top;
+  // flex-direction: column;
+  background: white;
+  // overflow:hidden;
+  width: 103%;
+  // margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .question {
     flex: 1;
-    overflow: scroll;
-    background: #f2f2f2;
+    // overflow: scroll;
+    // background: #f2f2f2;
+    width: 625px;
+    background-color: white;
     &_item {
-      margin-bottom: 15px;
+      margin-left: 5px;
+      margin-top: -10px;
       padding: 10px;
+      width: 70%;
       background: white;
-      border-radius: 10px;
+      // border-radius: 10px;
       &_last {
         margin-bottom: 0;
       }
@@ -292,7 +304,7 @@ export default {
       &_files {
         margin: 5px 0;
         &_img {
-          width: 32%;
+          width: 250px;
           height: 80px;
           margin-right: 2%;
           border-radius: 5px;
@@ -349,15 +361,23 @@ export default {
           font-size: 12px;
           color: white;
           background: #f16131;
-          width: 60px;
+          width: 80px;
           height: 20px;
-          border-radius: 10px;
+          border-radius: 6px;
           text-align: center;
           line-height: 20px;
+          margin-top: -20px;
         }
       }
     }
   }
+  .hr-edge-weak {
+		border: 0;
+		padding-top: 1px;
+    background-color: #d0d0d5;
+    border:10
+		// background: linear-gradient(to right, transparent, #d0d0d5, transparent);
+	}
   .van-list {
     padding: 15px 15px 0;
   }
@@ -367,17 +387,17 @@ export default {
   }
 }
 .review_back {
-  :deep(.van-nav-bar) {
-    background: linear-gradient(to bottom, #f16131, #f68666);
-  }
+  // :deep(.van-nav-bar) {
+  //   background: linear-gradient(to bottom, #f16131, #f68666);
+  // }
   :deep(.van-nav-bar__arrow) {
     color: white !important;
   }
   :deep(.van-nav-bar__title) {
     color: white !important;
   }
-  .question {
-    background: linear-gradient(to bottom, #f68666, #f2f2f2 50%);
-  }
+  // .question {
+  //   background: linear-gradient(to bottom, #f68666, #f2f2f2 50%);
+  // }
 }
 </style>
