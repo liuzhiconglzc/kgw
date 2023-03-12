@@ -4,7 +4,7 @@
       <div class="person">
         <div class="pic">
           <template>
-          <el-image class="header" :src="data.askUserAvatar" fit="fill" round/>
+            <el-image class="header" :src="data.askUserAvatar" fit="fill" round/>
           </template>
         </div>
         <template>
@@ -41,10 +41,15 @@
           </div>
         </template>
         <template>
-          <div class="add">
+          <!-- <div class="add">
             <el-image class="header2" :src="require('@/assets/pc/view_add.png')" fit="fill" round @click="add">
             </el-image>
-          </div>  
+          </div>   -->
+          <div>
+            <el-button class="add" @click="logout">
+              退出登录
+            </el-button>
+          </div>
         </template>
       </div>
       <div style="height: calc(100% - 0px);display: inline;">
@@ -218,9 +223,12 @@ export default {
     // width: 235px;
     // height:150px;
     // margin-top: 25px;
+    color: white;
     display: auto;
+    margin-top: 50px;
     margin-left: 300px;
     margin-right: 300px;
+    background-color: #42B285;
   }
 .pic{
   margin-left: 10px;
