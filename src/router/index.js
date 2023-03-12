@@ -153,14 +153,6 @@ const routesP = [
         },
       },
       {
-        path: '/list',
-        name: 'List',
-        component: () => import('../view/pc/list'),
-        meta: {
-          keepAlive: true,
-        },
-      },
-      {
         path: '/detail/:proId',
         name: 'Detail',
         component: () => import('../view/pc/detail'),
@@ -178,12 +170,54 @@ const routesP = [
         },
       },
       {
+        path: '/interviewa',
+        name: 'Interviewa',
+        component: () => import('../view/pc/interviewa'),
+        meta: {
+          title: '问题详情',
+        },
+      },
+      {
+        path: 'managera',
+        name: 'Managera',
+        component: () => import('../view/pc/managera'),
+        meta: {
+          title: '联系管理员',
+        },
+      },
+      {
         path: '/mine',
         name: 'Mine',
         component: () => import('../view/pc/mine'),
         meta: {
           title: '我的',
         },
+        children:[
+          {
+            path: '/manager',
+            name: 'Manager',
+            component: () => import('../view/pc/manager'),
+            meta: {
+              title: '联系管理员',
+            },
+          },
+          {
+            path: '/personal',
+            name: 'Personal',
+            component: () => import('../view/pc/personal'),
+            meta: {
+              title: '个人设置',
+            },
+          },
+          {
+            path: '/list',
+            name: 'List',
+            component: () => import('../view/pc/list'),
+            meta: {
+              keepAlive: true,
+            },
+          },
+        ]
       },
       {
         path: '/login',
@@ -215,22 +249,6 @@ const routesP = [
         component: () => import('../view/pc/add'),
         meta: {
           keepAlive: true,
-        },
-      },
-      {
-        path: '/manager',
-        name: 'Manager',
-        component: () => import('../view/pc/manager'),
-        meta: {
-          title: '联系管理员',
-        },
-      },
-      {
-        path: '/personal',
-        name: 'Personal',
-        component: () => import('../view/pc/personal'),
-        meta: {
-          title: '个人设置',
         },
       },
     ],
