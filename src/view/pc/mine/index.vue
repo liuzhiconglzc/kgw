@@ -48,7 +48,7 @@
         </template>
       </div>
       <div style="height: calc(100% - 0px);display: inline;">
-        <el-row class="menu">
+        <el-row class="menu" :default-active="1">
           <el-col :span="4">
             <el-menu active-text-color=#42B285 router>
               <el-menu-item index="1" @click="Click1" class="button">
