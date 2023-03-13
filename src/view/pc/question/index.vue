@@ -318,8 +318,10 @@ methods: {
 <style lang="less" scoped>
 .question_back {
 // width: 100vw;
-margin-left: 150px;
-width: 800px;
+margin-left: -400px;
+position: fixed;
+left: 50%;
+width: 700px;
 height: calc(100% - 0px);
 display: flex;
 flex-direction: column;
@@ -532,7 +534,7 @@ margin-top: 15px;
 }
 .right{
     // margin-top: 15px;
-    margin-left: 815px;
+    margin-left: 715px;
     position: fixed;
     z-index: 999;
     .mobile{
