@@ -99,7 +99,7 @@
           <el-image style="width: 15px; height: 15px;" :src="require('@/assets/pc/view_ip.png')" fit="contain"/>
           <div class="tip1">“原砍瓜网”网址</div>
         </div>
-        <div class="tip2">http://kangua.lnu.edu.cn/</div>
+        <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn/</div>
         <div class="title">已收录2万余条真实问题</div>
       </div>
     </div>
@@ -164,6 +164,10 @@ beforeDestroy () {
   this.$EventBus.$off(['questionReload', 'questionUpdate'])
 },
 methods: {
+  cardClick () {
+    // location.href = "http://kangua.lnu.edu.cn"
+    window.open("http://kangua.lnu.edu.cn", '_blank').location;
+  },
   add(){
     if (getToken()) {
       this.$router.push({ name: 'Add', query: { state: 0 } })
