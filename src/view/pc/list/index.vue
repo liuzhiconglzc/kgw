@@ -12,7 +12,7 @@
             @click="cellClick(question, questionIndex)">
             <div class="question_item_top" v-if="question.proTop > 0">【置顶】</div>
             <div class="question_item_title" :class="{'question_item_title_top': question.proTop > 0}">{{question.proTitle}}</div>
-            <div style="display: inline-block;">
+            <div class="question_item_total_2">
               <div class="question_item_files" v-if="state==4">
                 <van-image class="question_item_files_img" v-for="(image, imageIndex) in question.imageList"
                   :key="imageIndex" fit="cover" :src="image">
@@ -288,11 +288,14 @@ export default {
         font-size: 16px;
         font-weight: 600;
       }
+      &_total_2 {
+      display: flex;
+      }
       &_title_top {
         text-indent: 64px;
       }
       &_desc {
-        margin: 5px 0 10px;
+        margin: 5px 15px 10px;
         font-size: 15px;
         color: #7f7f7f;
         overflow: hidden;
