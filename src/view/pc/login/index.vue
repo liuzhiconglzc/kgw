@@ -1,11 +1,11 @@
 <template>
   <div class="back">
-    <van-nav-bar title="登录" :border="false" left-arrow fixed @click-left="goBack" />
+    <van-nav-bar title="登录" :border="false" left-arrow fixed @click-left="goBack"/>
     <van-form @submit="onSubmit" class="form_back">
       <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
-        :rules="[{ required: true, message: '请输入手机号' }]" />
+        :rules="[{ required: true }]" style="margin-top: 10%;"/>
       <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
-        :rules="[{ required: true, message: '请输入密码' }]" />
+        :rules="[{ required: true }]" style="margin-top: 10%;"/>
       <div style="margin: 16px;">
         <van-button class="login_btn" block :loading="loading" loading-text="登录中..." color="var(--themeColor)"
           native-type="submit">登录
@@ -14,9 +14,9 @@
           @click="register()">还没账号，前往注册
         </van-button> -->
       </div>
+      <div class="title" @click="register">新用户注册</div>
+      <div class="title1" @click="forgotPassword">忘记密码</div>
     </van-form>
-    <div class="title" @click="register">新用户注册</div>
-    <div class="title1" @click="forgotPassword">忘记密码</div>
   </div>
 </template>
 
@@ -73,10 +73,33 @@ export default {
 
 <style lang="less" scoped>
 .back {
+  margin-left: -300px;
+  position: fixed;
+  left: 55%;
+  width: 40%;
+  height: calc(100% - 45%);
+  // overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  // margin-left: -300px;
+  // position: fixed;
+  // left: 50%;
+  // margin-top: 100px;
+  // width: 550px;
+  // background-color: white;
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .form_back {
-    margin-top: 20px;
+    // margin-top: 10%;
+    margin-left: 20%;
+    width: 60%;
+    height: 250px;
+    // display: flex;
   }
   .login_btn {
+    margin-top: 10%;
     border-radius: 5px;
   }
   .register_btn{
@@ -84,16 +107,20 @@ export default {
     margin-top: 10px;
   }
   .title {
+    display: flex;
     color: var(--themeColor);
-    margin-top: 5px;
+    margin-top: 1%;
     text-align: right;
-    padding: 2px 25px;
+    margin-left: 60%;
+    // padding: 2px 25px;
   }
   .title1 {
+    display: flex;
     color: var(--themeColor);
-    margin-top: 5px;
+    margin-top: -7%;
     text-align: right;
-    padding: 2px 41px;
+    margin-left: 10%;
+    // padding: 2px 25px;
   }
 }
 :deep(.van-nav-bar__title) {
