@@ -1,10 +1,6 @@
 <template>
-  <div class="detail_back">
-    <div class="d_back" v-if="this">
-          <!-- <div class="title1"> -->
-      <!-- <div class="ti">问题详情</div> -->
-      <!-- <button class="button" style="vertical-align:middle" @click="goBack"><span>返回</span></button> -->
-    <!-- </div> -->
+  <div class="detail_back" v-if="this">
+    <div class="d_back" >
       <div class="detail" v-if="this.proTitle">
         <div class="content">
           <div class="header">
@@ -23,7 +19,7 @@
           <div class="desc" :class="{'desc_1': this.proId == 0}">{{this.proContent}}</div>
           <div class="files" v-if="this.imageList && this.imageList.length > 0">
             <div class="demo-image__preview">
-              <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="cover"
+              <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="fill"
                 style="width: 210px; height: 100px"
                 :src="image">
               </el-image>
@@ -52,7 +48,7 @@
           <el-image style="width: 15px; height: 15px;" :src="require('@/assets/pc/view_ip.png')" fit="contain"/>
           <div class="tip1">“原砍瓜网”网址</div>
         </div>
-        <div class="tip2">http://kangua.lnu.edu.cn/</div>
+        <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn/</div>
         <div class="title">已收录2万余条真实问题</div>
       </div>
     </div>
@@ -88,6 +84,9 @@ export default {
     this.item = item
   },
   methods: {
+    cardClick () {
+    window.open("http://kangua.lnu.edu.cn", '_blank').location;
+  },
     topClick (index) {
       ImagePreview({
         images: this.item.imageList,
@@ -107,9 +106,11 @@ export default {
 
 <style lang="less" scoped>
 .detail_back {
-  margin-left: 150px;
+  margin-left: -400px;
+  position: fixed;
+  left: 50%;
   width: 700px;
-  height: calc(100% - -50px);
+  height: calc(100% - 0px);
   // overflow-y: hidden;
   display: flex;
   flex-direction: column;
@@ -119,7 +120,8 @@ export default {
   // background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
   .d_back{
     overflow-x:hidden;
-    height: calc(100% - 0px);
+    // width: 105%;
+    height: calc(100% - 100px);
   }
   .title1{
         display: flex;
@@ -136,58 +138,12 @@ export default {
         // color:#42B285;
         color: white;
         margin-left: 20px;
-        // overflow: hidden;
-        // display: flex;
-        // align-items: center;
-        // flex: 1;
-        // position: relative;
       }
       .back{
         background-color:#42B285;
-        margin-left: 470px;
+        margin-left: 570px;
         // color: white;
       }   
-      .button {
-        display: inline-block;
-        border-radius: 4px;
-        background-color: #42B285;
-        border: none;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 14px;
-        padding: 2px;
-        width: 70px;
-        height: 25px;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin-left: 480px;
-        
-      }
-
-      .button span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-      }
-
-      .button span:after {
-        content: '»';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-      }
-
-      .button:hover span {
-        padding-right: 25px;
-      }
-
-      .button:hover span:after {
-        opacity: 1;
-        right: 0;
-      }
       }
   .detail {
     height: calc(100% - 44px);
@@ -246,7 +202,8 @@ export default {
       .files {
           &_img {
             width: 32%;
-            height: 80px;
+            // margin-left: 2%;
+            height: 120px;
             margin-right: 2%;
             border-radius: 5px;
             overflow: hidden;
