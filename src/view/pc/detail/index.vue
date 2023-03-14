@@ -28,7 +28,7 @@
           <div class="desc" :class="{'desc_1': item.proId != 0}">{{item.proSpecific}}</div>
           <div class="files" v-if="item.imageList && item.imageList.length > 0">
             <div class="demo-image__preview">
-              <el-image class="files_img" v-for="(image, index) in item.imageList"  :key="index" fit="cover" initial-index="index" :src="image" :preview-src-list="srcList">
+              <el-image class="files_img" v-for="(image, index) in item.imageList"  :key="index" fit="fill" initial-index="index" :src="image" :preview-src-list="srcList">
               </el-image>
               <!-- <van-image class="files_img" v-for="(image, index) in item.imageList" :key="index" fit="cover" :src="image"
               @click="imageClick(index)">
@@ -114,7 +114,7 @@
           <el-image style="width: 15px; height: 15px;" :src="require('@/assets/pc/view_ip.png')" fit="contain"/>
           <div class="tip1">“原砍瓜网”网址</div>
         </div>
-        <div class="tip2">http://kangua.lnu.edu.cn/</div>
+        <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn/</div>
         <div class="title">已收录2万余条真实问题</div>
       </div>
     </div>
@@ -159,6 +159,9 @@ export default {
     next()
   },
   methods: {
+    cardClick () {
+    window.open("http://kangua.lnu.edu.cn", '_blank').location;
+  },
     goBack () {
       if (this.fromWechat) {
         this.$router.replace({ name: 'Question' })
@@ -219,7 +222,7 @@ export default {
       params.answer = this.textarea
       questionReply(params).then(res => {
         this.$toast.success('回复成功')
-        this.reply = ''
+        this.textarea = ''
         this.getDetail(this.item.proId)
       })
     },
@@ -352,10 +355,11 @@ export default {
 
 <style lang="less" scoped>
 .de{
-  // width: 100vw;
-  margin-left: 150px;
-  width: 800px;
-  height: calc(100% - 0px);
+  margin-left: -400px;
+  position: fixed;
+  left: 50%;
+  width: 700px;
+  height: calc(100% - 100px);
   // overflow-y: hidden;
   display: flex;
   flex-direction: column;
@@ -369,7 +373,7 @@ export default {
         // top: 0;
         background-color: white;
         // z-index:999;
-        width: 800px;
+        width: 700px;
         // margin-top: -100px;
       }
   .detail_back {
@@ -411,13 +415,13 @@ export default {
         border: none;
         color: #FFFFFF;
         text-align: center;
-        font-size: 14px;
+        font-size: 16px;
         padding: 2px;
         width: 70px;
         height: 25px;
         transition: all 0.5s;
         cursor: pointer;
-        margin-left: 580px;
+        margin-left: 480px;
         
       }
 
@@ -510,7 +514,7 @@ export default {
         .files {
           &_img {
             width: 32%;
-            height: 80px;
+            height: 120px;
             margin-right: 2%;
             border-radius: 5px;
             overflow: hidden;
@@ -676,7 +680,7 @@ export default {
 }
 .right{
     // margin-top: 15px;
-    margin-left: 815px;
+    margin-left: 715px;
     position: fixed;
     z-index: 999;
     .mobile{
