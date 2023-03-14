@@ -1,14 +1,9 @@
 <template>
   <div class="detail_back" v-if="this">
     <div class="d_back">
-          <!-- <div class="title1"> -->
-      <!-- <div class="ti">问题详情</div> -->
-      <!-- <button class="button" style="vertical-align:middle" @click="goBack"><span>返回</span></button> -->
-    <!-- </div> -->
       <div class="detail" v-if="this.proTitle">
         <div class="content">
           <div class="header">
-            <!-- <van-image class="header_img" :src="item.askUserAvatar"></van-image> -->
             <div class="header_img">
               <template>
                 <el-image width="28px" height="28px" :src="require('@/assets/header.png')" />
@@ -24,7 +19,7 @@
           <div class="desc" :class="{'desc_1': this.proId == 0}">{{this.proContent}}</div>
           <div class="files" v-if="this.imageList && this.imageList.length > 0">
             <div class="demo-image__preview">
-              <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="cover"
+              <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="fill"
                 style="width: 210px; height: 100px"
                 :src="image">
               </el-image>
@@ -48,7 +43,7 @@
           <el-image style="width: 15px; height: 15px;" :src="require('@/assets/pc/view_ip.png')" fit="contain"/>
           <div class="tip1">“原砍瓜网”网址</div>
         </div>
-        <div class="tip2">http://kangua.lnu.edu.cn/</div>
+        <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn/</div>
         <div class="title">已收录2万余条真实问题</div>
       </div>
     </div>
@@ -84,6 +79,9 @@ export default {
     this.item = item
   },
   methods: {
+    cardClick () {
+    window.open("http://kangua.lnu.edu.cn", '_blank').location;
+  },
     topClick (index) {
       ImagePreview({
         images: this.item.imageList,
@@ -103,9 +101,11 @@ export default {
 
 <style lang="less" scoped>
 .detail_back {
-  margin-left: 150px;
+  margin-left: -400px;
+  position: fixed;
+  left: 50%;
   width: 700px;
-  height: calc(100% - -50px);
+  height: calc(100% - -0px);
   // overflow-y: hidden;
   display: flex;
   flex-direction: column;
@@ -115,7 +115,7 @@ export default {
   // background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
   .d_back{
     overflow-x:hidden;
-    height: calc(100% - 0px);
+    height: calc(100% - 100px);
   }
   .title1{
         display: flex;
@@ -140,7 +140,7 @@ export default {
       }
       .back{
         background-color:#42B285;
-        margin-left: 470px;
+        margin-left: 570px;
         // color: white;
       }   
       .button {
@@ -156,7 +156,7 @@ export default {
         height: 25px;
         transition: all 0.5s;
         cursor: pointer;
-        margin-left: 480px;
+        margin-left: 580px;
         
       }
 
@@ -242,7 +242,7 @@ export default {
       .files {
           &_img {
             width: 32%;
-            height: 80px;
+            height: 180px;
             margin-right: 2%;
             border-radius: 5px;
             overflow: hidden;
