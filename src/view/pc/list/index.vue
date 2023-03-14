@@ -1,9 +1,10 @@
 <template>
-  <div class="list_back" :class="{'review_back': state == 3}">
+  <!-- <div class="list_back" :class="{'review_back': state == 3}"> -->
+  <div class="list_back">
     <div class="question">
-      <el-menu :default-active="1" text-color="#42B285" active-text-color="#42B285" mode="horizontal" @select="handleSelect" style="width: 700px;">
+      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 700px;">
           <el-menu-item index="1" style="height: 50px;width: 100px;margin-top: -10px;font-weight:bold;font-size:16px;">全部</el-menu-item>
-          <el-menu-item v-if="state==0||state==1" index="2" style="height: 50px;width: 100px;margin-top: -10px;font-weight:bold;font-size:16px;">已删除</el-menu-item>
+          <!-- <el-menu-item v-if="state==0||state==1" index="2" style="height: 50px;width: 100px;margin-top: -10px;font-weight:bold;font-size:16px;">已删除</el-menu-item> -->
       </el-menu>
       <van-pull-refresh v-model="isRefreshing" @refresh="onRefresh">
         <van-list v-model="isLoading" :finished="isFinished" @load="onLoad">
@@ -14,8 +15,8 @@
             <div class="question_item_title" :class="{'question_item_title_top': question.proTop > 0}">{{question.proTitle}}</div>
             <div class="question_item_total_2">
               <div class="question_item_files" v-if="state==4">
-                <van-image class="question_item_files_img" v-for="(image, imageIndex) in question.imageList"
-                  :key="imageIndex" fit="cover" :src="image">
+                <van-image class="question_item_files_img"
+                  :key="imageIndex" fit="cover" :src="question.imageList[0]">
                 </van-image>
               </div>
               <div class="question_item_desc" v-if="state==4">{{question.proRealityScene}}</div>              
@@ -173,12 +174,26 @@ export default {
       this.selectIndex = index
       switch (parseInt(this.state)) {
         case 0:
+        case 1:
+          this.$router.push({ path: `/detaila/${question.proId}` })
+          // this.$router.push({name:'detaila' ,params:{ state:this.state}})
+          break
         case 2:
+          this.$router.push({ path: `/detaila/${question.proId}`})
+          // this.$router.push({name:'detaila' ,params:{ state:this.state}})
+          break
         case 3:
+          // this.$router.push({ path: `/detaila/${question.proId}`})
+          // this.$router.push({name:'detaila' ,params:{ state:this.state}})
+          // break
           this.$router.push({ name: 'Add', query: { state: this.state == 0 ? 1 : this.state, proId: question.proId } })
           break
+        case 4:
+          this.$router.push({ path: `/detaila/${question.proId}`})
+          // this.$router.push({name:'detaila' ,params:{ state:this.state}})
+          break
         default:
-          this.$router.push({ path: `/detail/${question.proId}` })
+          this.$router.push({ path: `/detaila/${question.proId}` })
           break
       }
     },
@@ -266,26 +281,26 @@ export default {
     flex: 1;
     // overflow: scroll;
     // background: #f2f2f2;
-    width: 625px;
+    width: 50px;
     background-color: white;
     &_item {
       margin-left: 5px;
       margin-top: -10px;
       padding: 10px;
-      width: 70%;
+      width: 65%;
       background: white;
       // border-radius: 10px;
       &_last {
         margin-bottom: 0;
       }
       &_top {
-        font-size: 16px;
+        font-size: 10px;
         font-weight: 600;
         position: absolute;
         color: var(--themeColor);
       }
       &_title {
-        font-size: 16px;
+        font-size: 10px;
         font-weight: 600;
       }
       &_total_2 {
@@ -296,7 +311,7 @@ export default {
       }
       &_desc {
         margin: 5px 15px 10px;
-        font-size: 15px;
+        font-size: 9px;
         color: #7f7f7f;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -307,7 +322,7 @@ export default {
       &_files {
         margin: 5px 0;
         &_img {
-          width: 250px;
+          width: 180px;
           height: 80px;
           margin-right: 2%;
           border-radius: 5px;
