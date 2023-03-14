@@ -165,7 +165,6 @@ beforeDestroy () {
 },
 methods: {
   cardClick () {
-    // location.href = "http://kangua.lnu.edu.cn"
     window.open("http://kangua.lnu.edu.cn", '_blank').location;
   },
   add(){
