@@ -1,48 +1,53 @@
 <template>
-  <div class="back">
-    <van-nav-bar title="注册" :border="false" left-arrow fixed @click-left="goBack">
-    </van-nav-bar>
-    <div class="title">*必填</div>
-    <van-form @submit="onSubmit" class="form_back">
-      <van-field v-model="username" name="username" label-width="7.5em" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
-        :rules="telRules" />
-      <van-field v-model="password" name="password" label-width="7.5em" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off"
-        :rules="pwRules" />
-      <van-field v-model="password_again" name="password_again" label-width="7.5em" type="password" label="确认密码*" placeholder="请再次输入密码" autocomplete="off"
-        :rules="[{ required: true }]" />
-      <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名*" placeholder="请输入真实姓名"
-        :rules="[{ required: true }]" />
-      <van-field v-model="identity" is-link readonly name="identity" label-width="7.5em" label="身份*" placeholder="点击选择身份"
-        @click="showPicker = true" :rules="[{ required: true }]" />
-      <van-field v-model="title" name="title" label-width="7.5em" label="职称" placeholder="请输入职称" />
-      <van-field v-model="school" name="school" label-width="7.5em" label="学校(单位)*" placeholder="请输入学校或单位"
-        :rules="[{ required: true }]" />
-      <van-field v-model="college" name="college" label-width="7.5em" label="学院(部门)*" placeholder="请输入学院或部门"
-        :rules="[{ required: true }]" />
-      <van-field v-model="major" name="major" label-width="7.5em" label="专业" placeholder="请输入专业" />
-      <van-field v-model="email" name="email" label-width="7.5em" label="邮箱" placeholder="请输入邮箱" />
-      <van-popup v-model="showPicker" round position="bottom">
-        <van-picker show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel"/>
-      </van-popup>
-      <van-field v-model="sms" name="sms" label-width="7.5em" label="验证码*" placeholder="请输入验证码"
-        :rules="[{ required: true }]" />
-      <!-- <van-field v-model="sms" center clearable label="验证码*" placeholder="请输入验证码">
-        <template #right-icon>
+  <!-- <div style="width:100%;height:100%;background: #f9f9f9;position: relative"> -->
+    <div class="back">
+      <van-nav-bar title="注册" :border="false" left-arrow fixed @click-left="goBack">
+      </van-nav-bar>
+      <div class="title">*必填</div>
+      <div class="de_back">
+        <van-form @submit="onSubmit" class="form_back">
+          <van-field v-model="username" name="username" label-width="7.5em" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
+            :rules="telRules" />
+          <van-field v-model="password" name="password" label-width="7.5em" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off"
+            :rules="pwRules" />
+          <van-field v-model="password_again" name="password_again" label-width="7.5em" type="password" label="确认密码*" placeholder="请再次输入密码" autocomplete="off"
+            :rules="[{ required: true }]" />
+          <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名*" placeholder="请输入真实姓名"
+            :rules="[{ required: true }]" />
+          <van-field v-model="identity" is-link readonly name="identity" label-width="7.5em" label="身份*" placeholder="点击选择身份"
+            @click="showPicker = true" :rules="[{ required: true }]" />
+          <van-field v-model="title" name="title" label-width="7.5em" label="职称" placeholder="请输入职称" />
+          <van-field v-model="school" name="school" label-width="7.5em" label="学校(单位)*" placeholder="请输入学校或单位"
+            :rules="[{ required: true }]" />
+          <van-field v-model="college" name="college" label-width="7.5em" label="学院(部门)*" placeholder="请输入学院或部门"
+            :rules="[{ required: true }]" />
+          <van-field v-model="major" name="major" label-width="7.5em" label="专业" placeholder="请输入专业" />
+          <van-field v-model="email" name="email" label-width="7.5em" label="邮箱" placeholder="请输入邮箱" />
+          <van-popup v-model="showPicker" round position="right">
+            <van-picker show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel"/>
+          </van-popup>
+          <van-field v-model="sms" name="sms" label-width="7.5em" label="验证码*" placeholder="请输入验证码"
+            :rules="[{ required: true }]" />
+          <!-- <van-field v-model="sms" center clearable label="验证码*" placeholder="请输入验证码">
+            <template #right-icon>
+              <div class="img">
+                <van-image :src="img" @click="imageClick"></van-image>
+              </div>
+            </template> 
+          </van-field>   -->
           <div class="img">
-            <van-image :src="img" @click="imageClick"></van-image>
+            <van-image :src="this.img" @click="imageClick"></van-image>
+          </div> 
+          <div style="margin: 16px;">
+            <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
+              native-type="submit">注册
+            </van-button>
           </div>
-        </template> 
-      </van-field>   -->
-      <div class="img">
-        <van-image :src="this.img" @click="imageClick"></van-image>
-      </div> 
-      <div style="margin: 16px;">
-        <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
-          native-type="submit">注册
-        </van-button>
+        </van-form>
       </div>
-    </van-form>
-  </div>
+    </div>
+  <!-- </div> -->
+
 </template>
 
 <script>
@@ -143,6 +148,37 @@ export default {
 
 <style lang="less" scoped>
 .back {
+  width: 40%;
+  // height: 1015px;
+  height: calc(100% - -200px);
+  background: white;
+  position: relative;
+  top: 60%;
+  left: 50%;
+  display: flex;
+  // width: 101%;
+  overflow: hidden;
+  flex-direction: column;
+  transform: translate(-58%, -36%);
+  transform-origin: left top;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  .de_back{
+    overflow-x:hidden;
+    height: calc(100% - -100px);
+    width: 104%;
+    .form_back {
+    overflow:hidden;
+    // display: auto;
+    height: calc(100% - -250px);
+    // flex-direction: column;
+    background: white;
+    // margin-top: 15px;
+    // width: 105%;
+    position: relative;
+    transform: translate(0%,5%);
+    transform-origin: left top;
+  }
+  }
   .title {
     color: var(--themeColor);
     font-size: 13px;
@@ -150,9 +186,7 @@ export default {
     text-align: center;
     // padding: 0px 18px;
   }
-  // .form_back {
-  //   margin-top: 20px;
-  // }
+
   .login_btn {
     border-radius: 5px;
   }
