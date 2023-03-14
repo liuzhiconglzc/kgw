@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;height: 100%;">
+  <div style="width:100%;height:100%;">
     <div class="mine_back">
       <div class="person">
         <div class="pic">
@@ -53,7 +53,7 @@
         </template>
       </div>
       <div style="height: calc(100% - 0px);display: inline;">
-        <el-row class="menu" :default-active="1">
+        <el-row class="menu">
           <el-col :span="4">
             <el-menu active-text-color=#42B285 router>
               <el-menu-item index="1" @click="Click1" class="button">
@@ -112,7 +112,7 @@
                   <el-image style="width: 15px; height: 15px;" :src="require('@/assets/pc/view_ip.png')" fit="contain"/>
                   <div class="tip1">“原砍瓜网”网址</div>
                 </div>
-                <div class="tip2">http://kangua.lnu.edu.cn/</div>
+                <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn/</div>
                 <div class="title">已收录2万余条真实问题</div>
               </div>
             </div>             
@@ -149,6 +149,9 @@ export default {
     }
   },
   methods: {
+        cardClick () {
+    window.open("http://kangua.lnu.edu.cn", '_blank').location;
+  },
     goBack () {
       this.$router.back()
     },
@@ -201,21 +204,23 @@ export default {
 
 <style lang="less" scoped>
 .mine_back {
-  margin-top: 15px;
-  font-weight: 700px;
-  height: 100%;
-  width: 101%;
-  overflow: auto;
+  margin-top: 10px;
+  // font-weight: 700px;
+  width: 102%;
+  height: 102%;
+  overflow: scroll;
   // background: #f9f9f9;
 }
 .person{
-  border-radius:  15px 15px 0px 0px;
+  border-radius:  10px 10px 0px 0px;
   display: flex;
-  height: 110px;
-  width: 1165px;
+  height: 90px;
+  width: 940px;
+  position: relative;
   // margin-top: 5px;
-  margin-left: 150px;
-  margin-right: 150px;
+  // margin-left: 70px;
+  left: 10%;
+  // margin-right: 150px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
@@ -225,22 +230,22 @@ export default {
     // margin-top: 25px;
     color: white;
     display: auto;
-    margin-top: 50px;
-    margin-left: 300px;
+    margin-top: 30px;
+    margin-left: 100px;
     margin-right: 300px;
     background-color: #42B285;
   }
 .pic{
   margin-left: 10px;
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
 }
 .user{
   // display: flex;
   height: 100px;
   // width: 700px;
   margin-left: 40px;
-  margin-top: 20px;
+  margin-top: -10px;
 }
 .ph{
   display: flex;
@@ -251,9 +256,9 @@ export default {
   }
 .header {
   margin-left: 10px;
-  margin-top: 15px;
-  width: 80px;
-  height: 80px;
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
 }
 .header1 {
   // margin-left: 5px;
@@ -266,7 +271,7 @@ export default {
   // display: flex;
   // margin-left: 300%;
   // margin-right: 300%;
-  margin-top: 35px;
+  margin-top: 15px;
   width: 120px;
   height: 35px;
   // margin-right: 10px;
@@ -275,15 +280,17 @@ export default {
 .grid {
   // margin-bottom: 20px;
   display: flex;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-left: -130px;
 }
 .menu{
   margin-top: 15px;
-  margin-left: 150px;
+  margin-left: 10%;
+  position: relative;
   height: 100%;
   // width: 80%;
-  width: 190px;
+  // width: 90px;
+  width: 84%;
   background-color: white;
   // overflow: auto;
   // height: 500px;
@@ -296,7 +303,8 @@ export default {
   }
 .manage {
   margin-top: 12%;
-  width: 300px;
+  // width: 300px;
+  width: 20%;
 }
 .num_1 {
   margin-left: 5px;
@@ -318,8 +326,8 @@ export default {
         // border: none;
         // color: #FFFFFF;
         // text-align: center;
-        font-size: 18px;
-        width: 190px;
+        font-size: 10px;
+        width: 100%;
         padding: 2px;
         // width: 125px;
         // height: 25px;
@@ -352,20 +360,20 @@ export default {
         // margin-right: 30px;
         // padding-right: 5px;
         color: #66c6a1;
-        font-size: 21px;
+        font-size: 14px;
       }
 
       .button:hover span:after {
-        font-size: 18px;
+        font-size: 10px;
         opacity: 1;
         right: 0;
       }
 .back-right{
-  margin-left: 200px;
-  width: 973px;
-  height: calc(100% - 0px);
+  // margin-left: 15%;
+  width: 781px;
+  height: calc(100% - -22px);
   display: flex;
-  transform: translate(-7px,-391px);
+  transform: translate(-0px,-0px);
   transform-origin: left top;
   flex-direction: column;
   background: white;
@@ -374,7 +382,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 .right{
-    margin-left: 715px;
+    margin-left: 540px;
     position: fixed;
     z-index: 999;
     .mobile{
