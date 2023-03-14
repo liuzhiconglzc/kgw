@@ -6,7 +6,7 @@
         <van-field v-model="username" name="username" label-width="7.5em" type="tel" label="手机号" placeholder="请输入手机号"
           :rules="telRules" />
         <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名" placeholder="请输入真实姓名"
-          :rules="[{ required: true, message: '请输入真实姓名' }]" />
+          :rules="[{ required: true}]" style="margin-top: 5%;"/>
         <div style="margin: 16px;">
           <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
             native-type="submit">提交
@@ -62,19 +62,36 @@
   
   <style lang="less" scoped>
   .back {
+    margin-left: -300px;
+    position: fixed;
+    left: 55%;
+    width: 40%;
+    height: calc(100% - 45%);
+    // overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    // background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
     .form_back {
-      margin-top: 10px;
+      margin-top: 20px;
+      margin-left: 20%;
+      width: 60%;
+      height: 250px;
     }
     .title {
-      margin-top: 10px;
-      margin-left: 3%;
+
+      margin-top: 20px;
+      margin-left: 25%;
       color: var(--themeColor);
       font-size: 13px;
       text-align: left;
     }
     .register_btn{
       border-radius: 5px;
-      margin-top: 10px;
+      margin-top: 30px;
+      // margin-block: 10px;
     }
   }
   :deep(.van-nav-bar__title) {
