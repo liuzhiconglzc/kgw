@@ -206,8 +206,8 @@ export default {
 .mine_back {
   margin-top: 10px;
   // font-weight: 700px;
-  width: 100%;
-  height: 100%;
+  width: 101.5%;
+  height: 101%;
   overflow: scroll;
   // background: #f9f9f9;
 }
@@ -232,7 +232,7 @@ export default {
     color: white;
     display: auto;
     margin-top: 30px;
-    margin-left: 100px;
+    margin-left: 200px;
     margin-right: 300px;
     background-color: #42B285;
   }
