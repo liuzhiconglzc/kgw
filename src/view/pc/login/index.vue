@@ -101,7 +101,7 @@ export default {
     // display: flex;
   }
   .login_btn {
-    margin-top: 10%;
+    margin-top: 6.5%;
     border-radius: 5px;
   }
   .register_btn{
@@ -110,6 +110,7 @@ export default {
   }
   .nextStage{
     display: flex;
+    margin-top: -1%;
     .title {
       // display: flex;
       color: var(--themeColor);
