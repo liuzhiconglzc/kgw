@@ -202,6 +202,15 @@ const routesP = [
             },
           },
           {
+            path: '/detaila/:proId',
+            name: 'Detaila',
+            component: () => import('../view/pc/detaila/index.vue'),
+            meta: {
+              title: '问题详情',
+              keepAlive: true,
+            },
+          },
+          {
             path: '/personal',
             name: 'Personal',
             component: () => import('../view/pc/personal'),
@@ -249,6 +258,14 @@ const routesP = [
         component: () => import('../view/pc/add'),
         meta: {
           keepAlive: true,
+        },
+      },
+      {
+        path: '/publish',
+        name: 'Publish',
+        component: () => import('../view/pc/publish'),
+        meta: {
+          title: '发布问题',
         },
       },
     ],

@@ -269,7 +269,7 @@ export default {
   background: white;
   // overflow:hidden;
   // margin-top: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .deback{
     flex-direction: column;
     height: 800px;

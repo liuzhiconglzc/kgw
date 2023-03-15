@@ -20,7 +20,7 @@
           <div class="files" v-if="this.imageList && this.imageList.length > 0">
             <div class="demo-image__preview">
               <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="fill"
-                style="width: 210px; height: 100px"
+                style="width: 210px; height: 150px"
                 :src="image">
               </el-image>
             </div>
@@ -105,22 +105,24 @@ export default {
   position: fixed;
   left: 50%;
   width: 700px;
-  height: calc(100% - -0px);
+  height: 100%;
   // overflow-y: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background: white;
-  margin-top: 15px;
+  margin-top: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   // background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
   .d_back{
-    overflow-x:hidden;
+    // overflow-x:hidden;
+    width: 105%;
     height: calc(100% - 100px);
   }
   .title1{
         display: flex;
         align-items: center;
-        margin-top: 15px;
+        margin-top: 10px;
         // position: sticky; 
         // top: 0;
         // background-color: white;
@@ -132,62 +134,16 @@ export default {
         // color:#42B285;
         color: white;
         margin-left: 20px;
-        // overflow: hidden;
-        // display: flex;
-        // align-items: center;
-        // flex: 1;
-        // position: relative;
       }
       .back{
         background-color:#42B285;
         margin-left: 570px;
         // color: white;
       }   
-      .button {
-        display: inline-block;
-        border-radius: 4px;
-        background-color: #42B285;
-        border: none;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 14px;
-        padding: 2px;
-        width: 70px;
-        height: 25px;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin-left: 580px;
-        
-      }
-
-      .button span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-      }
-
-      .button span:after {
-        content: '»';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-      }
-
-      .button:hover span {
-        padding-right: 25px;
-      }
-
-      .button:hover span:after {
-        opacity: 1;
-        right: 0;
-      }
       }
   .detail {
     height: calc(100% - 44px);
-    overflow: scroll;
+    overflow-y: scroll;
     position: relative;
     width: 725px;
     .content {
@@ -231,7 +187,7 @@ export default {
       .desc {
         margin: 10px 0;
         color: #7f7f7f;
-        font-size: 14px;
+        font-size: 16px;
         white-space: pre-wrap;
         word-spacing: 23px;
         text-align: justify;
@@ -242,7 +198,8 @@ export default {
       .files {
           &_img {
             width: 32%;
-            height: 180px;
+            // margin-left: 2%;
+            height: 120px;
             margin-right: 2%;
             border-radius: 5px;
             overflow: hidden;
@@ -256,7 +213,7 @@ export default {
 }
 .right{
     // margin-top: 15px;
-    margin-left: 715px;
+    margin-left: 710px;
     position: fixed;
     z-index: 999;
     .mobile{
@@ -274,7 +231,7 @@ export default {
       width: 225px;
       height: 100px;
       background: white;
-      margin-top: 15px;
+      margin-top: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
       &_top{
         display: flex;

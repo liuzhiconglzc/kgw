@@ -364,7 +364,7 @@ export default {
   display: flex;
   flex-direction: column;
   background: white;
-  margin-top: 15px;
+  margin-top: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .title1{
         display: flex;
@@ -680,7 +680,7 @@ export default {
 }
 .right{
     // margin-top: 15px;
-    margin-left: 715px;
+    margin-left: 710px;
     position: fixed;
     z-index: 999;
     .mobile{
@@ -698,7 +698,7 @@ export default {
       width: 225px;
       height: 100px;
       background: white;
-      margin-top: 15px;
+      margin-top: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
       &_top{
         display: flex;

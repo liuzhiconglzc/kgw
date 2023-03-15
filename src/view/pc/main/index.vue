@@ -1,13 +1,13 @@
 <template>
   <div class="main_back">
     <div class="top">
-      <div class="top_back" style="">
-        <el-image style="width: 104px; height: 33px; margin-top: 30px; margin-left: 20%;" :src="require('@/assets/pc/view_logo.png')" />
-        <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style="position:absolute; width: 300px; height: 23px; margin-top: 33px; margin-left: 68px;z-index: 1;border: none;">
+      <div class="top_back">
+        <el-image style="width: 104px; height: 33px; margin-top: 20px; margin-left: 18%;" :src="require('@/assets/pc/view_logo.png')" />
+        <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style="position:absolute; width: 320px; height: 23px; margin-top: 23px; margin-left: 83px;z-index: 1;border: none;">
         </el-input>
-        <el-image style="position:absolute; width: 450px; height: 33px; margin-top: 30px; margin-left: 30px;" :src="require('@/assets/pc/view_search.png')"  @click="search"/>
-        <el-image style="position:absolute; width: 108px; height: 32px; margin-top: 30px; margin-left: 550px;" :src="require('@/assets/pc/view_add.png')"  @click="jumpToAdd"/>
-        <el-image style="position:absolute; width: 93px; height: 33px; margin-top: 30px; margin-left: 750px;" :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
+        <el-image style="position:absolute; width: 450px; height: 33px; margin-top: 20px; margin-left: 45px;" :src="require('@/assets/pc/view_search.png')"  @click="search"/>
+        <el-image style="position:absolute; width: 108px; height: 32px; margin-top: 20px; margin-left: 550px;" :src="require('@/assets/pc/view_add.png')"  @click="jumpToAdd"/>
+        <el-image style="position:absolute; width: 93px; height: 33px; margin-top: 20px; margin-left: 750px;" :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
       </div>
       <div class="tab_back">
         <template>
@@ -106,6 +106,7 @@ export default {
       } else {
         this.$router.push({ name: 'Login', params: { replace: 'Question' } })
       }
+      this.activeName = 8
     },
     itemClick () {
       if (this.needRefresh) {
@@ -115,7 +116,7 @@ export default {
     },
     jumpToAdd () {
       if (getToken()) {
-        this.$router.push({ name: 'Add', query: { state: 0 } })
+        this.$router.push({ name: 'Publish' })
       } else {
         this.$dialog.alert({
           showCancelButton: true,
@@ -124,10 +125,11 @@ export default {
           message: '您暂未登录，请问是否登录？'
         })
           .then(() => {
-            this.$router.push({ name: 'Login', params: { replace: 'Add' } })
+            this.$router.push({ name: 'Login', params: { replace: 'Publish' } })
           })
           .catch(() => { })
       }
+      this.activeName = 8
     }
   }
 }
@@ -153,7 +155,7 @@ export default {
       // display: flex;
       overflow: hidden;
       width: 100%;
-      height: 100px;
+      height: 80px;
       background: white;
     }
     .tab_back{
@@ -170,12 +172,9 @@ export default {
   }
   .tab {
     flex: 1;
-    margin-top: 140px;
+    margin-top: 120px;
     // margin-left: 200px;
     background: #f2f2f2;
-    // height: calc(100% - 0px);
-    // display: flex;
-    // flex-direction: column;
     .right{
       margin-top: 15px;
       margin-left: 765px;

@@ -66,7 +66,7 @@
   flex-direction: column;
   background: white;
   overflow:hidden;
-  margin-top: 15px;
+  margin-top: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .detail_back {
     overflow-x:hidden;
@@ -179,7 +179,7 @@
 .element::-webkit-scrollbar { width: 10px !important }
 .right{
     // margin-top: 15px;
-    margin-left: 715px;
+    margin-left: 710px;
     position: fixed;
     z-index: 999;
     .mobile{
@@ -197,7 +197,7 @@
       width: 225px;
       height: 100px;
       background: white;
-      margin-top: 15px;
+      margin-top: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
       &_top{
         display: flex;

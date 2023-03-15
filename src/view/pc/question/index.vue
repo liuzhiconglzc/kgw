@@ -76,7 +76,7 @@
       <van-image height="70" width="35" :src="require('@/assets/pc/view_top.png')" />
     </div>
     <el-backtop target=".question_back" :visibility-height="0" :right="130" :bottom="60"/>
-    <van-popup v-model="showPicker" round position="bottom">
+    <van-popup v-model="showPicker" round position="bottom" style="width: 400px;margin-left: -250px;position: fixed;left: 50%;">
       <div class="pop">
         <div class="pop_cancel" @click="cancelClick">取消</div>
         <div class="pop_title">选择专业</div>
@@ -149,7 +149,6 @@ created () {
   })
   this.$EventBus.$on('searchValue', (data) => {
     this.keyword = data
-    console.log(this.keyword)
     this.searchClick()
   })
 },
@@ -324,14 +323,17 @@ methods: {
 margin-left: -400px;
 position: fixed;
 left: 50%;
+// top: 2%;
+// bottom: 2%;
 width: 700px;
 height: calc(100% - 0px);
 display: flex;
 flex-direction: column;
 background: white;
-margin-top: 15px;
+margin-top: 10px;
+padding-bottom: 2%;
 .search_back {
-  height: 42px;
+  height: 38px;
   display: flex;
   align-items: center;
   padding: 0 20px 10px;
@@ -537,7 +539,7 @@ margin-top: 15px;
 }
 .right{
     // margin-top: 15px;
-    margin-left: 715px;
+    margin-left: 710px;
     position: fixed;
     z-index: 999;
     .mobile{
@@ -555,7 +557,7 @@ margin-top: 15px;
       width: 225px;
       height: 100px;
       background: white;
-      margin-top: 15px;
+      margin-top: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
       &_top{
         display: flex;
@@ -600,6 +602,9 @@ margin-top: 15px;
 }
 .van-tree-select__item--active {
   color: var(--themeColor);
+}
+.van-tree-select__nav{
+  flex: 1.5;
 }
 *::-webkit-scrollbar {
   display: none;

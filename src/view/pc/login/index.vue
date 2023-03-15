@@ -14,8 +14,10 @@
           @click="register()">还没账号，前往注册
         </van-button> -->
       </div>
-      <div class="title" @click="register">新用户注册</div>
-      <div class="title1" @click="forgotPassword">忘记密码</div>
+      <div class="nextStage">
+        <div class="title" @click="register">新用户注册</div>
+        <div class="title1" @click="forgotPassword">忘记密码</div>
+      </div>
     </van-form>
   </div>
 </template>
@@ -73,10 +75,10 @@ export default {
 
 <style lang="less" scoped>
 .back {
-  margin-left: -300px;
+  margin-left: -350px;
   position: fixed;
-  left: 55%;
-  width: 40%;
+  left: 50%;
+  width: 700px;
   height: calc(100% - 45%);
   // overflow-y: hidden;
   display: flex;
@@ -106,21 +108,24 @@ export default {
     border-radius: 5px;
     margin-top: 10px;
   }
-  .title {
+  .nextStage{
     display: flex;
-    color: var(--themeColor);
-    margin-top: 1%;
-    text-align: right;
-    margin-left: 60%;
-    // padding: 2px 25px;
-  }
-  .title1 {
-    display: flex;
-    color: var(--themeColor);
-    margin-top: -7%;
-    text-align: right;
-    margin-left: 10%;
-    // padding: 2px 25px;
+    .title {
+      // display: flex;
+      color: var(--themeColor);
+      // margin-top: 1%;
+      // text-align: right;
+      margin-left: 10%;
+      // padding: 2px 25px;
+    }
+    .title1 {
+      // display: flex;
+      color: var(--themeColor);
+      // margin-top: -7%;
+      // text-align: right;
+      margin-left: 40%;
+      // padding: 2px 25px;
+    }
   }
 }
 :deep(.van-nav-bar__title) {

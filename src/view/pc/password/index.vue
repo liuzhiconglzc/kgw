@@ -62,10 +62,10 @@
   
   <style lang="less" scoped>
   .back {
-    margin-left: -300px;
+    margin-left: -350px;
     position: fixed;
-    left: 55%;
-    width: 40%;
+    left: 50%;
+    width: 700px;
     height: calc(100% - 45%);
     // overflow-y: hidden;
     display: flex;
@@ -81,9 +81,8 @@
       height: 250px;
     }
     .title {
-
       margin-top: 20px;
-      margin-left: 25%;
+      margin-left: 150px;
       color: var(--themeColor);
       font-size: 13px;
       text-align: left;

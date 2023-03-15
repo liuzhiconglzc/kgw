@@ -20,7 +20,7 @@
           <div class="files" v-if="this.imageList && this.imageList.length > 0">
             <div class="demo-image__preview">
               <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="fill"
-                style="width: 210px; height: 100px"
+                style="width: 210px; height: 150px"
                 :src="image">
               </el-image>
             </div>
@@ -112,14 +112,15 @@ export default {
   width: 700px;
   height: calc(100% - 0px);
   // overflow-y: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background: white;
-  margin-top: 15px;
+  margin-top: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   // background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
   .d_back{
-    overflow-x:hidden;
+    // overflow-x:hidden;
     // width: 105%;
     height: calc(100% - 100px);
   }
@@ -147,7 +148,7 @@ export default {
       }
   .detail {
     height: calc(100% - 44px);
-    overflow: scroll;
+    overflow-y: scroll;
     position: relative;
     width: 725px;
     .content {
@@ -191,7 +192,7 @@ export default {
       .desc {
         margin: 10px 0;
         color: #7f7f7f;
-        font-size: 14px;
+        font-size: 16px;
         white-space: pre-wrap;
         word-spacing: 23px;
         text-align: justify;
@@ -217,7 +218,7 @@ export default {
 }
 .right{
     // margin-top: 15px;
-    margin-left: 715px;
+    margin-left: 710px;
     position: fixed;
     z-index: 999;
     .mobile{
@@ -235,7 +236,7 @@ export default {
       width: 225px;
       height: 100px;
       background: white;
-      margin-top: 15px;
+      margin-top: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
       &_top{
         display: flex;

@@ -14,9 +14,9 @@
             <div class="question_item_top" v-if="question.proTop > 0">【置顶】</div>
             <div class="question_item_title" :class="{'question_item_title_top': question.proTop > 0}">{{question.proTitle}}</div>
             <div class="question_item_total_2">
-              <div class="question_item_files" v-if="state==4">
-                <van-image class="question_item_files_img"
-                  :key="imageIndex" fit="cover" :src="question.imageList[0]">
+              <div class="question_item_files" v-if="question.imageList && question.imageList.length > 0 && state==4">
+                <van-image class="question_item_files_img" v-for="(image, imageIndex) in question.imageList.slice(0,1)"
+                  :key="imageIndex" fit="cover" :src="image">
                 </van-image>
               </div>
               <div class="question_item_desc" v-if="state==4">{{question.proRealityScene}}</div>              
@@ -276,7 +276,7 @@ export default {
   // overflow:hidden;
   width: 103%;
   // margin-top: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .question {
     flex: 1;
     // overflow: scroll;
@@ -310,7 +310,7 @@ export default {
         text-indent: 64px;
       }
       &_desc {
-        margin: 5px 15px 10px;
+        margin: 5px 15px 10px 3px;
         font-size: 9px;
         color: #7f7f7f;
         overflow: hidden;

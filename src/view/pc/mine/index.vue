@@ -52,7 +52,7 @@
           </div>
         </template>
       </div>
-      <div style="height: calc(100% - 0px);display: inline;">
+      <div style="height: 100%;display: inline;">
         <el-row class="menu">
           <el-col :span="4">
             <el-menu active-text-color=#42B285 router>
@@ -82,15 +82,15 @@
                 <van-icon name="arrow" ></van-icon>
               </el-menu-item>
               <el-menu-item index="6" @click="Click6" class="button">
-                <el-image :src="require('@/assets/more.png')" class="header1"></el-image>
+                <el-image :src="require('@/assets/more.png')" class="header3"></el-image>
                 <span class="te">个人设置</span>
                 <van-icon name="arrow" ></van-icon>
               </el-menu-item>
-              <el-menu-item index="7" @click="Click7" class="button">
+              <!-- <el-menu-item index="7" @click="Click7" class="button">
                 <el-image :src="require('@/assets/mine_6.png')" class="header1"></el-image>
                 <span class="te">联系管理员</span>
                 <van-icon name="arrow" ></van-icon>
-              </el-menu-item>
+              </el-menu-item> -->
             </el-menu>
           </el-col>
           <div class="back-right">
@@ -206,8 +206,8 @@ export default {
 .mine_back {
   margin-top: 10px;
   // font-weight: 700px;
-  width: 102%;
-  height: 102%;
+  width: 100%;
+  height: 100%;
   overflow: scroll;
   // background: #f9f9f9;
 }
@@ -219,7 +219,8 @@ export default {
   position: relative;
   // margin-top: 5px;
   // margin-left: 70px;
-  left: 10%;
+  left: 50%;
+  margin-left: -470px;
   // margin-right: 150px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
@@ -277,6 +278,12 @@ export default {
   // margin-right: 10px;
   margin-left: 100px;
 }
+.header3 {
+  margin-top: 1px;
+  margin-left: -9px;
+  width: 15px;
+  height: 15px;
+}
 .grid {
   // margin-bottom: 20px;
   display: flex;
@@ -285,13 +292,15 @@ export default {
 }
 .menu{
   margin-top: 15px;
-  margin-left: 10%;
+  left: 50%;
+  margin-left: -470px;
   position: relative;
   height: 100%;
   // width: 80%;
   // width: 90px;
-  width: 84%;
+  width: 940px;
   background-color: white;
+  overflow:hidden;
   // overflow: auto;
   // height: 500px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
@@ -300,6 +309,7 @@ export default {
   // margin-top: 5px;
   margin-left: 10px;
   text-align: center;
+  font-weight: 550;
   }
 .manage {
   margin-top: 12%;
@@ -368,21 +378,37 @@ export default {
         opacity: 1;
         right: 0;
       }
+// .back-right{
+//   // margin-left: 15%;
+//   width: 781px;
+//   height: calc(100% - -22px);
+//   display: flex;
+//   transform: translate(-0px,-0px);
+//   transform-origin: left top;
+//   flex-direction: column;
+//   background: white;
+//   overflow:hidden;
+//   // margin-top: 15px;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+// }
+
 .back-right{
   // margin-left: 15%;
   width: 781px;
-  height: calc(100% - -22px);
+  // height: calc(100% - -22px);
+  height: 100%;
   display: flex;
   transform: translate(-0px,-0px);
   transform-origin: left top;
   flex-direction: column;
   background: white;
-  overflow:hidden;
+  // overflow:hidden;
   // margin-top: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 .right{
     margin-left: 540px;
+    margin-top: 25px;
     position: fixed;
     z-index: 999;
     .mobile{
