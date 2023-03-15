@@ -318,7 +318,7 @@ export default {
         margin-top: 5px;
         transition: all 0.5s;
         cursor: pointer;
-        margin-left: 230px;
+        margin-left: 250px;
         
       }
 
