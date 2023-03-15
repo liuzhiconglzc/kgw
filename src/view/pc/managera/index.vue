@@ -70,7 +70,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .detail_back {
     overflow-x:hidden;
-    height: calc(100% - 180px);
+    height: calc(100% - 130px);
     background: white;
     // width: 101%;
     width: 820px;
