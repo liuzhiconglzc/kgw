@@ -2,9 +2,8 @@
   <!-- <div class="list_back" :class="{'review_back': state == 3}"> -->
   <div class="list_back">
     <div class="question">
-      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 700px;">
-          <el-menu-item index="1" style="height: 50px;width: 100px;margin-top: -10px;font-weight:bold;font-size:16px;">全部</el-menu-item>
-          <!-- <el-menu-item v-if="state==0||state==1" index="2" style="height: 50px;width: 100px;margin-top: -10px;font-weight:bold;font-size:16px;">已删除</el-menu-item> -->
+      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 25px;">
+          <el-menu-item index="1" style="height: 40px;margin-top: -15px;font-size:13px;">全部</el-menu-item>
       </el-menu>
       <van-pull-refresh v-model="isRefreshing" @refresh="onRefresh">
         <van-list v-model="isLoading" :finished="isFinished" @load="onLoad">
