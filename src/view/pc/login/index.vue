@@ -7,10 +7,10 @@
       <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
         :rules="[{ required: true }]" style="margin-top: 10%;"/>
       <div style="margin: 16px;">
-        <van-button class="login_btn" block :loading="loading" loading-text="登录中..." color="var(--themeColor)"
+        <van-button class="login_btn" block :loading="loading" color="var(--themeColor)"
           native-type="submit">登录
         </van-button>
-        <!-- <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
+        <!-- <van-button class="register_btn" block :loading="loading" color="var(--themeColor)"
           @click="register()">还没账号，前往注册
         </van-button> -->
       </div>
