@@ -320,7 +320,7 @@ methods: {
 <style lang="less" scoped>
 .question_back {
 // width: 100vw;
-margin-left: -400px;
+margin-left: -450px;
 position: fixed;
 left: 50%;
 // top: 2%;

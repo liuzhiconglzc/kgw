@@ -2,17 +2,17 @@
   <div class="main_back">
     <div class="top">
       <div class="top_back">
-        <el-image style="width: 104px; height: 33px; margin-top: 20px; margin-left: 18%;" :src="require('@/assets/pc/view_logo.png')" />
+        <el-image style="width: 104px; height: 33px; margin-top: 20px; margin-left: 15%;" :src="require('@/assets/pc/view_logo.png')" />
         <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style="position:absolute; width: 320px; height: 23px; margin-top: 23px; margin-left: 83px;z-index: 1;border: none;">
         </el-input>
         <el-image style="position:absolute; width: 450px; height: 33px; margin-top: 20px; margin-left: 45px;" :src="require('@/assets/pc/view_search.png')"  @click="search"/>
         <el-image style="position:absolute; width: 108px; height: 32px; margin-top: 20px; margin-left: 550px;" :src="require('@/assets/pc/view_add.png')"  @click="jumpToAdd"/>
-        <el-image style="position:absolute; width: 93px; height: 33px; margin-top: 20px; margin-left: 750px;" :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
+        <el-image style="position:absolute; width: 93px; height: 33px; margin-top: 20px; margin-left: 700px;" :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
       </div>
       <div class="tab_back">
         <template>
           <el-tabs :stretch="false" v-model="activeName" @tab-click="handleClick"
-           style="position: fixed; left: 50%; color: white; height: 30px; width: 500px;caret-color: transparent; margin-left: -400px;">
+           style="position: fixed; left: 50%; color: white; height: 30px; width: 500px;caret-color: transparent; margin-left: -450px;">
             <el-tab-pane label="首页" name="first"/>
             <el-tab-pane label="浏览问题" name="second"/>
             <el-tab-pane label="砍瓜网简介" name="third"/>
@@ -21,9 +21,9 @@
           </el-tabs>
         </template>
         <div class="mine" @click="jumpToLogin">
-          <el-image style="position: fixed; left: 50%; width: 30px; height: 30px;margin-top: 5px;margin-left: 220px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>      
+          <el-image style="position: fixed; left: 50%; width: 30px; height: 30px;margin-top: 5px;margin-left: 170px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>      
         </div>
-        <div class="tip" style="position: fixed; left: 50%; margin-left: 255px;" @click="jumpToLogin">我的</div>
+        <div class="tip" style="position: fixed; left: 50%; margin-left: 205px;" @click="jumpToLogin">我的</div>
       </div>
     </div>
     <div class="tab">
