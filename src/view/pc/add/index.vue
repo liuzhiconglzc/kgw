@@ -24,21 +24,24 @@
       <van-uploader v-model="imageList" max-count="3" :max-size="1024 * 1024" @oversize="onOversize"
                     :after-read="afterRead" />
     </div>
-    <div style="margin-top: -10px" :class="{'label_reject': selectState.id == 0}">
-      <van-field v-if="state == 3" readonly is-link label="审核状态" :value="selectState.text" placeholder="请选择审核状态"
-                 @click="stateClick" />
-      <div>
-<!--      <el-select v-model="value" placeholder="请选择审核状态">-->
-<!--        <el-option-->
-<!--            v-for="item in options"-->
-<!--            :key="item.value"-->
-<!--            :label="item.label"-->
-<!--            :value="item.value">-->
-<!--        </el-option>-->
-<!--      </el-select>-->
+    <div style="margin-top: -10px" :class="{'label_reject': value == 1}">
+<!--      <van-field v-if="state == 3" readonly is-link label="审核状态" :value="selectState.text" placeholder="请选择审核状态"-->
+<!--                 @click="stateClick" />-->
+      <div style="background-color: white">
+        <van-field style="margin-top: 10px" readonly  label="审核状态"  rows="1" autosize type="textarea"/>
+        <div style="">
+          <el-select style="width: 100%;position: relative" v-model="value" placeholder="请选择审核状态" v-if="state == 3">
+            <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+            </el-option>
+          </el-select>
+        </div>
       </div>
     </div>
-    <div v-if="(state == 3 && selectState.id == 0) || state == 2 || value == '选项2'">
+    <div v-if="(state == 3 && value == 1) || state == 2">
       <div class="title title_reject">拒绝理由</div>
       <div class="content">
         <van-field v-model="reason" :readonly="state == 2" rows="4" autosize maxlength="300" type="textarea"
@@ -48,18 +51,28 @@
     <div class="publish">
       <div class="publish_btn" @click="publishClick">提交</div>
     </div>
-    <van-popup v-model="showProfessionPicker" round position="bottom">
-      <div class="pop">
-        <div class="pop_cancel" @click="cancelClick">取消</div>
-        <div class="pop_title">选择专业</div>
-        <div class="pop_done" @click="doneClick">确认</div>
-      </div>
-      <van-tree-select :items="classifyItems" :main-active-index.sync="activeIndex" :active-id.sync="tempIds"
+    <el-dropdown-menu style="margin-left: 10%;transform: translateY(-168%);width: 88%;height: 330px;position: relative" v-model="showProfessionPicker" round position="bottom">
+      <van-tree-select style="margin-top: -12px" :items="classifyItems" :main-active-index.sync="activeIndex" :active-id.sync="tempIds"
                        @click-item="professionClick" />
-    </van-popup>
-    <van-popup  v-model="showStatePicker" round position="bottom">
-      <van-picker show-toolbar title="审核状态" :columns="stateList" @cancel="stateCancel" @confirm="stateDone" />
-    </van-popup>
+
+      <div style="margin-top: 20px;display: inline-block">
+        <div style="margin-left: 480px;transform: translateY(-7px)" @click="cancelClick">取消</div>
+        <!--              <div style="display: inline-block;">选择专业</div>-->
+        <div style="display: inline-block;margin-left: 300px;transform: translateY(-28px)" @click="doneClick">确认</div>
+      </div>
+    </el-dropdown-menu>
+<!--    <van-popup v-model="showProfessionPicker" round position="bottom">-->
+<!--      <div class="pop">-->
+<!--        <div class="pop_cancel" @click="cancelClick">取消</div>-->
+<!--        <div class="pop_title">选择专业</div>-->
+<!--        <div class="pop_done" @click="doneClick">确认</div>-->
+<!--      </div>-->
+<!--      <van-tree-select :items="classifyItems" :main-active-index.sync="activeIndex" :active-id.sync="tempIds"-->
+<!--                       @click-item="professionClick" />-->
+<!--    </van-popup>-->
+<!--    <el-dropdown-menu style="margin-left: 10%;width: 89%;transform: translateY(-185%);position: relative" v-model="showStatePicker" round>-->
+<!--      <van-picker style="" show-toolbar  :columns="stateList" @cancel="stateCancel" @confirm="stateDone" />-->
+<!--    </el-dropdown-menu>-->
   </div>
 </template>
 
@@ -72,10 +85,10 @@ export default {
   data () {
     return {
       options: [{
-        value: '选项1',
+        value: '0',
         label: '通过审核'
       }, {
-        value: '选项2',
+        value: '1',
         label: '拒绝发布'
       }, ],
       value: '',
@@ -206,17 +219,18 @@ export default {
     },
     publishClick () {
       let msg
-      if (!this.title) {
-        msg = '请输入标题'
-      } else if (!this.professionNames) {
-        msg = '请选择专业分类'
-      } else if (!this.realityScene) {
-        msg = '请输入场景'
-      } else if (!this.specific) {
-        msg = '请输入真实问题'
-      } else if (this.state == 3 && !this.selectState.text) {
+      // if (!this.title) {
+      //   msg = '请输入标题'
+      // } else if (!this.professionNames) {
+      //   msg = '请选择专业分类'
+      // } else if (!this.realityScene) {
+      //   msg = '请输入场景'
+      // } else if (!this.specific) {
+      //   msg = '请输入真实问题'
+      // } else
+        if (this.state == 3 && !this.options) {
         msg = '请选择审核状态'
-      } else if (this.selectState.id == 0 && !this.reason) {
+      } else if (this.value == 1 && !this.reason) {
         msg = '请输入拒绝理由'
       } else {
         forbiddenArray.some(item => {
@@ -228,7 +242,7 @@ export default {
             msg = '描述中不能含有敏感词'
             return true
           }
-          if (this.selectState.id == 0 && this.reason.includes(item)) {
+          if (this.value == 1 && this.reason.includes(item)) {
             msg = '拒绝理由中不能含有敏感词'
             return true
           }
@@ -271,8 +285,8 @@ export default {
       if (this.state != 0) {
         params.proId = this.proId
         if (this.state == 3) {
-          params.pass = this.selectState.id
-          if (this.selectState.id == 0) {
+          params.pass = this.value
+          if (this.value == 1) {
             params.reason = this.reason
           }
         }
