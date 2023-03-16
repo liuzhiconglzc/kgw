@@ -1,8 +1,8 @@
 <template>
   <div class="back">
     <div class="deback">
-      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 25px;">
-          <el-menu-item index="1" style="height: 40px;margin-top: -15px;font-size:13px;">个人设置</el-menu-item>
+      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 26px;">
+          <el-menu-item index="1" style="height: 42px;margin-top: -15px;font-size:14px;">个人设置</el-menu-item>
       </el-menu>
       <div v-if="state==false" style="width: 400px;">
         <el-form ref='ruleForm' class="form_back" label-width="auto" label-suffix="" :model="ruleForm" :rules="rules" >
@@ -327,6 +327,7 @@ export default {
 }
 .edit{
   margin-left: 30px;
+  font-size: 14px;
   background-color: #42B285;
   color: white;
 }
