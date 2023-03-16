@@ -411,11 +411,12 @@ export default {
       .button {
         display: inline-block;
         border-radius: 4px;
-        background-color: #42B285;
+        background-color: #FFFFFF;
         border: none;
-        color: #FFFFFF;
+        border:1px solid #42B285;
+        color:  #42B285;
         text-align: center;
-        font-size: 16px;
+        font-size: 13px;
         padding: 2px;
         width: 70px;
         height: 25px;
@@ -436,7 +437,7 @@ export default {
         content: '»';
         position: absolute;
         opacity: 0;
-        top: 0;
+        top: 1px;
         right: -20px;
         transition: 0.5s;
       }
