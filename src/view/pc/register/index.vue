@@ -1,67 +1,29 @@
 <template>
-  <!-- <div style="width:40%;height:30%;background: #f9f9f9;position: relative"> -->
     <div class="back">
-
-      <!-- <van-nav-bar title="注册" :border="false" left-arrow fixed @click-left="goBack">
-      </van-nav-bar> -->
-      <!-- <div class="title">*必填</div> -->
       <div class="de_back">
         <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal">
           <el-menu-item index="1" style="height: 50px;margin-top: -10px;font-weight:bold;font-size:16px;">注册账号</el-menu-item>
           <button class="button" style="vertical-align:middle" @click="goBack"><span>返回</span></button>
         </el-menu>
-        <!-- <van-form @submit="onSubmit" class="form_back">
-          <van-field v-model="username" name="username" label-width="100px" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
-            :rules="telRules" />
-          <van-field v-model="password" name="password" label-width="7.5em" type="password" label="密码*" placeholder="至少8位，由数字和字母组成" autocomplete="off"
-            :rules="pwRules" />
-          <van-field v-model="password_again" name="password_again" label-width="7.5em" type="password" label="确认密码*" placeholder="请再次输入密码" autocomplete="off"
-            :rules="[{ required: true }]" />
-          <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名*" placeholder="请输入真实姓名"
-            :rules="[{ required: true }]" />
-          <van-field v-model="identity" is-link readonly name="identity" label-width="7.5em" label="身份*" placeholder="点击选择身份"
-            @click="showPicker = true" :rules="[{ required: true }]" />
-          <van-field v-model="title" name="title" label-width="7.5em" label="职称" placeholder="请输入职称" />
-          <van-field v-model="school" name="school" label-width="7.5em" label="学校(单位)*" placeholder="请输入学校或单位"
-            :rules="[{ required: true }]" />
-          <van-field v-model="college" name="college" label-width="7.5em" label="学院(部门)*" placeholder="请输入学院或部门"
-            :rules="[{ required: true }]" />
-          <van-field v-model="major" name="major" label-width="7.5em" label="专业" placeholder="请输入专业" />
-          <van-field v-model="email" name="email" label-width="7.5em" label="邮箱" placeholder="请输入邮箱" />
-          <van-popup v-model="showPicker"  position="center" style="width: 250px;height: 100px;">
-            <van-picker show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel"/>
-          </van-popup>
-          <van-field v-model="sms" name="sms" label-width="7.5em" label="验证码*" placeholder="请输入验证码"
-            :rules="[{ required: true }]" />
-          <div class="img">
-            <van-image :src="this.img" @click="imageClick"></van-image>
-          </div> 
-          <div style="margin: 16px;">
-            <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
-              native-type="submit">注册
-            </van-button>
-          </div>
-        </van-form> -->
         <el-form ref='ruleForm' class="form_back" label-width="auto" label-suffix="" :model="ruleForm" :rules="rules" >
           <el-form-item label="登录名(手机号)" style="margin: 15px 15px 15px 15px;" prop="username">
-            <el-input v-model.number="ruleForm.username" :rows="5" name="username" label-width="300px" type="tel" placeholder="请输入手机号" >
+            <el-input v-model.number="ruleForm.username" :rows="5" name="username" label-width="100px" type="tel" placeholder="请输入手机号" style="width: 200px;">
             </el-input>
           </el-form-item>
           <el-form-item label="真实姓名" style="margin: 15px;" prop="nickname">
-            <el-input v-model="ruleForm.nickname" name="nickname" label-width="300px" placeholder="请输入真实姓名">
+            <el-input v-model="ruleForm.nickname" name="nickname" label-width="300px" placeholder="请输入真实姓名" style="width: 200px;">
             </el-input>
           </el-form-item>
           <el-form-item label="设置密码" style="margin: 15px;" prop="password">
-            <el-input v-model="ruleForm.password" name="password" show-password label-width="300px" type="password" placeholder="至少8位，由数字和字母组成" autocomplete="off" 
-            >
+            <el-input v-model="ruleForm.password" name="password" show-password label-width="300px" type="password" placeholder="至少8位，由数字和字母组成" autocomplete="off" style="width: 200px;">
             </el-input>
           </el-form-item>
           <el-form-item label="确认密码" style="margin: 15px;" prop="password_again">
-            <el-input title="确认密码" v-model="ruleForm.password_again" show-password name="password_again" label-width="7.5em" type="password" placeholder="请确认密码" autocomplete="off"
+            <el-input title="确认密码" v-model="ruleForm.password_again" show-password name="password_again" label-width="7.5em" type="password" placeholder="请确认密码" autocomplete="off" style="width: 200px;"
             ></el-input>
           </el-form-item>
           <el-form-item label="身份" style="margin: 15px;" prop="identity">
-            <el-select v-model="ruleForm.identity" placeholder="请选择身份" >
+            <el-select v-model="ruleForm.identity" placeholder="请选择身份" style="width: 200px;">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -70,39 +32,35 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="职称" style="margin: 15px;" prop="title">
-            <el-input v-model="ruleForm.title" name="title" label-width="7.5em" placeholder="请输入职称" ></el-input>
+          <el-form-item label="职称" style="margin: 15px;width: auto;;margin-left: 350px;margin-top: -275px;display: flex;" prop="title">
+            <el-input v-model="ruleForm.title" name="title" label-width="7.5em" placeholder="请输入职称" style="width: 200px;margin-left: -110px;"></el-input>
           </el-form-item>
-          <el-form-item label="学校(单位)" style="margin: 15px;" prop="school">
-            <el-input v-model="ruleForm.school" name="school" label-width="7.5em" placeholder="请输入学校或单位"
+          <el-form-item label="学校(单位)" style="margin: 15px;margin-left: 350px;display: flex;" prop="school">
+            <el-input v-model="ruleForm.school" name="school" label-width="7.5em" placeholder="请输入学校或单位" style="width: 200px;margin-left: -110px;"
             ></el-input>          
           </el-form-item>
-          <el-form-item label="学院(部门)" style="margin: 15px;" prop="college">
-            <el-input v-model="ruleForm.college" name="college" label-width="7.5em" placeholder="请输入学院或部门"
-              ></el-input>          
+          <el-form-item label="学院(部门)" style="margin: 15px;margin-left: 350px;display: flex;" prop="college">
+              <el-input v-model="ruleForm.college" name="college" label-width="7.5em" placeholder="请输入学院或部门" style="width: 200px;margin-left: -110px;"
+              ></el-input>  
           </el-form-item>
-          <el-form-item label="专业" style="margin: 15px;">
-            <el-input v-model="ruleForm.major" name="major" label-width="7.5em" placeholder="请输入专业"></el-input>
+          <el-form-item label="专业" style="margin: 15px;margin-left: 350px;display: flex;">
+            <el-input v-model="ruleForm.major" name="major" label-width="7.5em" placeholder="请输入专业" style="width: 200px;margin-left: -110px;"></el-input>
           </el-form-item>
-          <el-form-item label="邮箱" style="margin: 15px;">
-            <el-input v-model="ruleForm.email" name="email" label-width="7.5em" placeholder="请输入邮箱"></el-input>            
+          <el-form-item label="邮箱" style="margin: 15px;margin-left: 350px;display: flex;">
+            <el-input v-model="ruleForm.email" name="email" label-width="7.5em" placeholder="请输入邮箱" style="width: 200px;margin-left: -110px;"></el-input>            
           </el-form-item>
           <el-form-item label="验证码" style="margin: 15px;">
-            <el-input v-model="ruleForm.sms" name="sms" label-width="7.5em" placeholder="请输入验证码"></el-input>            
+            <el-input v-model="ruleForm.sms" name="sms" label-width="7.5em" placeholder="请输入验证码" style="width: 150px;height: 40px;"></el-input>            
           </el-form-item>
           <div class="img">
             <van-image :src="this.img" @click="imageClick"></van-image>
           </div> 
           <div style="margin: 16px;display: flex;">
-            <!-- <van-button class="register_btn1" color="var(--themeColor)" block @click="Return">返回</van-button> -->
-            <el-button type="primary" @click="submit('ruleForm')" style="display: flex;border-radius: 5px;width: 80px;height: 40px;margin-top: 5px;margin-left: 110px;background-color: #42B285;line-height: 18px;font-size: larger;"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
+            <el-button type="primary" @click="submit('ruleForm')" style="display: flex;width: 70px;height: 25px;margin-top: -35px;margin-left: 410px;background-color: #42B285;line-height: 1px;font-size: 13px;"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
           </div>
         </el-form>
       </div>
-    
     </div>
-  <!-- </div> -->
-
 </template>
 
 <script>
@@ -149,10 +107,10 @@ export default {
         password:[{ required: false },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
         password_again:[{ required: false },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
         identity:[{ required: true, message: '您还未选择身份', trigger: 'blur' }],
-        title:[{ required: true, message: '还未输入您的职称', trigger: 'blur' }],
-        school:[{ required: true, message: '还未输入您的学校或单位', trigger: 'blur' }],
-        college:[{ required: true, message: '还未输入您的学院或部门', trigger: 'blur'  }],
-        sms:[{ required: true, message: '还未输入验证码', trigger: 'blur'  }]
+        title:[{ required: true, message: '请输入职称', trigger: 'blur' }],
+        school:[{ required: true, message: '请输入您的学校或单位', trigger: 'blur' }],
+        college:[{ required: true, message: '请输入您的学院或部门', trigger: 'blur'  }],
+        sms:[{ required: true, message: '请输入验证码', trigger: 'blur'  }]
       }
     }
   },
@@ -275,10 +233,10 @@ export default {
 
 <style lang="less" scoped>
 .back {
-  margin-left: -300px;
+  margin-left: -455px;
   position: fixed;
   left: 55%;
-  width: 40%;
+  width: 700px;
   height: calc(100% - -0px);
   background: white;
   position: relative;
@@ -307,18 +265,19 @@ export default {
   .button {
         display: inline-block;
         border-radius: 4px;
-        background-color: #42B285;
+        background-color: #FFFFFF;
         border: none;
-        color: #FFFFFF;
+        border:1px solid #42B285;
+        color:  #42B285;
         text-align: center;
-        font-size: 14px;
+        font-size: 13px;
         padding: 2px;
         width: 70px;
         height: 25px;
         margin-top: 5px;
         transition: all 0.5s;
         cursor: pointer;
-        margin-left: 250px;
+        margin-left: 500px;
         
       }
 
@@ -363,10 +322,10 @@ export default {
     margin-top: 10px;
   }
   .img{
-    width: 110px;
-    height: 30px;
-    margin-left: 8.0em;
-    margin-top: 5px;
+    width: 100px;
+    height: 26px;
+    margin-left: 300px;
+    margin-top: -50px;
   }
 }
 :deep(.van-nav-bar__title) {
