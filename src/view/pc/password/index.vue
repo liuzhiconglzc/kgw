@@ -1,11 +1,11 @@
 <template>
     <div class="back">
-      <van-nav-bar title="重置密码" :border="false" left-arrow fixed @click-left="goBack" />
+      <!-- <van-nav-bar title="重置密码" :border="false" left-arrow fixed @click-left="goBack" /> -->
       <div class="title">请输入手机号及真实姓名重置密码</div>
       <van-form @submit="onSubmit" class="form_back">
-        <van-field v-model="username" name="username" label-width="7.5em" type="tel" label="手机号" placeholder="请输入手机号"
+        <van-field v-model="username" name="username" label-width="4em" type="tel" label="手机号" placeholder="请输入正确格式的手机号码"
           :rules="telRules" />
-        <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名" placeholder="请输入真实姓名"
+        <van-field v-model="nickname" name="nickname" label-width="4em" label="真实姓名" placeholder="请输入真实姓名"
           :rules="[{ required: true}]" style="margin-top: 5%;"/>
         <div style="margin: 16px;">
           <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
@@ -28,7 +28,7 @@
         nickname: '',
         telRules: [{
           required: true,
-          message: '请输入正确格式的手机号',
+          // message: '请输入正确格式的手机号',
           trigger: 'onBlur'
         }, {
         // 自定义手机号校验规则
@@ -36,7 +36,7 @@
               return /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
               .test(value)
             },
-            message: '请输入正确格式的手机号码',
+            // message: '请输入正确格式的手机号码',
             trigger: 'onBlur'
         }],
       }
@@ -64,9 +64,9 @@
   .back {
     margin-left: -350px;
     position: fixed;
-    left: 50%;
-    width: 700px;
-    height: calc(100% - 45%);
+    left: 65%;
+    width: 300px;
+    height: calc(100% - 60%);
     // overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -75,22 +75,24 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
     // background: linear-gradient(to bottom, #66c6a1, #f2f2f2 50%);
     .form_back {
-      margin-top: 20px;
-      margin-left: 20%;
-      width: 60%;
-      height: 250px;
+      margin-top: 5%;
+      margin-left: 5%;
+      width: 90%;
+      // height: 250px;
     }
     .title {
-      margin-top: 20px;
-      margin-left: 150px;
+      margin-top: 15px;
+      margin-left: 45px;
       color: var(--themeColor);
       font-size: 13px;
       text-align: left;
     }
     .register_btn{
+      margin-top: 10%;
       border-radius: 5px;
-      margin-top: 30px;
-      // margin-block: 10px;
+      width: 80px;
+      height: 30px;
+      margin-left: 30%;
     }
   }
   :deep(.van-nav-bar__title) {
