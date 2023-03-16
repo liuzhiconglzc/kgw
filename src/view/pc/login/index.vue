@@ -77,9 +77,10 @@ export default {
 .back {
   margin-left: -350px;
   position: fixed;
-  left: 50%;
-  width: 700px;
-  height: calc(100% - 45%);
+  left: 65%;
+  width: 300px;
+  // height: 400px;
+  height: calc(100% - 60%);
   // overflow-y: hidden;
   display: flex;
   flex-direction: column;
@@ -94,15 +95,19 @@ export default {
   // background-color: white;
   // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .form_back {
-    // margin-top: 10%;
-    margin-left: 20%;
-    width: 60%;
-    height: 250px;
+    margin-top: -5%;
+    margin-left: 5%;
+    // width: 40%;
+    // width:150px;
+    // height: 200px;
     // display: flex;
   }
   .login_btn {
-    margin-top: 6.5%;
+    margin-top: 10%;
     border-radius: 5px;
+    margin-left: 40%;
+    width: 80px;
+    height: 30px;
   }
   .register_btn{
     border-radius: 5px;
@@ -110,21 +115,23 @@ export default {
   }
   .nextStage{
     display: flex;
-    margin-top: -1%;
+    margin-top: -5%;
     .title {
       // display: flex;
       color: var(--themeColor);
-      // margin-top: 1%;
+      margin-top: -15%;
       // text-align: right;
-      margin-left: 10%;
+      margin-left: 5%;
+      font-size: 13px;
       // padding: 2px 25px;
     }
     .title1 {
       // display: flex;
       color: var(--themeColor);
-      // margin-top: -7%;
+      margin-top: -7%;
       // text-align: right;
-      margin-left: 40%;
+      margin-left: -23%;
+      font-size: 13px;
       // padding: 2px 25px;
     }
   }
