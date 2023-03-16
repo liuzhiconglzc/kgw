@@ -8,7 +8,7 @@
         <van-field v-model="nickname" name="nickname" label-width="4em" label="真实姓名" placeholder="请输入真实姓名"
           :rules="[{ required: true}]" style="margin-top: 5%;"/>
         <div style="margin: 16px;">
-          <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
+          <van-button class="register_btn" block :loading="loading" color="var(--themeColor)"
             native-type="submit">提交
           </van-button>
         </div>
