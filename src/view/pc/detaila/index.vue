@@ -262,7 +262,7 @@
     display: flex;
     flex-direction: column;
     background: white;
-    // margin-top: 15px;
+    margin-top: -15px;
     // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
     .title1{
           display: flex;
@@ -307,20 +307,20 @@
           color: white;
         }   
         .button {
-          display: inline-block;
-          border-radius: 4px;
-          background-color: #42B285;
-          border: none;
-          color: #FFFFFF;
-          text-align: center;
-          font-size: 14px;
-          padding: 2px;
-          width: 70px;
-          height: 25px;
-          transition: all 0.5s;
-          cursor: pointer;
-          margin-left: 460px;
-          
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        border: none;
+        border:1px solid #42B285;
+        color:  #42B285;
+        text-align: center;
+        font-size: 13px;
+        padding: 2px;
+        width: 70px;
+        height: 25px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin-left: 330px;
         }
   
         .button span {
@@ -334,7 +334,7 @@
           content: '»';
           position: absolute;
           opacity: 0;
-          top: 0;
+          top: 1px;
           right: -20px;
           transition: 0.5s;
         }
