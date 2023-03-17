@@ -59,32 +59,32 @@
               <el-menu-item index="1" @click="Click1" class="button">
                 <el-image :src="require('@/assets/mine_1.png')" class="header1"></el-image>
                 <span class="te">已发布问题</span>
-                <van-icon name="arrow"></van-icon>
+                <van-icon name="arrow" class="vi"></van-icon>
               </el-menu-item>
               <el-menu-item index="2" @click="Click2" class="button">
                 <el-image :src="require('@/assets/mine_2.png')" class="header1"></el-image>
                 <span class="te">发布中问题</span>
-                <van-icon name="arrow" ></van-icon>
+                <van-icon name="arrow" class="vi"></van-icon>
               </el-menu-item>
               <el-menu-item index="3" @click="Click3" class="button">
                 <el-image :src="require('@/assets/mine_3.png')" class="header1"></el-image>
-                <span class="te">待审核问题</span>
-                <van-icon name="arrow" ></van-icon>
+                <span class="te" >待审核问题</span>
+                <van-icon name="arrow" class="vi"></van-icon>
               </el-menu-item>
               <el-menu-item index="4" @click="Click4" class="button">
                 <el-image :src="require('@/assets/mine_4.png')" class="header1"></el-image>
                 <span class="te">审核未通过问题</span>
-                <van-icon name="arrow" ></van-icon>
+                <van-icon name="arrow" class="vi"></van-icon>
               </el-menu-item>
               <el-menu-item index="5" @click="Click5" class="button">
                 <el-image :src="require('@/assets/mine_5.png')" class="header1"></el-image>
                 <span class="te">已收藏问题</span>
-                <van-icon name="arrow" ></van-icon>
+                <van-icon name="arrow" class="vi"></van-icon>
               </el-menu-item>
               <el-menu-item index="6" @click="Click6" class="button">
                 <el-image :src="require('@/assets/more.png')" class="header3"></el-image>
-                <span class="te">个人设置</span>
-                <van-icon name="arrow" ></van-icon>
+                <span class="te1">个人设置</span>
+                <van-icon name="arrow" class="vi"></van-icon>
               </el-menu-item>
               <!-- <el-menu-item index="7" @click="Click7" class="button">
                 <el-image :src="require('@/assets/mine_6.png')" class="header1"></el-image>
@@ -229,12 +229,13 @@ export default {
     // width: 235px;
     // height:150px;
     // margin-top: 25px;
-    color: white;
+    color:  #42B285;
     display: auto;
     margin-top: 30px;
     margin-left: 200px;
     margin-right: 300px;
-    background-color: #42B285;
+    background-color: white;
+    border:1px solid #42B285;
   }
 .pic{
   margin-left: 10px;
@@ -263,10 +264,10 @@ export default {
 }
 .header1 {
   // margin-left: 5px;
-  margin-top: 1px;
+  margin-top: -8px;
   margin-left: -11px;
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 18px;
 }
 .header2 {
   // display: flex;
@@ -279,7 +280,7 @@ export default {
   margin-left: 100px;
 }
 .header3 {
-  margin-top: 1px;
+  margin-top: -8px;
   margin-left: -9px;
   width: 15px;
   height: 15px;
@@ -291,7 +292,7 @@ export default {
   margin-left: -130px;
 }
 .menu{
-  margin-top: 15px;
+  margin-top: 5px;
   left: 50%;
   margin-left: -470px;
   position: relative;
@@ -304,26 +305,39 @@ export default {
   // overflow: auto;
   // height: 500px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-}
-.te{
-  // margin-top: 5px;
-  margin-left: 10px;
-  text-align: center;
-  font-weight: 550;
+  .te{
+  margin-top: -5px;
+  margin-left: 5px;
+  font-size: 14px;
+  // font-size: medium;
+  // font-weight: 550;
   }
+  .te1{
+  margin-top: -8px;
+  margin-left: 5px;
+  font-size: 14px;
+  // font-size: medium;
+  // font-weight: 550;
+  }
+  .vi{
+    margin-top: -5px;
+  }
+}
+
 .manage {
   margin-top: 12%;
   // width: 300px;
   width: 20%;
 }
 .num_1 {
-  margin-left: 5px;
-  font-size: 16px;
-  font-weight: 550;
+  margin-left: 3px;
+  margin-top: 3px;
+  font-size: 12px;
+  // font-weight: 550;
 }
 .num_2 {
   font-size: 14px;
-  font-weight: 550;
+  // font-weight: 550;
   width: 58px;
   color: var(--themeColor);
 }
@@ -335,15 +349,16 @@ export default {
         background-color: white;;
         // border: none;
         // color: #FFFFFF;
-        // text-align: center;
-        font-size: 10px;
-        width: 100%;
+        text-align: left;
+        font-size: 14px;
+        width: 90%;
         padding: 2px;
         // width: 125px;
         // height: 25px;
         transition: all 0.3s;
         cursor: pointer;
-        // margin-top: 10px;
+        height: 45px;
+        margin-top: 10px;
         // margin-left: -10px;
         
       }
@@ -370,11 +385,11 @@ export default {
         // margin-right: 30px;
         // padding-right: 5px;
         color: #66c6a1;
-        font-size: 14px;
+        font-size: 15px;
       }
 
       .button:hover span:after {
-        font-size: 10px;
+        font-size: 14px;
         opacity: 1;
         right: 0;
       }
@@ -408,7 +423,7 @@ export default {
 }
 .right{
     margin-left: 540px;
-    margin-top: 25px;
+    // margin-top: 25px;
     position: fixed;
     z-index: 999;
     .mobile{
