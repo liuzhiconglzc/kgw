@@ -229,13 +229,17 @@ export default {
     // width: 235px;
     // height:150px;
     // margin-top: 25px;
+    width: 93px;
+    height: 33px;
     color:  #42B285;
     display: auto;
     margin-top: 30px;
     margin-left: 200px;
     margin-right: 300px;
+    padding: 1px 1px 1px 1px;
     background-color: white;
-    border:1px solid #42B285;
+    border:2px solid #42B285;
+    border-radius:8px;
   }
 .pic{
   margin-left: 10px;
