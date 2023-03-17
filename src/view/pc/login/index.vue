@@ -5,12 +5,12 @@
       <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
         :rules="[{ required: true }]" style="margin-top: 10%;"/>
       <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
-        :rules="[{ required: true }]" style="margin-top: 10%;"/>
-      <div style="margin: 16px;">
+        :rules="[{ required: true }]" style="margin-top: 5%;"/>
+      <div style="margin: 16px;margin-bottom: 10%;">
         <van-button class="login_btn" block :loading="loading" color="var(--themeColor)"
           native-type="submit">登录
         </van-button>
-        <!-- <van-button class="register_btn" block :loading="loading" color="var(--themeColor)"
+        <!-- <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
           @click="register()">还没账号，前往注册
         </van-button> -->
       </div>
@@ -78,14 +78,15 @@ export default {
   margin-left: -350px;
   position: fixed;
   left: 65%;
+  margin-top: 5%;
   width: 300px;
   // height: 400px;
-  height: calc(100% - 60%);
+  // height: calc(100% - 67%);
   // overflow-y: hidden;
   display: flex;
   flex-direction: column;
   background: white;
-  margin-top: 15px;
+  // margin-top: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   // margin-left: -300px;
   // position: fixed;
@@ -103,9 +104,10 @@ export default {
     // display: flex;
   }
   .login_btn {
-    margin-top: 10%;
+    margin-top: 5%;
     border-radius: 5px;
-    margin-left: 40%;
+    // margin-bottom: 2%;
+    margin-left: 30%;
     width: 80px;
     height: 30px;
   }
@@ -119,7 +121,7 @@ export default {
     .title {
       // display: flex;
       color: var(--themeColor);
-      margin-top: -15%;
+      margin-top: -18%;
       // text-align: right;
       margin-left: 5%;
       font-size: 13px;
@@ -128,7 +130,7 @@ export default {
     .title1 {
       // display: flex;
       color: var(--themeColor);
-      margin-top: -7%;
+      margin-top: -10%;
       // text-align: right;
       margin-left: -23%;
       font-size: 13px;
