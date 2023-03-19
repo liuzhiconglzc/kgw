@@ -1,24 +1,28 @@
 <template>
   <div class="back">
-    <van-nav-bar title="登录" :border="false" left-arrow fixed @click-left="goBack"/>
-    <van-form @submit="onSubmit" class="form_back">
-      <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
-        :rules="[{ required: true }]" style="margin-top: 10%;"/>
-      <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
-        :rules="[{ required: true }]" style="margin-top: 5%;"/>
-      <div style="margin: 16px;margin-bottom: 10%;">
-        <van-button class="login_btn" block :loading="loading" color="var(--themeColor)"
-          native-type="submit">登录
-        </van-button>
-        <!-- <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
-          @click="register()">还没账号，前往注册
-        </van-button> -->
-      </div>
-      <div class="nextStage">
-        <div class="title" @click="register">新用户注册</div>
-        <div class="title1" @click="forgotPassword">忘记密码</div>
-      </div>
-    </van-form>
+    <div class="login">
+      <van-nav-bar title="登录" :border="false" left-arrow fixed @click-left="goBack"/>
+      <van-form @submit="onSubmit" class="form_back">
+        <p>Login</p>
+        <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
+          :rules="[{ required: true }]" style="margin-top: -5%;font-size: 18px;margin-left: -5%;"/>
+        <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
+          :rules="[{ required: true }]" style="margin-top: 5%;font-size: 28px;font-size: 18px;margin-left: -5%;"/>
+        <div style="margin: 16px;margin-bottom: 10%;">
+          <van-button class="login_btn" block :loading="loading" color="var(--themeColor)"
+            native-type="submit">登录
+          </van-button>
+          <!-- <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
+            @click="register()">还没账号，前往注册
+          </van-button> -->
+        </div>
+        <div class="nextStage">
+          <div class="title" @click="register">新用户注册</div>
+          <div class="title1" @click="forgotPassword">忘记密码</div>
+        </div>
+      </van-form>
+    </div>
+
   </div>
 </template>
 
@@ -75,26 +79,28 @@ export default {
 
 <style lang="less" scoped>
 .back {
-  margin-left: -350px;
+  margin-left: -27%;
   position: fixed;
   left: 65%;
   margin-top: 5%;
-  width: 300px;
-  // height: 400px;
-  // height: calc(100% - 67%);
-  // overflow-y: hidden;
+  width: 400px;
   display: flex;
   flex-direction: column;
   background: white;
-  // margin-top: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-  // margin-left: -300px;
-  // position: fixed;
-  // left: 50%;
-  // margin-top: 100px;
-  // width: 550px;
-  // background-color: white;
-  // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  .login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -51%;
+    background-color: white;
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+    text-align: center;
+    padding: 5px 40px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  }
   .form_back {
     margin-top: -5%;
     margin-left: 5%;
@@ -103,14 +109,24 @@ export default {
     // height: 200px;
     // display: flex;
   }
+  p{
+    font-size: 42px;
+    font-weight: 600;
+}
   .login_btn {
-    margin-top: 5%;
-    border-radius: 5px;
-    // margin-bottom: 2%;
     margin-left: 30%;
-    width: 80px;
-    height: 30px;
+    width: 38%;
+    height: 48px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+    background-color: #42B285;
   }
+  .login_btn:hover{
+    background-color: #59c2c5;
+}
   .register_btn{
     border-radius: 5px;
     margin-top: 10px;
@@ -123,7 +139,7 @@ export default {
       color: var(--themeColor);
       margin-top: -18%;
       // text-align: right;
-      margin-left: 5%;
+      margin-left: 3%;
       font-size: 13px;
       // padding: 2px 25px;
     }
@@ -132,7 +148,7 @@ export default {
       color: var(--themeColor);
       margin-top: -10%;
       // text-align: right;
-      margin-left: -23%;
+      margin-left: -21.5%;
       font-size: 13px;
       // padding: 2px 25px;
     }
