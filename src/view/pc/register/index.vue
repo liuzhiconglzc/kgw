@@ -55,9 +55,9 @@
           <div class="img">
             <van-image :src="this.img" @click="imageClick"></van-image>
           </div> 
-          <div style="margin: 16px;display: flex;">
-            <el-button type="primary" @click="submit('ruleForm')" style="display: flex;width: 70px;height: 25px;margin-top: -35px;margin-left: 410px;background-color: #42B285;line-height: 1px;font-size: 13px;"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
-          </div>
+          <!-- <div style="margin: 16px;display: flex;width: 70px;height: 0.1px;"> -->
+          <el-button type="primary" @click="submit('ruleForm')" style="display: flex;width: 90px;height: 35px;font-size: 25px;margin-top: -25px;margin-left: 470px;background-color: #42B285;line-height: 10px;"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
+          <!-- </div> -->
         </el-form>
       </div>
     </div>
@@ -236,14 +236,17 @@ export default {
   margin-left: -455px;
   position: fixed;
   left: 55%;
-  width: 700px;
-  height: calc(100% - -0px);
+  width: 800px;
+  height: 400px;
+  // height: calc(100% - -0px);
   background: white;
   position: relative;
   display: flex;
-  margin-top: 15px;
+  margin-top: 1%;
   // overflow: hidden;
-  
+  border-radius: 15px;
+  padding: 5px 40px;
+  box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .de_back{
     overflow-x:hidden;
@@ -251,16 +254,8 @@ export default {
     width: 100%;
     .form_back {
     width: 100%;
-    // overflow:hidden;
-    // display: auto;
-    // height: calc(100% - -350px);
-    // flex-direction: column;
     background: white;
-    // margin-top: 15px;
-    // width: 105%;
-    // position: relative;
-    // transform: translate(0%,0%);
-    // transform-origin: left top;
+
   }
   .button {
         display: inline-block;
@@ -325,7 +320,7 @@ export default {
     width: 100px;
     height: 26px;
     margin-left: 300px;
-    margin-top: -50px;
+    margin-top: -54px;
   }
 }
 :deep(.van-nav-bar__title) {
