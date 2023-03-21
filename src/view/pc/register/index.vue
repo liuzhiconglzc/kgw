@@ -3,7 +3,6 @@
       <div class="de_back">
         <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal">
           <el-menu-item index="1" style="height: 50px;margin-top: -10px;font-weight:bold;font-size:16px;">注册账号</el-menu-item>
-          <button class="button" style="vertical-align:middle" @click="goBack"><span>返回</span></button>
         </el-menu>
         <el-form ref='ruleForm' class="form_back" label-width="auto" label-suffix="" :model="ruleForm" :rules="rules" >
           <el-form-item label="登录名(手机号)" style="margin: 15px 15px 15px 15px;" prop="username">
@@ -56,8 +55,10 @@
             <van-image :src="this.img" @click="imageClick"></van-image>
           </div> 
           <!-- <div style="margin: 16px;display: flex;width: 70px;height: 0.1px;"> -->
-          <el-button type="primary" @click="submit('ruleForm')" style="display: flex;width: 90px;height: 35px;font-size: 25px;margin-top: -25px;margin-left: 470px;background-color: #42B285;line-height: 10px;"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
+          <el-button type="primary" @click="submit('ruleForm')" class="button1"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
           <!-- </div> -->
+          <el-button type="primary" class="button" @click="goBack">返回</el-button>
+          <!-- line-height: 10px; -->
         </el-form>
       </div>
     </div>
@@ -237,7 +238,7 @@ export default {
   position: fixed;
   left: 55%;
   width: 800px;
-  height: 400px;
+  height: 450px;
   // height: calc(100% - -0px);
   background: white;
   position: relative;
@@ -257,49 +258,68 @@ export default {
     background: white;
 
   }
-  .button {
+  .button1 {
         display: inline-block;
         border-radius: 4px;
-        background-color: #FFFFFF;
+        background-color: #42B285;
         border: none;
         border:1px solid #42B285;
-        color:  #42B285;
+        color:  #FFFFFF;
         text-align: center;
         font-size: 13px;
         padding: 2px;
         width: 70px;
         height: 25px;
-        margin-top: 5px;
+        margin-top: 25px;
         transition: all 0.5s;
         cursor: pointer;
-        margin-left: 500px;
+        // margin-left: 40px;
+        
+      }
+  .button {
+        display: inline-block;
+        // display:flex;
+        border-radius: 4px;
+        background-color: #42B285;
+        border: none;
+        border:1px solid #42B285;
+        color:  #FFFFFF;
+        // text-align: center;
+        font-size: 13px;
+        padding: 2px;
+        width: 70px;
+        height: 25px;
+        margin-top: -25px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin-left: 20px;
         
       }
 
-      .button span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-      }
+      // .button span {
+      //   cursor: pointer;
+      //   display: inline-block;
+      //   position: relative;
+      //   transition: 0.5s;
+      // }
 
-      .button span:after {
-        content: '»';
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-      }
+      // .button span:after {
+      //   content: '»';
+      //   position: absolute;
+      //   opacity: 0;
+      //   top: 0;
+      //   right: -20px;
+      //   transition: 0.5s;
+      // }
 
-      .button:hover span {
-        padding-right: 25px;
-      }
+      // .button:hover span {
+      //   padding-right: 25px;
+      // }
 
-      .button:hover span:after {
-        opacity: 1;
-        right: 0;
-      }
+      // .button:hover span:after {
+      //   opacity: 1;
+      //   right: 0;
+      // }
   }
   .title {
     color: var(--themeColor);
