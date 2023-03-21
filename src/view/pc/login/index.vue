@@ -3,11 +3,11 @@
     <div class="login">
       <van-nav-bar title="登录" :border="false" left-arrow fixed @click-left="goBack"/>
       <van-form @submit="onSubmit" class="form_back">
-        <p>Login</p>
+        <!-- <p>Login</p> -->
         <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
-          :rules="[{ required: true }]" style="margin-top: -5%;font-size: 18px;margin-left: -5%;"/>
+          :rules="[{ required: true }]" style="margin-top: -5%;font-size: 13px;"/>
         <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
-          :rules="[{ required: true }]" style="margin-top: 5%;font-size: 28px;font-size: 18px;margin-left: -5%;"/>
+          :rules="[{ required: true }]" style="margin-top: 5%;font-size: 13px;"/>
         <div style="margin: 16px;margin-bottom: 10%;">
           <van-button class="login_btn" block :loading="loading" color="var(--themeColor)"
             native-type="submit">登录
@@ -94,7 +94,7 @@ export default {
     margin-left: -51%;
     background-color: white;
     width: 400px;
-    height: 300px;
+    height: 250px;
     border-radius: 15px;
     text-align: center;
     padding: 5px 40px;
@@ -102,7 +102,7 @@ export default {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   }
   .form_back {
-    margin-top: -5%;
+    margin-top: 15%;
     margin-left: 5%;
     // width: 40%;
     // width:150px;
@@ -115,11 +115,11 @@ export default {
 }
   .login_btn {
     margin-left: 30%;
-    width: 38%;
-    height: 48px;
+    width: 93px;
+    height: 33px;
     border-radius: 8px;
-    margin-top: 10px;
-    font-size: 28px;
+    margin-top: 30px;
+    font-size: 13px;
     font-weight: 600;
     color: white;
     background-color: #42B285;
@@ -134,6 +134,7 @@ export default {
   .nextStage{
     display: flex;
     margin-top: -5%;
+    margin-left: 5px;
     .title {
       // display: flex;
       color: var(--themeColor);
