@@ -52,8 +52,11 @@ export default {
     }
   },
   created(){
-    // this.startRotate();
-    // setTimeout(this.endRotate,10000);
+    if (getToken()){
+        this.hlogin=true
+      }else{
+        this.hlogin=false
+      }
   },
   watch: {
     $route (to, from) {
@@ -63,6 +66,11 @@ export default {
         || (from.name == 'Add' && to.name !== 'Login')
         || (from.name == 'List' && to.name !== 'Add' && to.name !== 'Detail')) {
         this.$store.commit('removeIncludes', from.name)
+      }
+      if (getToken()){
+        this.hlogin=true
+      }else{
+        this.hlogin=false
       }
     }
   },
