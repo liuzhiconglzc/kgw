@@ -355,7 +355,7 @@ export default {
 
 <style lang="less" scoped>
 .de{
-  margin-left: -400px;
+  margin-left: -450px;
   position: fixed;
   left: 50%;
   width: 700px;

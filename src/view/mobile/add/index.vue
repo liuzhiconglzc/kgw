@@ -37,6 +37,8 @@
     </div>
     <div class="publish">
       <div class="publish_btn" @click="publishClick">提交</div>
+      <div class="publish_btn" v-if="(state == 1)" style="margin-left: 10%" @click="deleteClick(proId)">删除</div>
+      <div class="publish_btn" v-if="(state == 2)" style="margin-left: 10%" @click="deleteClick1(proId)">删除</div>
     </div>
     <van-popup v-model="showProfessionPicker" round position="bottom">
       <div class="pop">
@@ -54,7 +56,7 @@
 </template>
 
 <script>
-import { questionDetail, classifyList, uploadImage, questionAdd, questionUpdate } from '@/api/question'
+import {questionDetail, classifyList, uploadImage, questionAdd, questionUpdate, questionDelete} from '@/api/question'
 import forbiddenArray from "@/utils/badword";
 
 export default {
@@ -185,6 +187,58 @@ export default {
     stateDone (item) {
       this.showStatePicker = false
       this.selectState = item
+    },
+    deleteClick(id) {
+      // this.$confirm("是否删除?", "提示", {
+      //   confirmButtonText: "确定",
+      //   cancelButtonText: "取消",
+      //   type: "warning",
+      // })
+      // this.then(() => {
+      questionDelete(id).then((res) => {
+        // this.$message({
+        //   message: res.data,
+        //   type: "success",
+        // });
+        this.questionUpdate();
+        // this.$router.push({ path: `/list?state=0`});
+        // this.$router.go(0)
+        // this.dialogVisible=false;
+        this.goBack()
+      });
+      // })
+      // .catch(() => {
+      //   this.$message({
+      //     type: "info",
+      //     message: "已取消删除",
+      //   });
+      // });
+    },
+    deleteClick1(id) {
+      // this.$confirm("是否删除?", "提示", {
+      //   confirmButtonText: "确定",
+      //   cancelButtonText: "取消",
+      //   type: "warning",
+      // })
+      // this.then(() => {
+      questionDelete(id).then((res) => {
+        // this.$message({
+        //   message: res.data,
+        //   type: "success",
+        // });
+        this.questionUpdate();
+        // this.$router.push({ path: `/list?state=2`});
+        // this.$router.go(0)
+        this.goBack()
+        // this.dialogVisible=false;
+      });
+      // })
+      // .catch(() => {
+      //   this.$message({
+      //     type: "info",
+      //     message: "已取消删除",
+      //   });
+      // });
     },
     publishClick () {
       let msg

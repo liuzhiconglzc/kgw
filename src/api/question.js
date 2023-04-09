@@ -89,7 +89,7 @@ export function questionUpdate(data) {
 // 问题删除
 export function questionDelete(id) {
   return request({
-    url: `/system/pro/delete/${id}`,
+    url: `/system/prov2/delete/${id}`,
     method: 'get',
   })
 }

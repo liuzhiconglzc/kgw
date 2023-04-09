@@ -45,11 +45,11 @@
             <el-image class="header2" :src="require('@/assets/pc/view_add.png')" fit="fill" round @click="add">
             </el-image>
           </div>   -->
-          <div>
-            <el-button class="add" @click="logout">
-              退出登录
-            </el-button>
-          </div>
+<!--          <div>-->
+<!--&lt;!&ndash;            <el-button class="add" @click="logout">&ndash;&gt;-->
+<!--&lt;!&ndash;              退出登录&ndash;&gt;-->
+<!--&lt;!&ndash;            </el-button>&ndash;&gt;-->
+<!--          </div>-->
         </template>
       </div>
       <div style="height: 100%;display: inline;">

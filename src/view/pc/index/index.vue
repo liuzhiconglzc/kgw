@@ -48,7 +48,7 @@ export default {
       //发布问题所调用接口
       visitAdd()
       if (getToken()) {
-        this.$router.push({ name: 'Add', query: { state: 0 } })
+        this.$router.push({ name: 'Publish', query: { state: 0 } })
       } else {
         this.$dialog.alert({
           showCancelButton: true,
@@ -57,7 +57,7 @@ export default {
           message: '您暂未登录，请问是否登录？'
         })
           .then(() => {
-            this.$router.push({ name: 'Login', params: { replace: 'Add' } })
+            this.$router.push({ name: 'Login', params: { replace: 'Publish' } })
           })
           .catch(() => { })
       }
