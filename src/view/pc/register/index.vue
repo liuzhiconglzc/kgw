@@ -31,8 +31,17 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="职称" style="margin: 15px;width: auto;;margin-left: 350px;margin-top: -275px;display: flex;" prop="title">
-            <el-input v-model="ruleForm.title" name="title" label-width="7.5em" placeholder="请输入职称" style="width: 200px;margin-left: -110px;"></el-input>
+
+          <el-form-item label="职称" style="margin: 15px;width: auto;margin-left: 350px;margin-top: -275px;display: flex;" prop="title">
+            <el-autocomplete
+              class="inline-input"
+              v-model="ruleForm.title"
+              :fetch-suggestions="querySearch"
+              placeholder="请输入职称"
+              @select="handleSelect"
+              style="width: 200px;margin-left: -110px;" 
+            ></el-autocomplete>
+            <!-- <el-input v-model="ruleForm.title" name="title" label-width="7.5em" placeholder="请输入职称" style="width: 200px;margin-left: -110px;"></el-input> -->
           </el-form-item>
           <el-form-item label="学校(单位)" style="margin: 15px;margin-left: 350px;display: flex;" prop="school">
             <el-input v-model="ruleForm.school" name="school" label-width="7.5em" placeholder="请输入学校或单位" style="width: 200px;margin-left: -110px;"
@@ -45,11 +54,11 @@
           <el-form-item label="专业" style="margin: 15px;margin-left: 350px;display: flex;">
             <el-input v-model="ruleForm.major" name="major" label-width="7.5em" placeholder="请输入专业" style="width: 200px;margin-left: -110px;"></el-input>
           </el-form-item>
-          <el-form-item label="邮箱" style="margin: 15px;margin-left: 350px;display: flex;">
+          <el-form-item label="邮箱" style="margin: 15px;margin-left: 350px;display: flex;" prop="email">
             <el-input v-model="ruleForm.email" name="email" label-width="7.5em" placeholder="请输入邮箱" style="width: 200px;margin-left: -110px;"></el-input>            
           </el-form-item>
-          <el-form-item label="验证码" style="margin: 15px;">
-            <el-input v-model="ruleForm.sms" name="sms" label-width="7.5em" placeholder="请输入验证码" style="width: 150px;height: 40px;"></el-input>            
+          <el-form-item label="验证码" style="margin: 15px;" prop="sms">
+            <el-input v-model="ruleForm.sms" name="sms" label-width="7.5em" placeholder="请输入验证码" style="width: 200px;height: 40px;"></el-input>            
           </el-form-item>
           <div class="img">
             <van-image :src="this.img" @click="imageClick"></van-image>
@@ -77,18 +86,19 @@ export default {
         password: '',
         password_again: '',
         title: '',
-        sms: '',
         college: '',
         school: '',
         identity: '',
         major: '',
         email: '',
+        sms: '',
       },
       img: '',
       loading: false,
       showPicker: false,
       uuid: '',
       value: '',
+      restaurants: [],
       options: [{
           value: '教师',
           label: '教师'
@@ -105,13 +115,14 @@ export default {
       rules:{
         username:[{ required: true},{pattern:/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/ ,message: '请输入正确格式的手机号码', trigger: "blur" }],
         nickname:[{ required: true, message: '真实姓名不能为空', trigger: 'blur' }],
-        password:[{ required: false },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
-        password_again:[{ required: false },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
+        password:[{ required: true },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
+        password_again:[{ required: true ,message: '请再次输入密码',},{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
         identity:[{ required: true, message: '您还未选择身份', trigger: 'blur' }],
         title:[{ required: true, message: '请输入职称', trigger: 'blur' }],
         school:[{ required: true, message: '请输入您的学校或单位', trigger: 'blur' }],
         college:[{ required: true, message: '请输入您的学院或部门', trigger: 'blur'  }],
-        sms:[{ required: true, message: '请输入验证码', trigger: 'blur'  }]
+        email:[{type: 'email', message:'请输入正确的邮箱格式', trigger: 'blur'}],
+        sms:[{ required: true, message: '请输入验证码', trigger: 'blur'  }],
       }
     }
   },
@@ -177,6 +188,7 @@ export default {
       if(this.ruleForm.password == this.ruleForm.password_again){
         console.log('密码一致')
         register(values).then(res => {
+          console.log(res)
           this.loading = false
           console.log('注册成功')
           this.$toast.success('注册成功')
@@ -190,6 +202,29 @@ export default {
         this.loading = false
       } 
     },
+    querySearch(queryString, cb) {
+        var restaurants = this.restaurants;
+        var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+        // 调用 callback 返回建议列表的数据
+        cb(results);
+      },
+    createFilter(queryString) {
+      return (restaurant) => {
+        return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+      };
+    },
+    loadAll() {
+      return [
+        { "value": "教师请填写职称" },
+        { "value": "本科生"},
+        { "value": "硕士生"},
+        { "value": "博士生"},
+      ];
+    },
+    handleSelect(item) {
+      console.log(item);
+    },
+    // },
     goBack () {
       const replace = this.$route.params.replace
       this.$router.replace({ name: 'Login', params: { replace: replace } })
@@ -228,7 +263,10 @@ export default {
         this.uuid = res.uuid
       })  
     }
-  }
+  },
+  mounted() {
+      this.restaurants = this.loadAll();
+    },
 }
 </script>
 
@@ -270,7 +308,7 @@ export default {
         padding: 2px;
         width: 70px;
         height: 25px;
-        margin-top: 25px;
+        margin-top: 30px;
         transition: all 0.5s;
         cursor: pointer;
         // margin-left: 40px;
@@ -339,7 +377,7 @@ export default {
   .img{
     width: 100px;
     height: 26px;
-    margin-left: 300px;
+    margin-left: 350px;
     margin-top: -54px;
   }
 }
