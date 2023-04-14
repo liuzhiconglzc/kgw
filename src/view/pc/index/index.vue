@@ -13,7 +13,7 @@
           <el-image class="image_2" style="width: 520px; height: 246px" :src="require('@/assets/pc/index_publish_2.png')" fit="contain" @click="jumpToAdd"></el-image>
         </div>
         <div class="tip2" @click="cardClick">原砍瓜网网址：http://kangua.lnu.edu.cn</div>
-        <div class="tip1">砍瓜网：问题集库+知识分享社群。用问题引发思考，让思考衍生问题，用研究推动创新。</div>
+        <div class="tip1">用社会现实场景真实问题引发思考的问题集库</div>
         <div class="tip">©辽宁大学真实问题研究中心</div>
     </div>
   </div>
