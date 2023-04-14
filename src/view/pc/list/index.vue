@@ -434,8 +434,8 @@
   <!-- <div class="list_back" :class="{'review_back': state == 3}"> -->
   <div class="list_back">
     <div class="question">
-      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 26px;">
-        <el-menu-item index="1" style="height: 41px;margin-top: -15px;font-size:14px;">全部</el-menu-item>
+      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 30px;">
+        <el-menu-item index="1" style="height: 40px;margin-top: -15px;font-size:14px;">全部</el-menu-item>
       </el-menu>
       <van-pull-refresh v-model="isRefreshing" @refresh="onRefresh">
         <van-list v-model="isLoading" :finished="isFinished" @load="onLoad">
@@ -730,7 +730,7 @@ export default {
     width: 50px;
     background-color: white;
     &_item {
-      margin-left: -15px;
+      // margin-left: -15px;
       margin-top: -10px;
       padding: 10px;
       width: 65%;
