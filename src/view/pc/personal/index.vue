@@ -1,50 +1,31 @@
 <template>
   <div class="back">
     <div class="deback">
-      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 26px;">
+      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 30px;">
           <el-menu-item index="1" style="height: 42px;margin-top: -15px;font-size:14px;">个人设置</el-menu-item>
       </el-menu>
       <div v-if="state==false" style="width: 400px;">
         <el-form ref='ruleForm' class="form_back" label-width="auto" label-suffix="" :model="ruleForm" :rules="rules" >
-          <el-form-item label="登录名(手机号)" style="margin: 5px 5px 5px 5px;" prop="username">
-            <el-input v-model.number="ruleForm.username" :rows="5" name="username" label-width="300px" type="tel" placeholder="请输入手机号" >
+          <el-form-item label="登录名(手机号)" size="mini" style="margin: 5px 5px 5px 5px;" prop="username">
+            <el-input v-model.number="ruleForm.username" size="mini"  name="username" label-width="300px" type="tel" placeholder="请输入手机号" >
             </el-input>
           </el-form-item>
-          <!-- <van-field v-model="username" name="username" label-width="7.5em" type="tel" label="登录名(手机号)*" placeholder="请输入手机号"
-            readonly /> -->
-          <el-form-item label="真实姓名" style="margin: 5px;" prop="nickname">
-            <el-input v-model="ruleForm.nickname" name="nickname" label-width="300px" placeholder="请输入真实姓名"
+          <el-form-item label="真实姓名" size="mini" style="margin: 15px 5px 5px 5px;" prop="nickname">
+            <el-input v-model="ruleForm.nickname" size="mini" name="nickname" label-width="300px" placeholder="请输入真实姓名"
              readonly>
             </el-input>
           </el-form-item>
-          <!-- <van-field v-model="nickname" name="nickname" label-width="7.5em" label="真实姓名*" placeholder="请输入真实姓名"
-            :rules="[{ required: true }]" readonly /> -->
-          <el-form-item label="设置密码" style="margin: 5px;" prop="password">
-            <el-input v-model="ruleForm.password" name="password" show-password label-width="300px" type="password" placeholder="至少8位，由数字和字母组成" autocomplete="off" 
+          <el-form-item label="设置密码" size="mini" style="margin: 15px 5px 5px 5px;" prop="password">
+            <el-input v-model="ruleForm.password" size="mini" name="password" show-password label-width="300px" type="password" placeholder="至少8位，由数字和字母组成" autocomplete="off" 
             >
             </el-input>
           </el-form-item>
-          <!-- <van-field v-model="password" name="password" label-width="7.5em" type="password" label="设置密码" placeholder="至少8位，由数字和字母组成" autocomplete="off"
-            :rules="[
-                  { required: false },
-                  { pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }
-                  ]"
-          /> -->
-          <el-form-item label="确认密码" style="margin: 5px;" prop="password_again">
-            <el-input title="确认密码" v-model="ruleForm.password_again" show-password name="password_again" label-width="7.5em" type="password" placeholder="请确认密码" autocomplete="off"
+          <el-form-item label="确认密码" size="mini" style="margin: 15px 5px 5px 5px;" prop="password_again">
+            <el-input title="确认密码" v-model="ruleForm.password_again" size="mini" show-password name="password_again" label-width="7.5em" type="password" placeholder="请确认密码" autocomplete="off"
             ></el-input>
           </el-form-item>
-
-          <!-- <van-field v-model="password_again" name="password_again" label-width="7.5em" type="password" label="确认密码" placeholder="请确认密码" autocomplete="off"
-            :rules="[
-                  { required: false },
-                  { pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }
-                  ]"
-          /> -->
-          <!-- <van-field v-model="identity" is-link readonly name="identity" label-width="7.5em" label="身份*" placeholder="点击选择身份"
-            @click="showPicker = true" :rules="[{ required: true }]" /> -->
-          <el-form-item label="身份" style="margin: 5px;" prop="identity">
-            <el-select v-model="ruleForm.identity" placeholder="请选择身份" >
+          <el-form-item label="身份" size="mini" style="margin: 15px 5px 5px 5px;" prop="identity">
+            <el-select v-model="ruleForm.identity" size="mini" placeholder="请选择身份" >
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -53,44 +34,28 @@
               </el-option>
             </el-select>
           </el-form-item>
-
-          <!-- <van-field v-model="title" name="title" label-width="7.5em" label="职称" placeholder="请输入职称" /> -->
-          <el-form-item label="职称" style="margin: 5px;" prop="title">
-            <el-input v-model="ruleForm.title" name="title" label-width="7.5em" placeholder="请输入职称" ></el-input>
+          <el-form-item label="职称" size="mini" style="margin: 15px 5px 5px 5px;" prop="title">
+            <el-input v-model="ruleForm.title" name="title" size="mini" label-width="7.5em" placeholder="请输入职称" ></el-input>
           </el-form-item>
-
-          <!-- <van-field v-model="school" name="school" label-width="7.5em" label="学校(单位)*" placeholder="请输入学校或单位"
-            :rules="[{ required: true }]" /> -->
-          <el-form-item label="学校(单位)" style="margin: 5px;" prop="school">
-            <el-input v-model="ruleForm.school" name="school" label-width="7.5em" placeholder="请输入学校或单位"
+          <el-form-item label="学校(单位)" size="mini" style="margin: 15px 5px 5px 5px;;" prop="school">
+            <el-input v-model="ruleForm.school" name="school" size="mini" label-width="7.5em" placeholder="请输入学校或单位"
             ></el-input>          
           </el-form-item>
-
-          <!-- <van-field v-model="college" name="college" label-width="7.5em" label="学院(部门)*" placeholder="请输入学院或部门"
-            :rules="[{ required: true }]" /> -->
-          <el-form-item label="学院(部门)" style="margin: 5px;" prop="college">
-            <el-input v-model="ruleForm.college" name="college" label-width="7.5em" placeholder="请输入学院或部门"
+          <el-form-item label="学院(部门)" size="mini" style="margin: 15px 5px 5px 5px;" prop="college">
+            <el-input v-model="ruleForm.college" name="college" size="mini" label-width="7.5em" placeholder="请输入学院或部门"
               ></el-input>          
           </el-form-item>
-
-          <!-- <van-field v-model="major" name="major" label-width="7.5em" label="专业" placeholder="请输入专业" /> -->
-          <el-form-item label="专业" style="margin: 5px;">
-            <el-input v-model="ruleForm.major" name="major" label-width="7.5em" placeholder="请输入专业"></el-input>
+          <el-form-item label="专业" size="mini" style="margin: 15px 5px 5px 5px;">
+            <el-input v-model="ruleForm.major" name="major" size="mini" label-width="7.5em" placeholder="请输入专业"></el-input>
+          </el-form-item>
+        
+          <el-form-item label="邮箱" size="mini" style="margin: 15px 5px 5px 5px;">
+            <el-input v-model="ruleForm.email" name="email" size="mini" label-width="7.5em" placeholder="请输入邮箱"></el-input>            
           </el-form-item>
 
-          <!-- <van-field v-model="email"  name="email" label-width="7.5em" label="邮箱" placeholder="请输入邮箱" />  -->
-          <el-form-item label="邮箱" style="margin: 5px;">
-            <el-input v-model="ruleForm.email" name="email" label-width="7.5em" placeholder="请输入邮箱"></el-input>            
-          </el-form-item>
-          <!-- <van-popup v-model="showPicker" round position="bottom">
-            <van-picker show-toolbar :columns="columns" @confirm="onConfirm" @cancel="onCancel"/>
-          </van-popup> -->
-          <div style="margin: 16px;display: flex;">
-            <van-button type="primary" class="register_btn1" block @click="Return">返回</van-button>
-            <!-- <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
-              native-type="submit">提交修改
-            </van-button> -->
-            <van-button type="primary" @click="submit('ruleForm')"  class="register_btn2"  block :loading="loading">提交</van-button>      
+          <div style="display: flex;margin-left: 50px;">
+            <el-button type="primary" size="mini" class="edit" block @click="Return">返回</el-button>
+            <el-button type="primary" size="mini" @click="submit('ruleForm')"  class="edit2"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
           </div>
         </el-form>
       </div>
@@ -121,6 +86,15 @@ import { mineInfo,mineEdit } from '@/api/mine'
 export default {
   name: "Personal",
   data () {
+    // var validatePass2 = (rule, value, callback) => {
+    //   if (value === '') {
+    //     callback(new Error('请再次输入密码'))
+    //   } else if (value !== this.ruleForm.password) {
+    //     callback(new Error('两次输入密码不一致!'))
+    //   } else {
+    //     callback()
+    //   }
+    // }
     return {
       state:true,
       ruleForm:{
@@ -135,6 +109,7 @@ export default {
         password: '',
         password_again: '',
 		  },
+      pass:'0',
       loading: false,
       // columns: [{ id: 0, text: '教师' }, { id: 1, text: '学生' }, { id: 2, text: '企业人员' }, { id: 3, text: '其他' }],
       value: '',
@@ -154,8 +129,8 @@ export default {
       rules:{
         username:[{ required: true,message: '手机号不能为空', trigger: "blur" }],
         nickname:[{ required: true, message: '真实姓名不能为空', trigger: 'blur' }],
-        password:[{ required: false },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
-        password_again:[{ required: false },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
+        password:[{ required: false },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' , trigger: 'blur'}],
+        password_again:[{ required: false ,message: '请再次输入密码',},{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
         identity:[{ required: true, message: '您还未选择身份', trigger: 'blur' }],
         title:[{ required: true, message: '还未输入您的职称', trigger: 'blur' }],
         school:[{ required: true, message: '还未输入您的学校或单位', trigger: 'blur' }],
@@ -168,27 +143,24 @@ export default {
   },
   methods: {
     submit(formName){
-      this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.onsub()
-          } else {
-              // this.$alert('请按照提示正确输入!!!')
-              // this.$message({
-              //     duration: 3000,
-              //     content: '请按照提示正确输入'
-              // });
-              return false
-          }
-      })    
+        this.$refs[formName].validate((valid) => {
+          console.log(valid)
+            if (valid) {
+              this.onsub()
+            } else {
+                return false
+            }
+        })          
     },
     onsub(){
       this.loading = true
       const values = {}
       if(this.ruleForm.username){
-        values.username = this.username
+        // console.log(username)
+        values.username = this.ruleForm.username
       }
       if(this.ruleForm.nickname){
-        values.nickname = this.nickname
+        values.nickname = this.ruleForm.nickname
       }
       if(this.ruleForm.password){
         console.log('得到了密码')
@@ -207,6 +179,12 @@ export default {
       if(this.options.value){
         values.title = this.options.value
       }
+      if(this.ruleForm.sms){
+        values.sms = this.ruleForm.sms
+      }
+      if(this.ruleForm.title){
+        values.title = this.ruleForm.title
+      }
       if(this.ruleForm.school){
         values.school = this.ruleForm.school
       }
@@ -222,23 +200,25 @@ export default {
       if(this.ruleForm.password == this.ruleForm.password_again){
         console.log('密码一致')
         mineEdit(values).then(res => {
-          if(res){
-            this.loading = false
-            this.$toast.success('修改成功')
-            this.Return()
-            // this.getDetail()
-          }else{
-            this.loading = false
-            this.$alert('请按照提示正确输入!!')
-          }
-          })        
-      }
+          console.log(res)
+          this.loading = false
+          console.log('提交成功')
+          this.$toast.success('提交成功')
+          this.state=true
+        }).catch(() => {
+          this.loading = false
+          this.getData()
+        })      
+      }else{
+        this.$notify('两次输入的密码不一致')
+        this.loading = false
+      } 
     },
     getData () {
       mineInfo().then(res => {
         this.ruleForm.username = res.data.username
         this.ruleForm.nickname = res.data.nickname
-        this.ruleForm.password = res.data.password
+        // this.ruleForm.password = res.data.password
         this.ruleForm.identity = res.data.identity
         this.ruleForm.title = res.data.title
         this.ruleForm.school = res.data.school
@@ -331,6 +311,12 @@ export default {
   background-color: #42B285;
   color: white;
 }
+.edit2{
+  margin-left: 60px;
+  font-size: 14px;
+  background-color: #42B285;
+  color: white;
+}
 .span1{
         color: red;
         height: 13px;
@@ -340,6 +326,9 @@ export default {
   margin-right: 10px;
   // font-size: 15px;
   font-weight:300
+}
+:deep(.el-input__inner){
+    border: 0px;
 }
 :deep(.van-nav-bar__title) {
   font-size: 20px;
