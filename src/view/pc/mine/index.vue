@@ -35,7 +35,7 @@
             </div>
             <span>|</span>
             <div style="display: flex;margin-left: 15px;margin-right: 15px;">
-              <span class="num_2">被收藏数</span>
+              <span class="num_2">已收藏数</span>
               <span class="num_1">{{data.collectNum || 0}}</span>
             </div>
           </div>
@@ -45,17 +45,17 @@
             <el-image class="header2" :src="require('@/assets/pc/view_add.png')" fit="fill" round @click="add">
             </el-image>
           </div>   -->
-<!--          <div>-->
-<!--&lt;!&ndash;            <el-button class="add" @click="logout">&ndash;&gt;-->
-<!--&lt;!&ndash;              退出登录&ndash;&gt;-->
-<!--&lt;!&ndash;            </el-button>&ndash;&gt;-->
-<!--          </div>-->
+          <!-- <div>
+            <el-button class="add" @click="logout">
+              退出登录
+            </el-button>
+          </div> -->
         </template>
       </div>
       <div style="height: 100%;display: inline;">
         <el-row class="menu">
           <el-col :span="4">
-            <el-menu active-text-color=#42B285 router>
+            <el-menu active-text-color=#42B285 router default-active="1"  >
               <el-menu-item index="1" @click="Click1" class="button">
                 <el-image :src="require('@/assets/mine_1.png')" class="header1"></el-image>
                 <span class="te">已发布问题</span>
@@ -250,7 +250,7 @@ export default {
   // display: flex;
   height: 100px;
   // width: 700px;
-  margin-left: 40px;
+  margin-left: -10px;
   margin-top: -10px;
 }
 .ph{
@@ -269,9 +269,9 @@ export default {
 .header1 {
   // margin-left: 5px;
   margin-top: -8px;
-  margin-left: -11px;
-  width: 17px;
-  height: 18px;
+  margin-left: -3px;
+  width: 20px;
+  height: 20px;
 }
 .header2 {
   // display: flex;
@@ -285,9 +285,9 @@ export default {
 }
 .header3 {
   margin-top: -8px;
-  margin-left: -9px;
-  width: 15px;
-  height: 15px;
+  margin-left: -1px;
+  width: 17px;
+  height: 17px;
 }
 .grid {
   // margin-bottom: 20px;
