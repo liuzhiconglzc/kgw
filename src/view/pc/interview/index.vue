@@ -189,11 +189,15 @@ export default {
         color: #7f7f7f;
         font-size: 16px;
         white-space: pre-wrap;
-        word-spacing: 23px;
+        // word-spacing: 23px;
+        word-spacing: 2em;
+        // text-indent:2em;
         text-align: justify;
       }
       .desc_1{
-        text-indent: 27px;
+        // text-indent: 27px;
+        text-indent:2em;
+        margin: 10px 10px 10px 0px;
       }
       .files {
           &_img {
