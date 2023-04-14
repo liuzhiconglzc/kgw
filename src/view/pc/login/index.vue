@@ -1,7 +1,6 @@
 <template>
   <div class="back">
     <div class="login">
-      <van-nav-bar title="登录" :border="false" left-arrow fixed @click-left="goBack"/>
       <van-form @submit="onSubmit" class="form_back">
         <!-- <p>Login</p> -->
         <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
