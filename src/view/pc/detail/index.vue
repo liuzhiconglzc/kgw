@@ -7,12 +7,13 @@
           <div class="ti">问题详情</div>
           <button class="button" style="vertical-align:middle" @click="goBack"><span>返回</span></button>
         </div>
+        <hr class="hr-solid">
         <div class="content">
           <div class="header">
             <!-- <el-image class="header_img" :src="item.askUserAvatar"></el-image> -->
             <div class="header_img">
               <template>
-                <el-image width="28px" height="28px"  :src="require('@/assets/header.png')" />
+                <el-image width="10px" height="10px"  :src="require('@/assets/header.png')" />
               </template>
             </div>
             <div class="header_name">{{item.askUserName}}</div>
@@ -37,7 +38,7 @@
           </div>
         </div>
         <div class="re">
-          <el-button type="primary" class="reply1" @click="reply1">回复此问题<i class="el-icon-chat-dot-round el-icon--right"></i></el-button>
+          <el-button type="primary" class="reply1" @click="reClick">回复此问题<i class="el-icon-chat-dot-round el-icon--right"></i></el-button>
           <div class="num" v-if="item.proId != 0">
               <div class="num_item" @click.stop="numClick(0)">
                 <el-image class="num_item_img" fit="contain"
@@ -54,7 +55,7 @@
             </div>
         </div>
         <div class="retext">
-          <div v-if="restate == 1" style="display: flex;">
+          <div v-if="restate %2==0" style="display: flex;">
             <div class="retext_image">
               <el-image width="55px" height="55px"  :src="require('@/assets/header.png')" />
             </div>
@@ -71,25 +72,31 @@
                 show-word-limit
                 >
               </el-input>
+              <hr class="hr-solid">
               <el-button type="primary" class="retext_t_b" @click="replyClick">回复</el-button>
             </div>
           </div>
         </div>
         <div class="reply" v-if="replyList.length > 0 && item.proId != 0">
           <div class="reply_header">{{`共${replyList.length}回复`}}</div>
+          <hr class="hr-solid">
           <div class="reply_cell" v-for="item in replyList" :key="item.id">
-            <div class="reply_cell_header">
-              <template>
-                <el-image :src="require('@/assets/header_detail.png')" />
-              </template>
-            </div>
-            <div class="reply_cell_right">
-              <div class="reply_cell_right_top">
-                <div class="reply_cell_right_top_name">{{item.userName}}</div>
+            <div >
+              <div class="reply_cell_header">
+                <template>
+                  <el-image :src="require('@/assets/header_detail.png')" />
+                </template>
               </div>
-              <div class="reply_cell_content">{{item.answer}} </div>
-              <div class="reply_cell_right_top_date">{{item.createTime}}</div>
+              <div class="reply_cell_right">
+                <div class="reply_cell_right_top">
+                  <div class="reply_cell_right_top_name">{{item.userName}}</div>
+                </div>
+                <div class="reply_cell_content">{{item.answer}} </div>
+                <div class="reply_cell_right_top_date">{{item.createTime}}</div>
+              </div>
+              <hr class="hr-solid" v-if="replyList.length>1">
             </div>
+            
           </div>
         </div>
       </div>
@@ -137,7 +144,7 @@ export default {
       replyList: [],
       fromWechat: false,
       isLike: 0,
-      restate: false,
+      restate: 1,
       srcList: [],
       textarea: '',
       }
@@ -252,17 +259,7 @@ export default {
     //   }
     // },
     reClick(){
-      if(this.restate =false){
-        this.reply1()
-      }else{
-        this.reply0()
-      }
-    },
-    reply1(){
-      this.restate = true
-    },
-    reply0(){
-      this.restate = false
+      this.restate++
     },
     numClick (type) {
 
@@ -373,9 +370,20 @@ export default {
         // top: 0;
         background-color: white;
         // z-index:999;
-        width: 700px;
+        // width: 700px;
+        width: 100%;
         // margin-top: -100px;
+        // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
       }
+      
+
+	.hr-solid {
+    // display: table-caption;
+		border: 0;
+		border-top: 1px solid #d0d0d5;
+	}
+
+
   .detail_back {
     overflow-x:hidden;
     display: flex;
@@ -392,6 +400,7 @@ export default {
       // width: 700px;
       // height: auto;
       position: relative;
+      margin-top: -10px;
 
       .ti{
         // border-radius: 16px;
@@ -425,7 +434,6 @@ export default {
         margin-left: 480px;
         
       }
-
       .button span {
         cursor: pointer;
         display: inline-block;
@@ -434,7 +442,7 @@ export default {
       }
 
       .button span:after {
-        content: '»';
+        content: '«';
         position: absolute;
         opacity: 0;
         top: 1px;
@@ -462,8 +470,8 @@ export default {
           display: flex;
           align-items: center;
           &_img {
-            width: 40px;
-            height: 40px;
+            width: 20px;
+            height: 20px;
             margin-right: 10px;
           }
           &_name {
@@ -531,19 +539,23 @@ export default {
       }
       .retext{
         display: flex;
-        margin-left: 30px;
+        margin-left: 20px;
         margin-top: 15px;
         &_image{
           height: 25px;
           width: 25px;
         }
         &_t{
-          margin-left: 15px;
+          margin-left: 20px;
           width: 580px;
           border-style:solid;
           border-width:2px;
           border-color:#42B285;
           border-radius: 3px;
+          &_b{
+            border: 10px;
+            // outline: none;
+          }
           &_b{
             height: 25px;
             width: 60px;
@@ -558,6 +570,7 @@ export default {
           }
         }
       }
+
       .reply1{
         height: 25px;
         width: 100px;
@@ -593,14 +606,21 @@ export default {
             }
           }
       .reply {
-        border-radius: 10px;
+        border-radius: 3px;
         background: white;
         margin: 10px;
         padding: 10px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #d0d0d5;
         &_cell {
-          display: flex;
-          padding-top: 10px;
+          // display: flex;
+          display:inline-flexbox;
+          // width: 100%;
+          // padding-top: 10px;
           &_header {
+            display: flex;
+            // display:block;
             height: 23px;
             width: 23px;
             padding-top: 3px;
@@ -617,19 +637,26 @@ export default {
               align-items: center;
               height: 30px;
               &_name {
+                display: flex;
+                margin-top: -55px;
+                margin-left: 30px;
                 color: var(--themeColor);
                 font-size: 14px;
               }
               &_date {
+                display: flex;
                 color: #c8c8c8;
                 font-size: 12px;
+                margin-top: 0px;
               }
             }
           }
           &_content {
             color: #555555;
             font-size: 15px;
-            padding: 5px 0;
+            // padding: 5px 0;
+            margin-top: -20px;
+            margin-bottom: 10px;
             word-break: break-all;
           }
         }
@@ -732,8 +759,10 @@ export default {
       }
     }
   }
-
-
+  
+  :deep(.el-textarea__inner){
+    border: 0px;
+}
 ::-webkit-scrollbar {
   width: 1px;
 }
