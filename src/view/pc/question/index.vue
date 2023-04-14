@@ -13,13 +13,10 @@
           <div class="question_item" :class="{'question_item_last':questionIndex + 1 == questionList.length}"
             v-for="(question, questionIndex) in questionList" :key="question.proId"
             @click="cellClick(question, questionIndex)">
-            <!-- <div class="question_item_top" v-if="question.proTop > 0">【置顶】</div> -->
-            <!-- <div class="question_item_title" :class="{'question_item_title_top': question.proTop > 0}">
-              {{question.proTitle}}</div> -->
             <div class="question_item_total">
               <div class="question_item_title">{{question.proTitle}}</div>
               <div class="question_item_img" v-if="question.imageList && question.imageList.length > 0">
-                <el-image style="width: 15px; height: 15px;margin-top: 3px;" :src="require('@/assets/pc/view_img.png')" fit="contain"/>
+                <el-image style="width: 15px; height: 15px;margin-top: 3px;border-radius: 3px;" :src="require('@/assets/pc/view_img.png')" fit="contain"/>
               </div>
             </div>
             <div class="question_item_total_2">  
@@ -65,18 +62,17 @@
                 </div>
               </div>
             </div>
+            <hr class="hr-solid">
           </div>
+          
         </van-list>
       </van-pull-refresh>     
     </div>
-    <!-- <div class="tab_add" @click="add">
-      <van-image height="53" width="53" :src="require('@/assets/tab_add_1.png')" />
-    </div> -->
     <div v-if="btnFlag" class="tab_top" @click="top">
       <van-image height="70" width="35" :src="require('@/assets/pc/view_top.png')" />
     </div>
     <el-backtop target=".question_back" :visibility-height="0" :right="130" :bottom="60"/>
-    <van-popup v-model="showPicker" round position="bottom" style="width: 400px;margin-left: -250px;position: fixed;left: 50%;">
+    <van-popup v-model="showPicker" round position="center" style="width: 400px;margin-left: 0px;position: fixed;left: 50%;border-radius: 3px;">
       <div class="pop">
         <div class="pop_cancel" @click="cancelClick">取消</div>
         <div class="pop_title">选择专业</div>
@@ -385,6 +381,7 @@ padding-bottom: 2%;
   .category {
     width: 20px;
     margin-left: 10px;
+    border-radius: 3px;
   }
 }
 .question {
@@ -394,7 +391,7 @@ padding-bottom: 2%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   &_item {
     // margin-bottom: 15px;
-    padding: 10px;
+    padding: 0px 10px 0px 10px;
     background: white;
     // border-radius: 10px;
     &_last {
@@ -411,6 +408,7 @@ padding-bottom: 2%;
       font-weight: 600;
       // position: absolute;
       color: var(--themeColor);
+      border-radius: 3px;
     }
     &_title {
       font-size: 16px;
@@ -428,6 +426,7 @@ padding-bottom: 2%;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      text-indent:2em;
     }
     &_img_desc {
       margin-left: 10px;
@@ -456,6 +455,7 @@ padding-bottom: 2%;
           overflow: hidden;
           margin-right: 10px;
           margin-top: 4px;
+          border-radius: 3px;
         }
         &_right {
           display: flex;
@@ -493,6 +493,12 @@ padding-bottom: 2%;
     }
   }
 }
+.hr-solid {
+    // display: table-caption;
+		border: 0;
+		border-top: 1px solid #d0d0d5;
+	}
+
 .tab_add{
   // border-radius: 50%;
   // box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
@@ -520,6 +526,8 @@ padding-bottom: 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 999;
+  // border-radius: 1px;
   &_cancel {
     color: #969799;
     line-height: 44px;
