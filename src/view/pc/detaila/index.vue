@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%;height:100%;background: #f9f9f9;position: relative">
+  <div style="width:100%;height:100%;background: white;position: relative">
     <div class="de">
       <div class="detail_back" v-if="item">
         <el-main>
@@ -17,11 +17,11 @@
                 <!-- <el-image class="header_img" :src="item.askUserAvatar"></el-image> -->
                 <div class="header_img">
                   <template>
-                    <el-image width="28px" height="28px"  :src="require('@/assets/header.png')" />
+                    <el-image width="18px" height="18px"  :src="require('@/assets/header.png')" />
                   </template>
                 </div>
                 <div class="header_name">{{item.askUserName}}</div>
-                <div style="margin-left: 28%">
+                <div style="margin-left: 29%">
                   <el-button style="color: #42b285;border-color: #42b285;" size="mini" @click="centerDialogVisible=true">删除问题</el-button>
                   <el-button style="color: #42b285;border-color: #42b285" size="mini" @click="dialog(item.proId)">修改问题</el-button>
                 </div>
@@ -420,7 +420,7 @@ export default {
       }
 
       .button span:after {
-        content: '»';
+        content: '«';
         position: absolute;
         opacity: 0;
         top: 0;
@@ -448,8 +448,8 @@ export default {
           display: flex;
           align-items: center;
           &_img {
-            width: 40px;
-            height: 40px;
+            width: 20px;
+            height: 20px;
             margin-right: 10px;
           }
           &_name {
