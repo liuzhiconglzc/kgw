@@ -196,9 +196,12 @@ export default {
         white-space: pre-wrap;
         word-spacing: 23px;
         text-align: justify;
+        word-spacing: 2em;
       }
       .desc_1{
-        text-indent: 27px;
+        // text-indent: 27px;
+        text-indent:2em;
+        margin: 10px 10px 10px 0px;
       }
       .files {
           &_img {
