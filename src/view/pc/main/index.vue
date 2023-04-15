@@ -9,15 +9,15 @@
           <el-image style="position:fixed;width: 108px; height: 32px; margin-top: -25px;margin-left: 560px;" :src="require('@/assets/pc/view_add.png')"  @click="jumpToAdd"/>
           <el-image v-if="hlogin==false" style="position: absolute;width: 93px; height: 32px; margin-top: -25px;margin-left: 700px; " :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
           <el-button class="add" @click="logout" v-if="hlogin==true">
-              退出登录
-          </el-button>      
+            退出登录
+          </el-button>
         </div>
 
       </div>
       <div class="tab_back">
         <template>
           <el-tabs :stretch="false" v-model="activeName" @tab-click="handleClick"
-           style="position: fixed; left: 50%; color: white; height: 10px; width: 500px;caret-color: transparent; margin-left: -450px;">
+                   style="position: fixed; left: 50%; color: white; height: 10px; width: 500px;caret-color: transparent; margin-left: -450px;">
             <el-tab-pane label="首页" name="first"/>
             <el-tab-pane label="浏览问题" name="second"/>
             <el-tab-pane label="砍瓜网简介" name="third"/>
@@ -26,7 +26,7 @@
           </el-tabs>
         </template>
         <div class="mine" @click="jumpToLogin" >
-          <el-image style="position: fixed; left: 49%; width: 30px; height: 30px;margin-top: 5px;margin-left: 170px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>      
+          <el-image style="position: fixed; left: 49%; width: 30px; height: 30px;margin-top: 5px;margin-left: 170px;" :src="require('@/assets/pc/view_mine.png')" fit="contain"/>
         </div>
         <div class="tip" style="position: fixed; left: 49%; margin-left: 205px;" @click="jumpToLogin">我的</div>
       </div>
@@ -62,18 +62,18 @@ export default {
     // this.startRotate();
     // setTimeout(this.endRotate,10000);
     if (getToken()){
-        this.hlogin=true
-      }else{
-        this.hlogin=false
-      }
+      this.hlogin=true
+    }else{
+      this.hlogin=false
+    }
   },
   watch: {
     $route (to, from) {
       to.meta.keepAlive && this.$store.commit('addIncludes', to.name)
       from.meta.keepAlive && this.$store.commit('addIncludes', from.name)
       if ((from.name == 'Detail' && to.name !== 'Login')
-        || (from.name == 'Add' && to.name !== 'Login')
-        || (from.name == 'List' && to.name !== 'Add' && to.name !== 'Detail')) {
+          || (from.name == 'Add' && to.name !== 'Login')
+          || (from.name == 'List' && to.name !== 'Add' && to.name !== 'Detail')) {
         this.$store.commit('removeIncludes', from.name)
       }
       if (getToken()){
@@ -96,7 +96,7 @@ export default {
         this.$router.push({ name: 'Question' })
       } else if (tab.index == '2' ) {
         this.$router.push({ name: 'Interview', params: bannerSwipes[0] })
-        // tab.index == '' 
+        // tab.index == ''
       } else if (tab.index == '3'){
         this.$router.push({ name: 'Interviewa'})
       }else {
@@ -120,7 +120,7 @@ export default {
     jumpToLogin () {
       if (getToken()) {
         // this.$router.push({ name: 'Mine' })
-        this.$router.push({ name: 'List', query : { state: 1 } }) 
+        this.$router.push({ name: 'List', query : { state: 1 } })
       } else {
         this.$router.push({ name: 'Login', params: { replace: 'Question' } })
       }
@@ -152,12 +152,12 @@ export default {
         showCancelButton: true,
         message: '确定退出登录？',
       })
-        .then(() => {
-          removeToken()
-          this.$router.replace({ name: 'Question' })
-          this.hlogin=false
-        })
-        .catch(() => { })
+          .then(() => {
+            removeToken()
+            this.$router.replace({ name: 'Question' })
+            this.hlogin=false
+          })
+          .catch(() => { })
     }
   }
 }
@@ -180,7 +180,7 @@ export default {
     left: 0;
     top: 0;
     // z-index: 9;
-    
+
     .top_back{
       display:flex;
       flex-direction: row;
@@ -208,9 +208,9 @@ export default {
   }
   .add{
     position:absolute;
-    width: 93px; 
-    height:33px; 
-    margin-top: -25px; 
+    width: 93px;
+    height:33px;
+    margin-top: -25px;
     margin-left: 700px;
     color:  #42B285;
     // display: auto;
@@ -246,7 +246,7 @@ export default {
         margin-top: 15px;
         &_top{
           display: flex;
-          padding-top: 20px; 
+          padding-top: 20px;
           margin-left: 20px;
         }
         .tip1 {
@@ -297,7 +297,7 @@ export default {
   height: 0;
 }
 ::v-deep .el-tabs__item {
-    color: white;
+  color: white;
 }
 .search /deep/ .el-input__inner {
   border: none;

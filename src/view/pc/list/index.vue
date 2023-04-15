@@ -481,7 +481,8 @@
                 </div>
               </div>
               <div class="review" v-if="state == 3" >前往审核</div>
-              <el-dialog style="margin-left: 10%;margin-top: 0% ;width: 1000px;overflow-y:hidden!important;" title="" :visible.sync="dialogVisible" :append-to-body="true" :lock-scroll="false">
+              <div style="font-size: 12px;color: white;background: #42b285;width: 80px;height: 20px;border-radius: 6px; text-align: center;line-height: 20px;margin-top: -20px;" v-if="state == 0||state == 1||state == 2||state == 4">查看并处理</div>
+              <el-dialog style="margin-left: 10%;margin-top: 0% ;width: 1000px;overflow-y:auto;" title="" :visible.sync="dialogVisible" :append-to-body="true" :lock-scroll="false">
                 <index>
                 </index>
               </el-dialog>
@@ -522,28 +523,28 @@ export default {
     this.params.state = this.state
     switch (parseInt(this.state)) {
       case 0:
-        this.pageTitle = '发布中问题'
-        document.title = '发布中问题'
+        this.pageTitle = '砍瓜网'
+        document.title = '砍瓜网'
         break
       case 1:
-        this.pageTitle = '已发布问题'
-        document.title = '已发布问题'
+        this.pageTitle = '砍瓜网'
+        document.title = '砍瓜网'
         break
       case 2:
-        this.pageTitle = '审核未通过问题'
-        document.title = '审核未通过问题'
+        this.pageTitle = '砍瓜网'
+        document.title = '砍瓜网'
         break
       case 3:
-        this.pageTitle = '待审核问题'
-        document.title = '待审核问题'
+        this.pageTitle = '砍瓜网'
+        document.title = '砍瓜网'
         break
       case 4:
-        this.pageTitle = '已收藏问题'
-        document.title = '已收藏问题'
+        this.pageTitle = '砍瓜网'
+        document.title = '砍瓜网'
         break
       default:
-        this.pageTitle = '问题列表'
-        document.title = '问题列表'
+        this.pageTitle = '砍瓜网'
+        document.title = '砍瓜网'
         break
     }
     this.getQuestionList()
@@ -585,8 +586,11 @@ export default {
         }
       });
     },
-    goreview(){
-    },
+    // goreview(){
+    // },
+    // doit(){
+    //
+    // },
     getQuestionList (isLoad) {
       questionList(this.params).then(res => {
         if (isLoad) {
@@ -618,7 +622,7 @@ export default {
           break
 
         case 1:
-          this.$router.push({ path: `/detaila/${question.proId}` })
+          this.$router.push({ path: `/detailb/${question.proId}` })
           // this.$router.push({name:'detaila' ,params:{ state:this.state}})
           break
         case 2:
@@ -635,7 +639,7 @@ export default {
           this.dialogVisible = true
           break
         case 4:
-          this.$router.push({ path: `/detaila/${question.proId}`})
+          this.$router.push({ path: `/detailb/${question.proId}`})
           // this.$router.push({name:'detaila' ,params:{ state:this.state}})
           break
         default:

@@ -38,7 +38,7 @@
     <div class="publish">
       <div class="publish_btn" @click="publishClick">提交</div>
       <div class="publish_btn" v-if="(state == 1)" style="margin-left: 10%" @click="deleteClick(proId)">删除</div>
-      <div class="publish_btn" v-if="(state == 2)" style="margin-left: 10%" @click="deleteClick1(proId)">删除</div>
+      <div class="publish_btn" v-if="(state == 2)" style="margin-left: 10%" @click="deleteClick(proId)">删除</div>
     </div>
     <van-popup v-model="showProfessionPicker" round position="bottom">
       <div class="pop">
@@ -58,7 +58,7 @@
 <script>
 import {questionDetail, classifyList, uploadImage, questionAdd, questionUpdate, questionDelete} from '@/api/question'
 import forbiddenArray from "@/utils/badword";
-import { Notify } from 'vant'; 
+import {Notify, showConfirmDialog} from 'vant';
 
 export default {
   name: "Add",
@@ -190,23 +190,32 @@ export default {
       this.selectState = item
     },
     deleteClick(id) {
-      // this.$confirm("是否删除?", "提示", {
-      //   confirmButtonText: "确定",
-      //   cancelButtonText: "取消",
-      //   type: "warning",
-      // })
+      this.$dialog.alert({
+        showCancelButton: true,
+        cancelButtonText: '否',
+        confirmButtonText: '是',
+        message: '请问是否删除？'
+      })
+          .then(() => {
+            questionDelete(id).then((res) => {
+              // this.$message({
+              //   message: res.data,
+              //   type: "success",
+              // });
+              this.questionUpdate();
+              // this.$router.push({ path: `/list?state=0`});
+              // this.$router.go(0)
+              // this.dialogVisible=false;
+              this.goBack()
+            });
+          })
+          .catch(() => {
+            // this.$message({
+            //   type: "info",
+            //   message: "已取消删除",
+            // });
+          });
       // this.then(() => {
-      questionDelete(id).then((res) => {
-        // this.$message({
-        //   message: res.data,
-        //   type: "success",
-        // });
-        this.questionUpdate();
-        // this.$router.push({ path: `/list?state=0`});
-        // this.$router.go(0)
-        // this.dialogVisible=false;
-        this.goBack()
-      });
       // })
       // .catch(() => {
       //   this.$message({
@@ -215,32 +224,32 @@ export default {
       //   });
       // });
     },
-    deleteClick1(id) {
-      // this.$confirm("是否删除?", "提示", {
-      //   confirmButtonText: "确定",
-      //   cancelButtonText: "取消",
-      //   type: "warning",
-      // })
-      // this.then(() => {
-      questionDelete(id).then((res) => {
-        // this.$message({
-        //   message: res.data,
-        //   type: "success",
-        // });
-        this.questionUpdate();
-        // this.$router.push({ path: `/list?state=2`});
-        // this.$router.go(0)
-        this.goBack()
-        // this.dialogVisible=false;
-      });
-      // })
-      // .catch(() => {
-      //   this.$message({
-      //     type: "info",
-      //     message: "已取消删除",
-      //   });
-      // });
-    },
+    // deleteClick1(id) {
+    //   // this.$confirm("是否删除?", "提示", {
+    //   //   confirmButtonText: "确定",
+    //   //   cancelButtonText: "取消",
+    //   //   type: "warning",
+    //   // })
+    //   // this.then(() => {
+    //   questionDelete(id).then((res) => {
+    //     // this.$message({
+    //     //   message: res.data,
+    //     //   type: "success",
+    //     // });
+    //     this.questionUpdate();
+    //     // this.$router.push({ path: `/list?state=2`});
+    //     // this.$router.go(0)
+    //     this.goBack()
+    //     // this.dialogVisible=false;
+    //   });
+    //   // })
+    //   // .catch(() => {
+    //   //   this.$message({
+    //   //     type: "info",
+    //   //     message: "已取消删除",
+    //   //   });
+    //   // });
+    // },
     publishClick () {
       let msg
       if (!this.title) {
@@ -273,15 +282,13 @@ export default {
         })
       }
       if (msg) {
-        // this.$notify(msg)
         Notify(msg)
       } else {
         this.questionUpdate()
       }
     },
     onOversize () {
-      // this.$notify('图片大小不能超过1M')
-      Notify('图片大小不能超过1M')
+      this.$notify('图片大小不能超过1M')
     },
     afterRead (file) {
       file.status = 'uploading';
@@ -326,8 +333,7 @@ export default {
         this.gotoQuestion()
       } catch (error) {
         this.$toast.clear()
-        // this.$notify('提交失败')
-        Notify('提交失败')
+        this.$notify('提交失败')
       }
     },
     gotoQuestion () {

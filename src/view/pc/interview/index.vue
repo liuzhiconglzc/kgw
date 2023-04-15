@@ -20,13 +20,13 @@
           <div class="files" v-if="this.imageList && this.imageList.length > 0">
             <div class="demo-image__preview">
               <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="fill"
-                style="width: 210px; height: 150px"
-                :src="image">
+                        style="width: 210px; height: 150px"
+                        :src="image">
               </el-image>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
     <div class="right">
       <div class="mobile">
@@ -71,7 +71,7 @@ export default {
       askUserName: '砍瓜网管理员',
       createTime: '2022-05-05',
       proContent:
-        '“砍瓜网”是辽宁大学真实问题研究中心创建的“深度融合社会现实场景真实问题”网络平台，用于搜集发生在社会现实场景中的真实问题、查询真实问题以及为真实问题提供解决方案。该网络平台旨在将社会与高校形成有效链接，将社会的研究需求和高校的研究资源有效整合，为真实问题的提出与解决形成相辅相成的创新链。与此同时，辽宁大学依托砍瓜网构建了深度融合社会现实场景真实问题的一流人才培养模式，通过将真实问题转化为教学资源，构建真实问题贯通人才培养全流程的一体化融合育人体系和综合管理保障机制，培养一流人才的同时，有效促进了政产学研融合，增强了高校的社会服务能力。\n “砍瓜”是一种可以随吃随砍、迅速再生的瓜类，是具有极强自愈再生能力的奇瓜。以“砍瓜网”命名该网站，寓意源源不断的真实问题涌入我们的网站，真实问题永不枯竭、对问题的研究与解决永不停歇。',
+          '“砍瓜网”是辽宁大学真实问题研究中心创建的“深度融合社会现实场景真实问题”网络平台，用于搜集发生在社会现实场景中的真实问题、查询真实问题以及为真实问题提供解决方案。该网络平台旨在将社会与高校形成有效链接，将社会的研究需求和高校的研究资源有效整合，为真实问题的提出与解决形成相辅相成的创新链。与此同时，辽宁大学依托砍瓜网构建了深度融合社会现实场景真实问题的一流人才培养模式，通过将真实问题转化为教学资源，构建真实问题贯通人才培养全流程的一体化融合育人体系和综合管理保障机制，培养一流人才的同时，有效促进了政产学研融合，增强了高校的社会服务能力。\n “砍瓜”是一种可以随吃随砍、迅速再生的瓜类，是具有极强自愈再生能力的奇瓜。以“砍瓜网”命名该网站，寓意源源不断的真实问题涌入我们的网站，真实问题永不枯竭、对问题的研究与解决永不停歇。',
     }
   },
   created () {
@@ -80,8 +80,8 @@ export default {
   },
   methods: {
     cardClick () {
-    window.open("http://kangua.lnu.edu.cn", '_blank').location;
-  },
+      window.open("http://kangua.lnu.edu.cn", '_blank').location;
+    },
     topClick (index) {
       ImagePreview({
         images: this.item.imageList,
@@ -120,27 +120,27 @@ export default {
     height: calc(100% - 100px);
   }
   .title1{
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-        // position: sticky; 
-        // top: 0;
-        // background-color: white;
-        // z-index:999;
-        width: 700px;
-        // margin-top: -100px;
-        .ti{
-        // border-radius: 16px;
-        // color:#42B285;
-        color: white;
-        margin-left: 20px;
-      }
-      .back{
-        background-color:#42B285;
-        margin-left: 570px;
-        // color: white;
-      }   
-      }
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    // position: sticky;
+    // top: 0;
+    // background-color: white;
+    // z-index:999;
+    width: 700px;
+    // margin-top: -100px;
+    .ti{
+      // border-radius: 16px;
+      // color:#42B285;
+      color: white;
+      margin-left: 20px;
+    }
+    .back{
+      background-color:#42B285;
+      margin-left: 570px;
+      // color: white;
+    }
+  }
   .detail {
     height: calc(100% - 44px);
     overflow-y: scroll;
@@ -200,74 +200,74 @@ export default {
         margin: 10px 10px 10px 0px;
       }
       .files {
-          &_img {
-            width: 32%;
-            // margin-left: 2%;
-            height: 120px;
-            margin-right: 2%;
-            border-radius: 5px;
-            overflow: hidden;
-          }
-          &_img:last-child {
-            margin-right: 0;
-          }
+        &_img {
+          width: 32%;
+          // margin-left: 2%;
+          height: 120px;
+          margin-right: 2%;
+          border-radius: 5px;
+          overflow: hidden;
         }
+        &_img:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
 }
 .right{
-    // margin-top: 15px;
-    margin-left: 710px;
-    position: fixed;
-    z-index: 999;
-    .mobile{
+  // margin-top: 15px;
+  margin-left: 710px;
+  position: fixed;
+  z-index: 999;
+  .mobile{
+    display: flex;
+    width: 225px;
+    height: 165px;
+    background: linear-gradient(to bottom, #42B285, white 40%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    &_left{
       display: flex;
-      width: 225px;
-      height: 165px;
-      background: linear-gradient(to bottom, #42B285, white 40%);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-      &_left{
-        display: flex;
-        flex-direction: column;
-      }
-    }
-    .ip{
-      width: 225px;
-      height: 100px;
-      background: white;
-      margin-top: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-      &_top{
-        display: flex;
-        padding-top: 20px; 
-        margin-left: 20px;
-      }
-      .tip1 { 
-        font-weight: bolder;
-        font-size: 10px;
-        margin-left: 5px;
-        color: #42B285;
-      }
-      .tip2 {
-        font-weight: bolder;
-        font-size: 10px;
-        margin-top: 3px;
-        margin-left: 20px;
-        color: #42B285;
-      }
-      .title {
-        text-align: center;
-        color: white;
-        width: 150px;
-        margin-left: 20px;
-        margin-top: 10px;
-        font-size: 10px;
-        padding: 2px 10px;
-        border-radius: 3px;
-        background: #42B285;
-      }
+      flex-direction: column;
     }
   }
+  .ip{
+    width: 225px;
+    height: 100px;
+    background: white;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    &_top{
+      display: flex;
+      padding-top: 20px;
+      margin-left: 20px;
+    }
+    .tip1 {
+      font-weight: bolder;
+      font-size: 10px;
+      margin-left: 5px;
+      color: #42B285;
+    }
+    .tip2 {
+      font-weight: bolder;
+      font-size: 10px;
+      margin-top: 3px;
+      margin-left: 20px;
+      color: #42B285;
+    }
+    .title {
+      text-align: center;
+      color: white;
+      width: 150px;
+      margin-left: 20px;
+      margin-top: 10px;
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 3px;
+      background: #42B285;
+    }
+  }
+}
 :deep(.van-nav-bar) {
   background: linear-gradient(to bottom, var(--themeColor), #66c6a1);
 }

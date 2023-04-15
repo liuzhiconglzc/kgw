@@ -17,27 +17,15 @@
                 发布问题
               </div>
               <el-image style="width: 10px; height: 10px; margin-left: 56%;position: relative" :src="require('@/assets/pc/pen.png')"/>
-              <div>
                 <div style="font-weight: normal ;margin-top: 5px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;">问题题目</div>
-                <div style="display: inline-block;width: 84%;border:1px solid #ddd;transform: translate(19%,-100%);position: relative">
-                  <el-input style="display: inline-block;font-weight: normal" size="mini" maxlength="25" show-word-limit placeholder="请输入问题，以问号结束(25字以内)" v-model="title">
+                <div style="display: inline-block;width: 84%;transform: translate(20%,-100%);position: relative">
+                  <el-input style="display: inline-block;font-weight: normal;border:1px solid #c0c4cc;margin-left: -1%" size="mini" maxlength="25" show-word-limit placeholder="请输入问题，以问号结束(25字以内)" v-model="title">
                     <!--            <template slot="prepend">问题题目</template>-->
                   </el-input>
                 </div>
-              </div>
               <div style="margin-top: -35px">
                 <div style="display: inline-block; font-weight: normal ;;margin-top: 10px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;position: relative">专业分类</div>
                 <div style="display: inline-block;width: 300px;position: relative">
-                  <!--                  <el-select filterable clearable remote reserve-keyword v-model="professionNames" multiple  placeholder="请选择专业分类（可多选）" collapse-tags-->
-                  <!--                             style="width: 200px;font-weight: bold;position: relative">-->
-                  <!--&lt;!&ndash;                    multiple-limit="3"&ndash;&gt;-->
-                  <!--                    <el-option-->
-                  <!--                        v-for="item in options"-->
-                  <!--                        :key="item.value"-->
-                  <!--                        :label="item.label"-->
-                  <!--                        :value="item.value">-->
-                  <!--                    </el-option>-->
-                  <!--                  </el-select>-->
                   <van-field  style=" width: 140%;height: 30px;transform: translateY(3px);font-size: small;line-height: 16px;font-weight: normal" readonly :value="professionNames" rows="1" autosize type="textarea"
                               placeholder="请选择专业分类（可多选）" @click="topClick" />
                 </div>
@@ -45,7 +33,8 @@
               </div>
             </div>
             <div style="margin-top: 5px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;position: relative">问题描述</div>
-            <div style="height: 25px;margin-top: 5px; font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);border-left:1px solid #ddd;border-top:1px solid #ddd;border-right:1px solid #ddd; color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">社会现实场景</div></div>
+            <div style="border:1px solid #c0c4cc;margin-top: 5px">
+            <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%); color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">社会现实场景</div></div>
             <el-input
                 style="font-size: 10px;font-weight: normal;"
                 type="textarea"
@@ -56,7 +45,7 @@
                 :rows="3"
             >
             </el-input>
-            <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);border-left:1px solid #ddd;border-right:1px solid #ddd; color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">真实问题</div></div>
+            <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">真实问题</div></div>
             <el-input
                 style="font-size: 10px;font-weight: normal;"
                 type="textarea"
@@ -67,11 +56,13 @@
                 resize='none'
             >
             </el-input>
-            <div style="border:1px solid #ddd;height: 57px;border-radius: 3px;position: relative;color: #c0c4cc">
+            </div>
+            <div style="border:1px solid #c0c4cc;border-top: 0px">
+            <div style="height: 57px;position: relative;color: #c0c4cc">
               <!--              <div class="image">-->
               <van-uploader  style="" v-model="imageList" preview-size="57px" max-count="3" :max-size="1024 * 1024" @oversize="onOversize"
                              :after-read="afterRead" upload-icon="">
-                <el-image style="height: 60px;width: 60px;margin-left: -2px;margin-top: -2px" :src="require('@/assets/pc/add.png')">
+                <el-image style="height: 59px;width: 59px;margin-left: -1px;margin-top: -1px" :src="require('@/assets/pc/add.png')">
                 </el-image>
               </van-uploader>
               <div style="display: inline-block;margin-left: 15px;transform: translateY(18px);position: absolute;font-weight: normal;font-size: 10px">可添加"问题描述"图片(不超过3张)</div>
@@ -88,7 +79,8 @@
               <!--                &lt;!&ndash;                <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>&ndash;&gt;-->
               <!--              </el-upload>-->
             </div>
-            <el-button @click="publishClick" style="margin-top: 5px; margin-left: 42%; font-size: small; line-height: 15%; border-radius:2px; background-color: #42b285; color: white;height: 27px; width: 80px;display: inline-block">
+            </div>
+            <el-button @click="publishClick" style="margin-top: 5px; margin-left: 42%; font-size: small; line-height: 15%; background-color: #42b285; color: white;height: 27px; width: 80px;display: inline-block">
               <div style="margin-left: -7px">提交发布</div>
             </el-button>
           </div>
@@ -103,8 +95,8 @@
                          show-word-limit placeholder="请输入拒绝理由" />
             </div>
           </div>
-<!--          <el-dropdown>-->
-          <el-dropdown-menu style="margin-left: 33%;margin-top: 105px;width: 35%;height: 30%" v-model="showProfessionPicker" round position="bottom">
+<!--          <el-dropdown trigger="click" :hide-on-click="false">-->
+          <el-dropdown-menu style="margin-left: 33%;margin-top: 105px;width: 35%;height: 30%;" v-model="showProfessionPicker">
             <van-tree-select style="margin-top: -12px" :items="classifyItems" :main-active-index.sync="activeIndex" :active-id.sync="tempIds"
                              @click-item="professionClick" />
             <div style="margin-top: 2%;display: inline-block">
@@ -409,7 +401,10 @@ export default {
   height: 28px;
   border: 0px
 }
-
+/deep/.el-textarea__inner {
+  border: 0;
+  resize: none;
+}
 /deep/input::-webkit-input-placeholder {
   /* placeholder颜色 */
   /*color: #aab2bd;*/

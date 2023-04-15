@@ -9,13 +9,13 @@
         </div>
         <template>
           <div style="display: inline;">
-            <div class="user"> 
+            <div class="user">
               <h4>{{ data.askUserName }}</h4>
               <div style="margin-left: 50px;margin-top: -35px;font-size: 10px;color:#808080;">
                 {{ data.askUserPhone }}
               </div>
-            </div>  
-          </div> 
+            </div>
+          </div>
         </template>
         <template>
           <div class="grid" :column-num="3" :border="false">
@@ -115,11 +115,11 @@
                 <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn/</div>
                 <div class="title">已收录2万余条真实问题</div>
               </div>
-            </div>             
+            </div>
           </div>
-        </el-row>           
+        </el-row>
       </div>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -149,32 +149,32 @@ export default {
     }
   },
   methods: {
-        cardClick () {
-    window.open("http://kangua.lnu.edu.cn", '_blank').location;
-  },
+    cardClick () {
+      window.open("http://kangua.lnu.edu.cn", '_blank').location;
+    },
     goBack () {
       this.$router.back()
     },
     Click1(){
-      this.$router.push({ name: 'List', query : { state: 1 } }) 
+      this.$router.push({ name: 'List', query : { state: 1 } })
     },
     Click2(){
-      this.$router.push({ name: 'List', query: { state: 0 } }) 
+      this.$router.push({ name: 'List', query: { state: 0 } })
     },
     Click3(){
-      this.$router.push({ name: 'List', query: { state: 3 } }) 
+      this.$router.push({ name: 'List', query: { state: 3 } })
     },
     Click4(){
-      this.$router.push({ name: 'List', query: { state: 2 } }) 
+      this.$router.push({ name: 'List', query: { state: 2 } })
     },
     Click5(){
-      this.$router.push({ name: 'List', query: { state: 4 } }) 
+      this.$router.push({ name: 'List', query: { state: 4 } })
     },
     Click6(){
-      this.$router.push({ name: 'Personal' }) 
+      this.$router.push({ name: 'Personal' })
     },
     Click7(){
-      this.$router.push({ name: 'Manager' }) 
+      this.$router.push({ name: 'Manager' })
     },
     getData () {
       mineNum().then(res => {
@@ -192,11 +192,11 @@ export default {
         showCancelButton: true,
         message: '确定退出登录？',
       })
-        .then(() => {
-          removeToken()
-          this.$router.replace({ name: 'Question' })
-        })
-        .catch(() => { })
+          .then(() => {
+            removeToken()
+            this.$router.replace({ name: 'Question' })
+          })
+          .catch(() => { })
     }
   }
 }
@@ -226,21 +226,21 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 .add{
-    // width: 235px;
-    // height:150px;
-    // margin-top: 25px;
-    width: 93px;
-    height: 33px;
-    color:  #42B285;
-    display: auto;
-    margin-top: 30px;
-    margin-left: 200px;
-    margin-right: 300px;
-    padding: 1px 1px 1px 1px;
-    background-color: white;
-    border:2px solid #42B285;
-    border-radius:8px;
-  }
+  // width: 235px;
+  // height:150px;
+  // margin-top: 25px;
+  width: 93px;
+  height: 33px;
+  color:  #42B285;
+  display: auto;
+  margin-top: 30px;
+  margin-left: 200px;
+  margin-right: 300px;
+  padding: 1px 1px 1px 1px;
+  background-color: white;
+  border:2px solid #42B285;
+  border-radius:8px;
+}
 .pic{
   margin-left: 10px;
   width: 100px;
@@ -259,7 +259,7 @@ export default {
   // width: 700px;
   margin-left: -20px;
   // margin-top: -400px;
-  }
+}
 .header {
   margin-left: 10px;
   margin-top: 10px;
@@ -310,18 +310,18 @@ export default {
   // height: 500px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   .te{
-  margin-top: -5px;
-  margin-left: 5px;
-  font-size: 14px;
-  // font-size: medium;
-  // font-weight: 550;
+    margin-top: -5px;
+    margin-left: 5px;
+    font-size: 14px;
+    // font-size: medium;
+    // font-weight: 550;
   }
   .te1{
-  margin-top: -8px;
-  margin-left: 5px;
-  font-size: 14px;
-  // font-size: medium;
-  // font-weight: 550;
+    margin-top: -8px;
+    margin-left: 5px;
+    font-size: 14px;
+    // font-size: medium;
+    // font-weight: 550;
   }
   .vi{
     margin-top: -5px;
@@ -347,56 +347,56 @@ export default {
 }
 
 .button {
-        // display: inline-block;
-        display: block;
-        // border-radius: 4px;
-        background-color: white;;
-        // border: none;
-        // color: #FFFFFF;
-        text-align: left;
-        font-size: 14px;
-        width: 90%;
-        padding: 2px;
-        // width: 125px;
-        // height: 25px;
-        transition: all 0.3s;
-        cursor: pointer;
-        height: 45px;
-        margin-top: 10px;
-        // margin-left: -10px;
-        
-      }
+  // display: inline-block;
+  display: block;
+  // border-radius: 4px;
+  background-color: white;;
+  // border: none;
+  // color: #FFFFFF;
+  text-align: left;
+  font-size: 14px;
+  width: 90%;
+  padding: 2px;
+  // width: 125px;
+  // height: 25px;
+  transition: all 0.3s;
+  cursor: pointer;
+  height: 45px;
+  margin-top: 10px;
+  // margin-left: -10px;
 
-      .button span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.3s;
-      }
+}
 
-      .button span:after {
-        // content: '';
-        position: absolute;
-        // margin-left: 30px;
-        // margin-right: 30px;
-        opacity: 0;
-        top: 0;
-        right: 10px;
-        transition: 0.3s;
-      }
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
 
-      .button:hover span {
-        // margin-right: 30px;
-        // padding-right: 5px;
-        color: #66c6a1;
-        font-size: 15px;
-      }
+.button span:after {
+  // content: '';
+  position: absolute;
+  // margin-left: 30px;
+  // margin-right: 30px;
+  opacity: 0;
+  top: 0;
+  right: 10px;
+  transition: 0.3s;
+}
 
-      .button:hover span:after {
-        font-size: 14px;
-        opacity: 1;
-        right: 0;
-      }
+.button:hover span {
+  // margin-right: 30px;
+  // padding-right: 5px;
+  color: #66c6a1;
+  font-size: 15px;
+}
+
+.button:hover span:after {
+  font-size: 14px;
+  opacity: 1;
+  right: 0;
+}
 // .back-right{
 //   // margin-left: 15%;
 //   width: 781px;
@@ -426,59 +426,59 @@ export default {
   // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 .right{
-    margin-left: 540px;
-    // margin-top: 25px;
-    position: fixed;
-    z-index: 999;
-    .mobile{
+  margin-left: 540px;
+  // margin-top: 25px;
+  position: fixed;
+  z-index: 999;
+  .mobile{
+    display: flex;
+    width: 225px;
+    height: 165px;
+    margin-top: 15px;
+    background: linear-gradient(to bottom, #42B285, white 40%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    &_left{
       display: flex;
-      width: 225px;
-      height: 165px;
-      margin-top: 15px;
-      background: linear-gradient(to bottom, #42B285, white 40%);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-      &_left{
-        display: flex;
-        flex-direction: column;
-      }
-    }
-    .ip{
-      width: 225px;
-      height: 100px;
-      background: white;
-      margin-top: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-      &_top{
-        display: flex;
-        padding-top: 20px; 
-        margin-left: 20px;
-      }
-      .tip1 { 
-        font-weight: bolder;
-        font-size: 10px;
-        margin-left: 5px;
-        color: #42B285;
-      }
-      .tip2 {
-        font-weight: bolder;
-        font-size: 10px;
-        margin-top: 3px;
-        margin-left: 20px;
-        color: #42B285;
-      }
-      .title {
-        text-align: center;
-        color: white;
-        width: 150px;
-        margin-left: 20px;
-        margin-top: 10px;
-        font-size: 10px;
-        padding: 2px 10px;
-        border-radius: 3px;
-        background: #42B285;
-      }
+      flex-direction: column;
     }
   }
+  .ip{
+    width: 225px;
+    height: 100px;
+    background: white;
+    margin-top: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    &_top{
+      display: flex;
+      padding-top: 20px;
+      margin-left: 20px;
+    }
+    .tip1 {
+      font-weight: bolder;
+      font-size: 10px;
+      margin-left: 5px;
+      color: #42B285;
+    }
+    .tip2 {
+      font-weight: bolder;
+      font-size: 10px;
+      margin-top: 3px;
+      margin-left: 20px;
+      color: #42B285;
+    }
+    .title {
+      text-align: center;
+      color: white;
+      width: 150px;
+      margin-left: 20px;
+      margin-top: 10px;
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 3px;
+      background: #42B285;
+    }
+  }
+}
 :deep(.van-cell__title) {
   font-size: 16px;
   font-weight: 500;

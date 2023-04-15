@@ -18,14 +18,14 @@
         </div>
         <div>
           <div style="font-weight: normal ;margin-top: 5px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;">问题题目</div>
-          <div style="display: inline-block;width: 84%;border:1px solid #ddd;transform: translate(19%,-100%);position: relative">
+          <div style="display: inline-block;width: 84%;border:1px solid #c0c4cc;transform: translate(19%,-100%);position: relative">
             <el-input style="display: inline-block;font-weight: normal" size="mini" maxlength="25" show-word-limit placeholder="请输入问题，以问号结束(25字以内)" v-model="title">
               <!--            <template slot="prepend">问题题目</template>-->
             </el-input>
           </div>
         </div>
         <div style="margin-top: -35px">
-          <div style="display: inline-block; font-weight: normal ;;margin-top: 10px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;position: relative">专业分类</div>
+          <div style="display: inline-block; font-weight: normal ;margin-top: 10px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;position: relative">专业分类</div>
           <div style="display: inline-block;width: 300px;position: relative">
             <!--                  <el-select filterable clearable remote reserve-keyword v-model="professionNames" multiple  placeholder="请选择专业分类（可多选）" collapse-tags-->
             <!--                             style="width: 200px;font-weight: bold;position: relative">-->
@@ -44,7 +44,8 @@
         </div>
       </div>
       <div style="margin-top: 5px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;position: relative">问题描述</div>
-      <div style="height: 25px;margin-top: 5px; font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);border-left:1px solid #ddd;border-top:1px solid #ddd;border-right:1px solid #ddd; color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">社会现实场景</div></div>
+      <div style="border:1px solid #c0c4cc;margin-top: 5px">
+      <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">社会现实场景</div></div>
       <el-input
           style="font-size: 10px;font-weight: normal;"
           type="textarea"
@@ -55,7 +56,7 @@
           :rows="2"
       >
       </el-input>
-      <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);border-left:1px solid #ddd;border-right:1px solid #ddd; color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">真实问题</div></div>
+      <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">真实问题</div></div>
       <el-input
           style="font-size: 10px;font-weight: normal;"
           type="textarea"
@@ -66,11 +67,12 @@
           resize='none'
       >
       </el-input>
-      <div style="border:1px solid #ddd;height: 57px;border-radius: 3px;position: relative;color: #c0c4cc">
+      </div>
+      <div style="border:1px solid #c0c4cc;border-top: none;height: 57px;position: relative;color: #c0c4cc">
         <!--              <div class="image">-->
         <van-uploader  style="" v-model="imageList" preview-size="57px" max-count="3" :max-size="1024 * 1024" @oversize="onOversize"
                        :after-read="afterRead" upload-icon="">
-          <el-image style="height: 60px;width: 60px;margin-left: -2px;margin-top: -2px" :src="require('@/assets/pc/add.png')">
+          <el-image style="height: 59px;width: 59px;margin-left: -1px;margin-top: -1px" :src="require('@/assets/pc/add.png')">
           </el-image>
         </van-uploader>
         <div style="display: inline-block;margin-left: 15px;transform: translateY(18px);position: absolute;font-weight: normal;font-size: 10px"></div>
@@ -87,9 +89,9 @@
         <!--                &lt;!&ndash;                <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>&ndash;&gt;-->
         <!--              </el-upload>-->
       </div>
-
+      <div style="border:1px solid #c0c4cc;border-top: none">
       <div style="background-color: white">
-        <div v-if="state == 3" style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%);border-left:1px solid #ddd;border-right:1px solid #ddd; color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">审核状态</div></div>
+        <div v-if="state == 3" style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #42b285 0%, white 60%); color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">审核状态</div></div>
         <!--              <van-field style="margin-top: 10px" readonly    rows="1" autosize type="textarea"/>-->
         <div style="">
           <el-select style="width: 100%;position: relative" v-model="value" placeholder="请选择审核状态" v-if="state == 3">
@@ -103,11 +105,12 @@
         </div>
       </div>
       <div v-if="(state == 3 && value == 0) || state == 2">
-        <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #f16131 0%, white 60%);border-left:1px solid #ddd;border-right:1px solid #ddd; color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">拒绝理由</div></div>
+        <div style="height: 25px;font-size: xx-small; background: linear-gradient(to right, #f16131 0%, white 60%); color: white;position: relative"><div style="margin-left: 10px;transform: translateY(5px)">拒绝理由</div></div>
         <div class="content">
           <van-field v-model="reason" :readonly="state == 2" rows="1" autosize maxlength="300" type="textarea"
                      show-word-limit placeholder="请输入拒绝理由" />
         </div>
+      </div>
       </div>
       <el-button @click="publishClick" style="margin-top: 5px; margin-left: 42%; font-size: small; line-height: 15%; border-radius:2px; background-color: #42b285; color: white;height: 27px; width: 80px;display: inline-block">
         <div style="margin-left: -7px">提交</div>
@@ -128,6 +131,7 @@
 <script>
 import { questionDetail, classifyList, uploadImage, questionAdd, questionUpdate } from '@/api/question'
 import forbiddenArray from "@/utils/badword";
+import {Notify} from "vant";
 
 export default {
   name: "Add",
@@ -298,10 +302,10 @@ export default {
         })
       }
       if (msg) {
-        this.$notify(msg)
+        Notify(msg)
       } else {
         this.questionUpdate()
-        // this.$router.push({ path: `/list?state=0`});
+        this.$router.push({ path: `/list?state=0`});
         this.$router.go(0)
       }
     },
@@ -523,6 +527,10 @@ export default {
   color: #c0c4cc;
   font-size: 10px;
   font-weight: normal;
+}
+/deep/.el-textarea__inner {
+  border: 0;
+  resize: none;
 }
 
 </style>

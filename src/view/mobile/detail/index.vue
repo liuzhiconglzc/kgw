@@ -18,12 +18,12 @@
           <div class="num" v-if="item.proId != 0">
             <div class="num_item" @click.stop="numClick(0)">
               <van-image class="num_item_img" fit="contain"
-                :src="require(`@/assets/list_like${item.isLike == '1' ? '_1' : ''}.png`)"></van-image>
+                         :src="require(`@/assets/list_like${item.isLike == '1' ? '_1' : ''}.png`)"></van-image>
               <div class="num_item_text">{{item.likeNum}}</div>
             </div>
             <div class="num_item" @click.stop="numClick(1)">
               <van-image class="num_item_img" fit="contain"
-                :src="require(`@/assets/list_collect${item.isCollect == '1' ? '_1' : ''}.png`)"></van-image>
+                         :src="require(`@/assets/list_collect${item.isCollect == '1' ? '_1' : ''}.png`)"></van-image>
               <div class="num_item_text">{{item.collectNum}}</div>
             </div>
             <div class="num_item">
@@ -45,7 +45,7 @@
         <div class="desc" :class="{'desc_1': item.proId != 0}">{{item.proSpecific}}</div>
         <div class="files" v-if="item.imageList && item.imageList.length > 0">
           <van-image class="files_img" v-for="(image, index) in item.imageList" :key="index" fit="cover" :src="image"
-            @click="imageClick(index)">
+                     @click="imageClick(index)">
           </van-image>
         </div>
       </div>
@@ -69,7 +69,7 @@
     </div>
     <div class="reply_box" v-if="item.proId != 0">
       <van-field ref="reply" class="reply_box_field" v-model="reply" autosize rows="1" type="textarea" maxlength="100"
-        placeholder="请输入回复（100字以内）">
+                 placeholder="请输入回复（100字以内）">
       </van-field>
       <div class="reply_box_btn" @click="replyClick">回复</div>
       <van-divider class="reply_box_line" />
@@ -160,10 +160,10 @@ export default {
         confirmButtonText: '是',
         message: '您暂未登录，请问是否登录？'
       })
-        .then(() => {
-          this.gotoLogin()
-        })
-        .catch(() => { })
+          .then(() => {
+            this.gotoLogin()
+          })
+          .catch(() => { })
     },
     questionReply () {
       const params = {}
@@ -202,14 +202,14 @@ export default {
     // },
     numClick (type) {
 
-        if (type == 0) {
-          this.likeHandle()
-        } else if(type == 1) {
-          this.collectHandle()
-        } else {
-          this.replyHandle()
-        }
-      
+      if (type == 0) {
+        this.likeHandle()
+      } else if(type == 1) {
+        this.collectHandle()
+      } else {
+        this.replyHandle()
+      }
+
     },
     likeHandle () {
       if (getToken()) {
@@ -240,11 +240,11 @@ export default {
       })
     },
     likeAddUp () {
-      
-        this.item.isLike = '1'
-        this.item.likeNum++
-        this.questionUpdate()
-      
+
+      this.item.isLike = '1'
+      this.item.likeNum++
+      this.questionUpdate()
+
     },
     likeCancel () {
       likeCancel(this.item.proId.toString()).then(() => {
@@ -348,7 +348,7 @@ export default {
         // border-radius: 3px;
         background: linear-gradient(to right, #66c6a1, white 90%);
       }
-      .desc {       
+      .desc {
         margin: 10px 0;
         color: #7f7f7f;
         font-size: 15px;

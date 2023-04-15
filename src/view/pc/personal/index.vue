@@ -2,7 +2,7 @@
   <div class="back">
     <div class="deback">
       <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" style="width: 522.5px;height: 30px;">
-          <el-menu-item index="1" style="height: 42px;margin-top: -15px;font-size:14px;">个人设置</el-menu-item>
+        <el-menu-item index="1" style="height: 42px;margin-top: -15px;font-size:14px;">个人设置</el-menu-item>
       </el-menu>
       <div v-if="state==false" style="width: 400px;">
         <el-form ref='ruleForm' class="form_back" label-width="auto" label-suffix="" :model="ruleForm" :rules="rules" >
@@ -12,11 +12,11 @@
           </el-form-item>
           <el-form-item label="真实姓名" size="mini" style="margin: 15px 5px 5px 5px;" prop="nickname">
             <el-input v-model="ruleForm.nickname" size="mini" name="nickname" label-width="300px" placeholder="请输入真实姓名"
-             readonly>
+                      readonly>
             </el-input>
           </el-form-item>
           <el-form-item label="设置密码" size="mini" style="margin: 15px 5px 5px 5px;" prop="password">
-            <el-input v-model="ruleForm.password" size="mini" name="password" show-password label-width="300px" type="password" placeholder="至少8位，由数字和字母组成" autocomplete="off" 
+            <el-input v-model="ruleForm.password" size="mini" name="password" show-password label-width="300px" type="password" placeholder="至少8位，由数字和字母组成" autocomplete="off"
             >
             </el-input>
           </el-form-item>
@@ -27,10 +27,10 @@
           <el-form-item label="身份" size="mini" style="margin: 15px 5px 5px 5px;" prop="identity">
             <el-select v-model="ruleForm.identity" size="mini" placeholder="请选择身份" >
               <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
               </el-option>
             </el-select>
           </el-form-item>
@@ -39,23 +39,23 @@
           </el-form-item>
           <el-form-item label="学校(单位)" size="mini" style="margin: 15px 5px 5px 5px;;" prop="school">
             <el-input v-model="ruleForm.school" name="school" size="mini" label-width="7.5em" placeholder="请输入学校或单位"
-            ></el-input>          
+            ></el-input>
           </el-form-item>
           <el-form-item label="学院(部门)" size="mini" style="margin: 15px 5px 5px 5px;" prop="college">
             <el-input v-model="ruleForm.college" name="college" size="mini" label-width="7.5em" placeholder="请输入学院或部门"
-              ></el-input>          
+            ></el-input>
           </el-form-item>
           <el-form-item label="专业" size="mini" style="margin: 15px 5px 5px 5px;">
             <el-input v-model="ruleForm.major" name="major" size="mini" label-width="7.5em" placeholder="请输入专业"></el-input>
           </el-form-item>
-        
+
           <el-form-item label="邮箱" size="mini" style="margin: 15px 5px 5px 5px;">
-            <el-input v-model="ruleForm.email" name="email" size="mini" label-width="7.5em" placeholder="请输入邮箱"></el-input>            
+            <el-input v-model="ruleForm.email" name="email" size="mini" label-width="7.5em" placeholder="请输入邮箱"></el-input>
           </el-form-item>
 
           <div style="display: flex;margin-left: 50px;">
             <el-button type="primary" size="mini" class="edit" block @click="Return">返回</el-button>
-            <el-button type="primary" size="mini" @click="submit('ruleForm')"  class="edit2"  block :loading="loading" loading-text="跳转中...">提交</el-button>      
+            <el-button type="primary" size="mini" @click="submit('ruleForm')"  class="edit2"  block :loading="loading" loading-text="跳转中...">提交</el-button>
           </div>
         </el-form>
       </div>
@@ -74,9 +74,9 @@
           </el-descriptions>
           <el-button class="edit" size="mini" @click="edit">修改设置</el-button>
         </template>
-      </div>      
-    </div> 
-  </div>  
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -108,24 +108,24 @@ export default {
         email: '',
         password: '',
         password_again: '',
-		  },
+      },
       pass:'0',
       loading: false,
       // columns: [{ id: 0, text: '教师' }, { id: 1, text: '学生' }, { id: 2, text: '企业人员' }, { id: 3, text: '其他' }],
       value: '',
       options: [{
-          value: '教师',
-          label: '教师'
-        }, {
-          value: '学生',
-          label: '学生'
-        }, {
-          value: '企业人员',
-          label: '企业人员'
-        }, {
-          value: '其他',
-          label: '其他'
-        }],
+        value: '教师',
+        label: '教师'
+      }, {
+        value: '学生',
+        label: '学生'
+      }, {
+        value: '企业人员',
+        label: '企业人员'
+      }, {
+        value: '其他',
+        label: '其他'
+      }],
       rules:{
         username:[{ required: true,message: '手机号不能为空', trigger: "blur" }],
         nickname:[{ required: true, message: '真实姓名不能为空', trigger: 'blur' }],
@@ -143,14 +143,14 @@ export default {
   },
   methods: {
     submit(formName){
-        this.$refs[formName].validate((valid) => {
-          console.log(valid)
-            if (valid) {
-              this.onsub()
-            } else {
-                return false
-            }
-        })          
+      this.$refs[formName].validate((valid) => {
+        console.log(valid)
+        if (valid) {
+          this.onsub()
+        } else {
+          return false
+        }
+      })
     },
     onsub(){
       this.loading = true
@@ -208,11 +208,11 @@ export default {
         }).catch(() => {
           this.loading = false
           this.getData()
-        })      
+        })
       }else{
         this.$notify('两次输入的密码不一致')
         this.loading = false
-      } 
+      }
     },
     getData () {
       mineInfo().then(res => {
@@ -225,7 +225,7 @@ export default {
         this.ruleForm.college = res.data.college
         this.ruleForm.major = res.data.major
         this.ruleForm.email = res.data.email
-      })  
+      })
     },
     edit(){
       this.state=false
@@ -293,17 +293,17 @@ export default {
   margin-left: 30px;
   .item{
     .item.el-form-item__label{
-    font-size: 13px;
-  }
+      font-size: 13px;
+    }
   }
 
 }
 .label{
   width: 100px;
   .icon::after {
-        content: '* ';
-        color: red;
-    }
+    content: '* ';
+    color: red;
+  }
 }
 .edit{
   margin-left: 30px;
@@ -318,9 +318,9 @@ export default {
   color: white;
 }
 .span1{
-        color: red;
-        height: 13px;
-    }
+  color: red;
+  height: 13px;
+}
 .span2{
   margin-left: 10px;
   margin-right: 10px;
@@ -328,7 +328,7 @@ export default {
   font-weight:300
 }
 :deep(.el-input__inner){
-    border: 0px;
+  border: 0px;
 }
 :deep(.van-nav-bar__title) {
   font-size: 20px;
@@ -341,11 +341,11 @@ export default {
 }
 :deep(.van-nav-bar__arrow) {
   font-size: 30px;
-    color: black !important;
-  }
-  
-  .message_box_alert {
-      word-break: break-all !important;
-      color: #42B285;
-  }
+  color: black !important;
+}
+
+.message_box_alert {
+  word-break: break-all !important;
+  color: #42B285;
+}
 </style>

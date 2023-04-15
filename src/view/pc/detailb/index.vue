@@ -10,40 +10,38 @@
               <div v-if="this.state==3" class="ti">审核未通过问题</div>
               <div v-if="this.state==4" class="ti">已收藏问题</div> -->
               <div  class="ti">查看问题</div>
-              <button class="button" style="vertical-align:middle;margin-left: 42%" @click="goBack"><span>返回</span></button>
+              <button class="button" style="vertical-align:middle;margin-left: 40%" @click="goBack"><span>返回</span></button>
             </div>
             <div class="content">
               <div class="header">
                 <!-- <el-image class="header_img" :src="item.askUserAvatar"></el-image> -->
-                <div style="width: 50%">
-                <div class="header_img" style="display: inline-block;">
+                <div class="header_img">
                   <template>
                     <el-image width="18px" height="18px"  :src="require('@/assets/header.png')" />
                   </template>
                 </div>
-                <div class="header_name" style="display: inline-block;transform: translate(-5%,-30%);">{{item.askUserName}}</div>
-              </div>
-                <div style="transform: translateX(41%)">
-                  <el-button style="color: #c8c8c8;border-color: #c8c8c8;" size="mini" @click="centerDialogVisible=true">删除问题</el-button>
-                  <el-button style="color: #42b285;border-color: #42b285" size="mini" @click="dialog(item.proId)">修改问题</el-button>
-                </div>
-                <el-dialog
-                    style="margin-top: 10%;"
-                    :visible.sync="centerDialogVisible"
-                    :append-to-body="true"
-                    width="30%"
-                    center>
-                  <div style="margin-top: -10%;margin-left: 5%;font-size: medium;font-weight: bolder">该问题将帮助到其他网友，确认删除问题？</div>
-                  <div style="margin-top: 5%;margin-left: 35%;font-size: smaller;font-weight: lighter">删除后问题不可恢复</div>
-                  <span slot="footer" class="dialog-footer">
-    <el-button style="border-color: #42b285;color: #42b285;" size="small" @click="deleteDict(item.proId)">删除问题</el-button>
-    <el-button style="background-color: #42b285;border-color: #42b285" size="small" type="primary" @click="centerDialogVisible = false">取消删除</el-button>
-  </span>
-                </el-dialog>
-                <el-dialog style="margin-left: 14%;margin-top:0 ;width: 1000px;overflow-y:auto;" title="" :visible.sync="dialogVisible" :append-to-body="true" :lock-scroll="false" >
-                  <index >
-                  </index>
-                </el-dialog>
+                <div class="header_name">{{item.askUserName}}</div>
+<!--                <div style="margin-left: 32%">-->
+<!--                  <el-button style="color: #c8c8c8;border-color: #c8c8c8;" size="mini" @click="centerDialogVisible=true">删除问题</el-button>-->
+<!--                  <el-button style="color: #42b285;border-color: #42b285" size="mini" @click="dialog(item.proId)">修改问题</el-button>-->
+<!--                </div>-->
+<!--                <el-dialog-->
+<!--                    style="margin-top: 10%;"-->
+<!--                    :visible.sync="centerDialogVisible"-->
+<!--                    :append-to-body="true"-->
+<!--                    width="30%"-->
+<!--                    center>-->
+<!--                  <div style="margin-top: -10%;margin-left: 5%;font-size: medium;font-weight: bolder">该问题将帮助到其他网友，确认删除问题？</div>-->
+<!--                  <div style="margin-top: 5%;margin-left: 35%;font-size: smaller;font-weight: lighter">删除后问题不可恢复</div>-->
+<!--                  <span slot="footer" class="dialog-footer">-->
+<!--    <el-button style="border-color: #42b285;color: #42b285;" size="small" @click="deleteDict(item.proId)">删除问题</el-button>-->
+<!--    <el-button style="background-color: #42b285;border-color: #42b285" size="small" type="primary" @click="centerDialogVisible = false">取消删除</el-button>-->
+<!--  </span>-->
+<!--                </el-dialog>-->
+<!--                <el-dialog style="margin-left: 10%;margin-top: 0% ;width: 1000px;overflow-y:hidden!important;" title="" :visible.sync="dialogVisible" :append-to-body="true" :lock-scroll="false" >-->
+<!--                  <index >-->
+<!--                  </index>-->
+<!--                </el-dialog>-->
               </div>
               <div class="title">{{item.proTitle}}</div>
               <div class="date">
@@ -60,8 +58,6 @@
                   </el-image>
                 </div>
               </div>
-              <div style="color: white;font-size: 13px;width: 95%;margin-top: 10px;padding: 2px 10px;background: linear-gradient(to right, #f16131, white 90%);" v-if="item.state==2">拒绝理由</div>
-              <div class="desc"  :class="{'desc_1': item.proId != 0}" v-if="item.state==2">{{item.reason}}</div>
             </div>
           </div>
         </el-main>
@@ -121,43 +117,42 @@ export default {
       this.$router.back()
       // }
     },
-    dialog(id){
-      // this.selectIndex = index
-      this.$router.push({ query: {proId: id } })
-      // this.$router.push({  query: {proId: question.proId }})
-      // this.$router.push({path:"/detaila/",params:{proId: question.proId }})
-      // this.$router.push({ path: `/detaila/${id}`})
-      // this.$router.push({ path: `/detaila/${id}` })
-      // this.getDetail(question.proId)
-      this.dialogVisible = true
-      // this.$router.go(0)
-      this.goBack()
-    },
-    deleteDict(id) {
-      // this.$confirm("是否删除?", "提示", {
-      //   confirmButtonText: "确定",
-      //   cancelButtonText: "取消",
-      //   type: "warning",
-      // })
-      // this.then(() => {
-        questionDelete(id).then((res) => {
-          // this.$message({
-          //   message: res.data,
-          //   type: "success",
-          // });
-          this.questionUpdate();
-          this.$router.push(`/list?state=0`);
-          this.dialogVisible=false;
-          this.$router.go(0)
-        });
-      // })
-          // .catch(() => {
-          //   this.$message({
-          //     type: "info",
-          //     message: "已取消删除",
-          //   });
-          // });
-    },
+    // dialog(id){
+    //   // this.selectIndex = index
+    //   this.$router.push({ path: 'Add', query: {proId: id } })
+    //   // this.$router.push({  query: {proId: question.proId }})
+    //   // this.$router.push({path:"/detaila/",params:{proId: question.proId }})
+    //   // this.$router.push({ path: `/detaila/${id}`})
+    //   // this.$router.push({ path: `/detaila/${id}` })
+    //   // this.getDetail(question.proId)
+    //   this.dialogVisible = true
+    //   this.goBack()
+    // },
+    // deleteDict(id) {
+    //   // this.$confirm("是否删除?", "提示", {
+    //   //   confirmButtonText: "确定",
+    //   //   cancelButtonText: "取消",
+    //   //   type: "warning",
+    //   // })
+    //   // this.then(() => {
+    //   questionDelete(id).then((res) => {
+    //     this.$message({
+    //       message: res.data,
+    //       type: "success",
+    //     });
+    //     this.questionUpdate();
+    //     this.$router.push({ path: `/list?state=0`});
+    //     this.$router.go(0)
+    //     this.dialogVisible=false;
+    //   });
+    //   // })
+    //   // .catch(() => {
+    //   //   this.$message({
+    //   //     type: "info",
+    //   //     message: "已取消删除",
+    //   //   });
+    //   // });
+    // },
     getDetail (proId) {
       questionDetail(proId).then(res => {
         this.item = res.data
@@ -724,6 +719,7 @@ export default {
     }
   }
 }
+
 
 ::-webkit-scrollbar {
   width: 1px;

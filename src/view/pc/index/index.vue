@@ -1,20 +1,20 @@
 <template>
   <div style="width:100%;height:100%;background: #f9f9f9;position: relative">
-    <div class="index_back" ref="index">    
-        <div class="kangua_back">
-          <van-image class="kangua" :src="require('@/assets/pc/index_kangua.png')" />
-        </div> 
-        <div class="logo_back">
-          <!-- <van-image class="logo" :src="require('@/assets/pc/logo_2.png')" /> -->
-          <el-image class="logo" style="width: 330px; height: 105px" :src="require('@/assets/pc/logo_2.png')" fit="contain"></el-image>
-        </div>
-        <div class="card_back">
-          <el-image class="image_1" style="width: 520px; height: 246px" :src="require('@/assets/pc/index_view_2.png')" fit="contain" @click="jumpToQuestion"></el-image>
-          <el-image class="image_2" style="width: 520px; height: 246px" :src="require('@/assets/pc/index_publish_2.png')" fit="contain" @click="jumpToAdd"></el-image>
-        </div>
-        <div class="tip2" @click="cardClick">原砍瓜网网址：http://kangua.lnu.edu.cn</div>
-        <div class="tip1">用社会现实场景真实问题引发思考的问题集库</div>
-        <div class="tip">©辽宁大学真实问题研究中心</div>
+    <div class="index_back" ref="index">
+      <div class="kangua_back">
+        <van-image class="kangua" :src="require('@/assets/pc/index_kangua.png')" />
+      </div>
+      <div class="logo_back">
+        <!-- <van-image class="logo" :src="require('@/assets/pc/logo_2.png')" /> -->
+        <el-image class="logo" style="width: 330px; height: 105px" :src="require('@/assets/pc/logo_2.png')" fit="contain"></el-image>
+      </div>
+      <div class="card_back">
+        <el-image class="image_1" style="width: 520px; height: 246px" :src="require('@/assets/pc/index_view_2.png')" fit="contain" @click="jumpToQuestion"></el-image>
+        <el-image class="image_2" style="width: 520px; height: 246px" :src="require('@/assets/pc/index_publish_2.png')" fit="contain" @click="jumpToAdd"></el-image>
+      </div>
+      <div class="tip2" @click="cardClick">原砍瓜网网址：http://kangua.lnu.edu.cn</div>
+      <div class="tip1">用社会现实场景真实问题引发思考的问题集库</div>
+      <div class="tip">©辽宁大学真实问题研究中心</div>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   name: "Index",
   mixins: [mixin],
   data () {
-    return {      
+    return {
       proNum: 0,
       userNum: 0,
       visitNum: 0
@@ -42,7 +42,7 @@ export default {
       location.href = "http://kangua.lnu.edu.cn"
     },
     jumpToQuestion () {
-      this.$router.push({ name: 'Question' })   
+      this.$router.push({ name: 'Question' })
     },
     jumpToAdd () {
       //发布问题所调用接口
@@ -56,10 +56,10 @@ export default {
           confirmButtonText: '是',
           message: '您暂未登录，请问是否登录？'
         })
-          .then(() => {
-            this.$router.push({ name: 'Login', params: { replace: 'Publish' } })
-          })
-          .catch(() => { })
+            .then(() => {
+              this.$router.push({ name: 'Login', params: { replace: 'Publish' } })
+            })
+            .catch(() => { })
       }
     },
     getData () {
@@ -75,79 +75,79 @@ export default {
 
 <style lang="less" scoped>
 .index_back {
-    width: 1500px;
-    height: 1015px;
-    background: white;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transform-origin: left top;
-    .kangua_back{
-      .kangua{
-        position: absolute; 
-        width: 600px;
-        height: 270px;
-        margin-left: 0px;
-        z-index: 0;
-      } 
+  width: 1500px;
+  height: 1015px;
+  background: white;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left top;
+  .kangua_back{
+    .kangua{
+      position: absolute;
+      width: 600px;
+      height: 270px;
+      margin-left: 0px;
+      z-index: 0;
     }
-    .logo_back{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;  
-      z-index: 1;
-      .logo {
-        margin-top: 16%;
-        margin-left: 30%;
-        margin-right: 30%;
-      }
+  }
+  .logo_back{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 1;
+    .logo {
+      margin-top: 16%;
+      margin-left: 30%;
+      margin-right: 30%;
     }
-    .card_back{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      .image_1 {
-        margin-top: 5%;
-        margin-left: 10%;
-        margin-right: 5%;
-      }
-      .image_2 {
-        margin-top: 5%;
-        margin-left: 5%;
-        margin-right: 10%;
-      }
+  }
+  .card_back{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .image_1 {
+      margin-top: 5%;
+      margin-left: 10%;
+      margin-right: 5%;
     }
-    .title {
-      font-size: 14px;
-      color: #747474;
-      letter-spacing: 8px;
+    .image_2 {
+      margin-top: 5%;
+      margin-left: 5%;
+      margin-right: 10%;
     }
-    .tip {
-      text-align: center;
-      font-size: 20px;
-      color: #9c9c9c;
-      margin-top: 10px;
-    }
-    .tip1 {
-      text-align: center;
-      font-size: 22px;
-      color: #808080;
-      font-weight: bolder;
-      margin-top: 5px;
-    }
-    .tip2 {
-      margin-top: 10%;
-      text-align: center;
-      font-size: 22px;
-      color: var(--themeColor);
-      font-weight: bolder;
-    }
-    .visit_num{
-      color: red;
-      font-size: 15px;
-      margin-bottom: 15px;
-      font-weight: bolder;
-    }
+  }
+  .title {
+    font-size: 14px;
+    color: #747474;
+    letter-spacing: 8px;
+  }
+  .tip {
+    text-align: center;
+    font-size: 20px;
+    color: #9c9c9c;
+    margin-top: 10px;
+  }
+  .tip1 {
+    text-align: center;
+    font-size: 22px;
+    color: #808080;
+    font-weight: bolder;
+    margin-top: 5px;
+  }
+  .tip2 {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 22px;
+    color: var(--themeColor);
+    font-weight: bolder;
+  }
+  .visit_num{
+    color: red;
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: bolder;
+  }
 }
 </style>

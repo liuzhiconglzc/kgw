@@ -4,12 +4,12 @@
       <van-form @submit="onSubmit" class="form_back">
         <!-- <p>Login</p> -->
         <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
-          :rules="[{ required: true }]" style="margin-top: -5%;font-size: 13px;"/>
+                   :rules="[{ required: true }]" style="margin-top: -5%;font-size: 13px;"/>
         <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
-          :rules="[{ required: true }]" style="margin-top: 5%;font-size: 13px;"/>
+                   :rules="[{ required: true }]" style="margin-top: 5%;font-size: 13px;"/>
         <div style="margin: 16px;margin-bottom: 10%;">
           <van-button class="login_btn" block :loading="loading" color="var(--themeColor)"
-            native-type="submit">登录
+                      native-type="submit">登录
           </van-button>
           <!-- <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
             @click="register()">还没账号，前往注册
@@ -111,7 +111,7 @@ export default {
   p{
     font-size: 42px;
     font-weight: 600;
-}
+  }
   .login_btn {
     margin-left: 30%;
     width: 93px;
@@ -125,7 +125,7 @@ export default {
   }
   .login_btn:hover{
     background-color: #59c2c5;
-}
+  }
   .register_btn{
     border-radius: 5px;
     margin-top: 10px;

@@ -20,8 +20,8 @@
           <div class="files" v-if="this.imageList && this.imageList.length > 0">
             <div class="demo-image__preview">
               <el-image class="files_img" v-for="(image, index) in this.imageList" :key="index" initial-index="index" :preview-src-list="imageList" fit="fill"
-                style="width: 210px; height: 150px"
-                :src="image">
+                        style="width: 210px; height: 150px"
+                        :src="image">
               </el-image>
             </div>
           </div>
@@ -31,7 +31,7 @@
             </van-swipe-item>
           </van-swipe> -->
         </div>
-      </div> 
+      </div>
     </div>
     <div class="right">
       <div class="mobile">
@@ -76,8 +76,8 @@ export default {
       askUserName: '砍瓜网管理员',
       createTime: '2022-05-05',
       proContent:
-        '在学校教育中给学生提出的问题通常是结构良好的封闭式问题，这些问题一般具有清晰的界定，包含获得一个正确答案所需要的所有要素。学生只要掌握了课堂所学的理论，就可以应用理论解决问题，这种问题的解决通常导致学生对消极或惰性知识的掌握。\n 真实问题是来自于社会现实中真实发生的问题。由于现实世界模糊不定、复杂多变，因此相较于传统学校教育中的问题，真实问题具有结构不良、开放、复杂、混乱、不确定等特点。由于真实问题来自于社会现实，因此真实问题必定要与社会现实场景紧密相连，使学生有机会了解他们所学知识的价值以及学习的意义，并锻炼他们将理论应用于实践来解决真实问题的能力；由于真实问题以结构不良的真实社会场景为特征，问题本身并没有呈现所有的信息，因此可以有效鼓励学生去搜索额外的信息并探索用多样的方式解决问题，可有效培养学生的好奇心、独立分析能力、创造与批判性思维；由于真实问题复杂、不确定等特点，因此真实问题可能需要将多学科领域联系起来，与跨学科学习以及合作学习紧密相连。\n 综上，真实问题能激发学生更有深度和有意义的学习，并培养学生成为具备独立分析、合作开展工作、创造和批判性思维等21世纪一流人才必备技能的问题解决者、终身学习者和有效团队协作者，迎接当今全球化、数智时代高度复杂工作场景的挑战。',
-          }
+          '在学校教育中给学生提出的问题通常是结构良好的封闭式问题，这些问题一般具有清晰的界定，包含获得一个正确答案所需要的所有要素。学生只要掌握了课堂所学的理论，就可以应用理论解决问题，这种问题的解决通常导致学生对消极或惰性知识的掌握。\n 真实问题是来自于社会现实中真实发生的问题。由于现实世界模糊不定、复杂多变，因此相较于传统学校教育中的问题，真实问题具有结构不良、开放、复杂、混乱、不确定等特点。由于真实问题来自于社会现实，因此真实问题必定要与社会现实场景紧密相连，使学生有机会了解他们所学知识的价值以及学习的意义，并锻炼他们将理论应用于实践来解决真实问题的能力；由于真实问题以结构不良的真实社会场景为特征，问题本身并没有呈现所有的信息，因此可以有效鼓励学生去搜索额外的信息并探索用多样的方式解决问题，可有效培养学生的好奇心、独立分析能力、创造与批判性思维；由于真实问题复杂、不确定等特点，因此真实问题可能需要将多学科领域联系起来，与跨学科学习以及合作学习紧密相连。\n 综上，真实问题能激发学生更有深度和有意义的学习，并培养学生成为具备独立分析、合作开展工作、创造和批判性思维等21世纪一流人才必备技能的问题解决者、终身学习者和有效团队协作者，迎接当今全球化、数智时代高度复杂工作场景的挑战。',
+    }
   },
   created () {
     const item = this.$route.params
@@ -85,8 +85,8 @@ export default {
   },
   methods: {
     cardClick () {
-    window.open("http://kangua.lnu.edu.cn", '_blank').location;
-  },
+      window.open("http://kangua.lnu.edu.cn", '_blank').location;
+    },
     topClick (index) {
       ImagePreview({
         images: this.item.imageList,
@@ -125,27 +125,27 @@ export default {
     height: calc(100% - 100px);
   }
   .title1{
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-        // position: sticky; 
-        // top: 0;
-        // background-color: white;
-        // z-index:999;
-        width: 700px;
-        // margin-top: -100px;
-        .ti{
-        // border-radius: 16px;
-        // color:#42B285;
-        color: white;
-        margin-left: 20px;
-      }
-      .back{
-        background-color:#42B285;
-        margin-left: 570px;
-        // color: white;
-      }   
-      }
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    // position: sticky;
+    // top: 0;
+    // background-color: white;
+    // z-index:999;
+    width: 700px;
+    // margin-top: -100px;
+    .ti{
+      // border-radius: 16px;
+      // color:#42B285;
+      color: white;
+      margin-left: 20px;
+    }
+    .back{
+      background-color:#42B285;
+      margin-left: 570px;
+      // color: white;
+    }
+  }
   .detail {
     height: calc(100% - 44px);
     overflow-y: scroll;
@@ -204,74 +204,74 @@ export default {
         margin: 10px 10px 10px 0px;
       }
       .files {
-          &_img {
-            width: 32%;
-            // margin-left: 2%;
-            height: 120px;
-            margin-right: 2%;
-            border-radius: 5px;
-            overflow: hidden;
-          }
-          &_img:last-child {
-            margin-right: 0;
-          }
+        &_img {
+          width: 32%;
+          // margin-left: 2%;
+          height: 120px;
+          margin-right: 2%;
+          border-radius: 5px;
+          overflow: hidden;
         }
+        &_img:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
 }
 .right{
-    // margin-top: 15px;
-    margin-left: 710px;
-    position: fixed;
-    z-index: 999;
-    .mobile{
+  // margin-top: 15px;
+  margin-left: 710px;
+  position: fixed;
+  z-index: 999;
+  .mobile{
+    display: flex;
+    width: 225px;
+    height: 165px;
+    background: linear-gradient(to bottom, #42B285, white 40%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    &_left{
       display: flex;
-      width: 225px;
-      height: 165px;
-      background: linear-gradient(to bottom, #42B285, white 40%);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-      &_left{
-        display: flex;
-        flex-direction: column;
-      }
-    }
-    .ip{
-      width: 225px;
-      height: 100px;
-      background: white;
-      margin-top: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-      &_top{
-        display: flex;
-        padding-top: 20px; 
-        margin-left: 20px;
-      }
-      .tip1 { 
-        font-weight: bolder;
-        font-size: 10px;
-        margin-left: 5px;
-        color: #42B285;
-      }
-      .tip2 {
-        font-weight: bolder;
-        font-size: 10px;
-        margin-top: 3px;
-        margin-left: 20px;
-        color: #42B285;
-      }
-      .title {
-        text-align: center;
-        color: white;
-        width: 150px;
-        margin-left: 20px;
-        margin-top: 10px;
-        font-size: 10px;
-        padding: 2px 10px;
-        border-radius: 3px;
-        background: #42B285;
-      }
+      flex-direction: column;
     }
   }
+  .ip{
+    width: 225px;
+    height: 100px;
+    background: white;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    &_top{
+      display: flex;
+      padding-top: 20px;
+      margin-left: 20px;
+    }
+    .tip1 {
+      font-weight: bolder;
+      font-size: 10px;
+      margin-left: 5px;
+      color: #42B285;
+    }
+    .tip2 {
+      font-weight: bolder;
+      font-size: 10px;
+      margin-top: 3px;
+      margin-left: 20px;
+      color: #42B285;
+    }
+    .title {
+      text-align: center;
+      color: white;
+      width: 150px;
+      margin-left: 20px;
+      margin-top: 10px;
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 3px;
+      background: #42B285;
+    }
+  }
+}
 :deep(.van-nav-bar) {
   background: linear-gradient(to bottom, var(--themeColor), #66c6a1);
 }

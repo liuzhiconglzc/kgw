@@ -148,7 +148,7 @@ const routesP = [
         name: 'Question',
         component: () => import('../view/pc/question'),
         meta: {
-          title: '真实问题集',
+          title: '砍瓜网',
           keepAlive: true,
         },
       },
@@ -157,7 +157,7 @@ const routesP = [
         name: 'Detail',
         component: () => import('../view/pc/detail'),
         meta: {
-          title: '问题详情',
+          title: '砍瓜网',
           keepAlive: true,
         },
       },
@@ -166,7 +166,7 @@ const routesP = [
         name: 'Interview',
         component: () => import('../view/pc/interview'),
         meta: {
-          title: '问题详情',
+          title: '砍瓜网',
         },
       },
       {
@@ -174,7 +174,7 @@ const routesP = [
         name: 'Interviewa',
         component: () => import('../view/pc/interviewa'),
         meta: {
-          title: '问题详情',
+          title: '砍瓜网',
         },
       },
       {
@@ -182,7 +182,7 @@ const routesP = [
         name: 'Managera',
         component: () => import('../view/pc/managera'),
         meta: {
-          title: '联系管理员',
+          title: '砍瓜网',
         },
       },
       {
@@ -190,7 +190,7 @@ const routesP = [
         name: 'Mine',
         component: () => import('../view/pc/mine'),
         meta: {
-          title: '我的',
+          title: '砍瓜网',
         },
         children:[
           {
@@ -198,7 +198,7 @@ const routesP = [
             name: 'Manager',
             component: () => import('../view/pc/manager'),
             meta: {
-              title: '联系管理员',
+              title: '砍瓜网',
             },
           },
           {
@@ -206,7 +206,16 @@ const routesP = [
             name: 'Detaila',
             component: () => import('../view/pc/detaila/index.vue'),
             meta: {
-              title: '问题详情',
+              title: '砍瓜网',
+              keepAlive: true,
+            },
+          },
+          {
+            path: '/detailb/:proId',
+            name: 'Detailb',
+            component: () => import('../view/pc/detailb/index.vue'),
+            meta: {
+              title: '砍瓜网',
               keepAlive: true,
             },
           },
@@ -215,7 +224,7 @@ const routesP = [
             name: 'Personal',
             component: () => import('../view/pc/personal'),
             meta: {
-              title: '个人设置',
+              title: '砍瓜网',
             },
           },
           {
@@ -233,7 +242,7 @@ const routesP = [
         name: 'Login',
         component: () => import('../view/pc/login'),
         meta: {
-          title: '登录',
+          title: '砍瓜网',
         },
       },
       {
@@ -241,7 +250,7 @@ const routesP = [
         name: 'Register',
         component: () => import('../view/pc/register'),
         meta: {
-          title: '注册',
+          title: '砍瓜网',
         },
       },
       {
@@ -249,7 +258,7 @@ const routesP = [
         name: 'Password',
         component: () => import('../view/pc/password'),
         meta: {
-          title: '重置密码',
+          title: '砍瓜网',
         },
       },
       {
@@ -265,7 +274,7 @@ const routesP = [
         name: 'Publish',
         component: () => import('../view/pc/publish'),
         meta: {
-          title: '发布问题',
+          title: '砍瓜网',
         },
       },
     ],
