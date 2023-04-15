@@ -83,6 +83,7 @@ import { getToken } from '@/utils/auth'
 import { ImagePreview } from 'vant'
 import { questionDetail, questionReply, likeAdd, likeCancel, collectAdd, collectCancel } from '@/api/question'
 import forbiddenArray from "@/utils/badword";
+import { Notify } from 'vant';
 
 export default {
   name: "Detail",
@@ -136,11 +137,13 @@ export default {
       if (!getToken()) {
         this.noLoginDialog()
       } else if (this.reply.length == 0) {
-        this.$notify('请输入回复内容')
+        // this.$notify('请输入回复内容')
+        Notify('请输入回复内容');
       } else {
         const isBad = forbiddenArray.some(item => {
           if (this.reply.includes(item)) {
-            this.$notify('回复内容中不能含有敏感词')
+            // this.$notify('回复内容中不能含有敏感词')
+            Notify('回复内容中不能含有敏感词');
             return true
           }
           return false
