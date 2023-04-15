@@ -58,6 +58,7 @@
 <script>
 import {questionDetail, classifyList, uploadImage, questionAdd, questionUpdate, questionDelete} from '@/api/question'
 import forbiddenArray from "@/utils/badword";
+import { Notify } from 'vant'; 
 
 export default {
   name: "Add",
@@ -272,13 +273,15 @@ export default {
         })
       }
       if (msg) {
-        this.$notify(msg)
+        // this.$notify(msg)
+        Notify(msg)
       } else {
         this.questionUpdate()
       }
     },
     onOversize () {
-      this.$notify('图片大小不能超过1M')
+      // this.$notify('图片大小不能超过1M')
+      Notify('图片大小不能超过1M')
     },
     afterRead (file) {
       file.status = 'uploading';
@@ -323,7 +326,8 @@ export default {
         this.gotoQuestion()
       } catch (error) {
         this.$toast.clear()
-        this.$notify('提交失败')
+        // this.$notify('提交失败')
+        Notify('提交失败')
       }
     },
     gotoQuestion () {
