@@ -2,16 +2,17 @@
   <div class="main_back">
     <div class="top">
       <div class="top_back">
-        <el-image style="width: 104px; height: 33px; margin-top: 38px; margin-left: 10%;" :src="require('@/assets/pc/view_logo.png')" @click="titleClick"/>
-        <div style="margin-left: 6%;">
-          <el-image style="position: absolute;width: 450px; height: 33px; margin-top: 38px; margin-left: 2%;" :src="require('@/assets/pc/view_search.png')"  @click="search"></el-image>>
-          <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style=" z-index: 999;position: relative;width: 300px; height: 23px; margin-top: 22px; z-index: 1;border: none;margin-left: 22%;"></el-input>
+        <div style="margin-left: 23%;position: absolute;">
+          <el-image style="position: fixed;width: 104px; height: 33px; margin-top: 38px; margin-left: -120px;" :src="require('@/assets/pc/view_logo.png')" @click="titleClick"/>
+          <el-image style="position: absolute;width: 450px; height: 33px; margin-top: 38px; margin-left: 12%;z-index: 9;" :src="require('@/assets/pc/view_search.png')"  @click="search"></el-image>>
+          <el-input v-model="keyword" class="search" placeholder="输入关键字" size="mini" style=" z-index: 999;position: relative;width: 300px; height: 23px; margin-top: 22px;border: none;margin-left: 22%;"></el-input>
+          <el-image style="position:fixed;width: 108px; height: 32px; margin-top: -25px;margin-left: 560px;" :src="require('@/assets/pc/view_add.png')"  @click="jumpToAdd"/>
+          <el-image v-if="hlogin==false" style="position: absolute;width: 93px; height: 32px; margin-top: -25px;margin-left: 700px; " :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
+          <el-button class="add" @click="logout" v-if="hlogin==true">
+              退出登录
+          </el-button>      
         </div>
-        <el-image style="width: 108px; height: 32px; margin-top: 38px;margin-left: 20%;" :src="require('@/assets/pc/view_add.png')"  @click="jumpToAdd"/>
-        <el-image v-if="hlogin==false" style="width: 93px; height: 32px; margin-top: 38px;margin-left: 3%; " :src="require('@/assets/pc/view_login.png')" @click="jumpToLogin"/>
-        <el-button class="add" @click="logout" v-if="hlogin==true">
-            退出登录
-        </el-button>
+
       </div>
       <div class="tab_back">
         <template>
@@ -179,7 +180,7 @@ export default {
     left: 0;
     top: 0;
     // z-index: 9;
-    min-width:700px;
+    
     .top_back{
       display:flex;
       flex-direction: row;
@@ -187,6 +188,8 @@ export default {
       overflow: hidden;
       // width: 50%;
       height: 80px;
+      min-width:500px;
+      // position: absolute;
       // background: white;
     }
     .tab_back{
@@ -204,11 +207,11 @@ export default {
     }
   }
   .add{
-    // position:absolute;
+    position:absolute;
     width: 93px; 
     height:33px; 
-    margin-top: 38px; 
-    margin-left: 3%;
+    margin-top: -25px; 
+    margin-left: 700px;
     color:  #42B285;
     // display: auto;
     padding: 1px 1px 1px 1px;
