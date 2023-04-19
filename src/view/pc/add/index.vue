@@ -20,23 +20,12 @@
           <div style="font-weight: normal ;margin-top: 5px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;">问题题目</div>
           <div style="display: inline-block;width: 84%;border:1px solid #c0c4cc;transform: translate(19%,-100%);position: relative">
             <el-input style="display: inline-block;font-weight: normal" size="mini" maxlength="25" show-word-limit placeholder="请输入问题，以问号结束(25字以内)" v-model="title">
-              <!--            <template slot="prepend">问题题目</template>-->
             </el-input>
           </div>
         </div>
         <div style="margin-top: -35px">
           <div style="display: inline-block; font-weight: normal ;margin-top: 10px; font-size: small; line-height: 240%; text-align: center; border-radius:2px; background-color: #42b285; color: white;height: 30px; width: 16%;position: relative">专业分类</div>
           <div style="display: inline-block;width: 300px;position: relative">
-            <!--                  <el-select filterable clearable remote reserve-keyword v-model="professionNames" multiple  placeholder="请选择专业分类（可多选）" collapse-tags-->
-            <!--                             style="width: 200px;font-weight: bold;position: relative">-->
-            <!--&lt;!&ndash;                    multiple-limit="3"&ndash;&gt;-->
-            <!--                    <el-option-->
-            <!--                        v-for="item in options"-->
-            <!--                        :key="item.value"-->
-            <!--                        :label="item.label"-->
-            <!--                        :value="item.value">-->
-            <!--                    </el-option>-->
-            <!--                  </el-select>-->
             <van-field  style=" width: 120%;height: 30px;transform: translateY(3px);font-size: small ;line-height: 16px;font-weight: normal" readonly :value="professionNames" rows="1" autosize type="textarea"
                         placeholder="请选择专业分类（可多选）" @click="topClick" />
           </div>
