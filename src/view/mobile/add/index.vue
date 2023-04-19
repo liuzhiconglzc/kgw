@@ -195,61 +195,18 @@ export default {
         cancelButtonText: '否',
         confirmButtonText: '是',
         message: '请问是否删除？'
+      }).then(() => {
+        questionDelete(id).then((res) => {
+          this.$router.go(-1)
+        });
       })
-          .then(() => {
-            questionDelete(id).then((res) => {
-              // this.$message({
-              //   message: res.data,
-              //   type: "success",
-              // });
-              this.questionUpdate();
-              // this.$router.push({ path: `/list?state=0`});
-              // this.$router.go(0)
-              // this.dialogVisible=false;
-              this.goBack()
-            });
-          })
-          .catch(() => {
-            // this.$message({
-            //   type: "info",
-            //   message: "已取消删除",
-            // });
-          });
-      // this.then(() => {
-      // })
-      // .catch(() => {
-      //   this.$message({
-      //     type: "info",
-      //     message: "已取消删除",
-      //   });
-      // });
+      .catch(() => {
+        // this.$message({
+        //   type: "info",
+        //   message: "已取消删除",
+        // });
+      });
     },
-    // deleteClick1(id) {
-    //   // this.$confirm("是否删除?", "提示", {
-    //   //   confirmButtonText: "确定",
-    //   //   cancelButtonText: "取消",
-    //   //   type: "warning",
-    //   // })
-    //   // this.then(() => {
-    //   questionDelete(id).then((res) => {
-    //     // this.$message({
-    //     //   message: res.data,
-    //     //   type: "success",
-    //     // });
-    //     this.questionUpdate();
-    //     // this.$router.push({ path: `/list?state=2`});
-    //     // this.$router.go(0)
-    //     this.goBack()
-    //     // this.dialogVisible=false;
-    //   });
-    //   // })
-    //   // .catch(() => {
-    //   //   this.$message({
-    //   //     type: "info",
-    //   //     message: "已取消删除",
-    //   //   });
-    //   // });
-    // },
     publishClick () {
       let msg
       if (!this.title) {

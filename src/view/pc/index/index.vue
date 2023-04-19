@@ -12,7 +12,7 @@
         <el-image class="image_1" style="width: 520px; height: 246px" :src="require('@/assets/pc/index_view_2.png')" fit="contain" @click="jumpToQuestion"></el-image>
         <el-image class="image_2" style="width: 520px; height: 246px" :src="require('@/assets/pc/index_publish_2.png')" fit="contain" @click="jumpToAdd"></el-image>
       </div>
-      <div class="tip2" @click="cardClick">原砍瓜网网址：http://kangua.lnu.edu.cn</div>
+      <div class="tip2" @click="cardClick">原砍瓜网网址：http://kangua2022.lnu.edu.cn</div>
       <div class="tip1">用社会现实场景真实问题引发思考的问题集库</div>
       <div class="tip">©辽宁大学真实问题研究中心</div>
     </div>
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     cardClick () {
-      location.href = "http://kangua.lnu.edu.cn"
+      location.href = "http://kangua2022.lnu.edu.cn "
     },
     jumpToQuestion () {
       this.$router.push({ name: 'Question' })

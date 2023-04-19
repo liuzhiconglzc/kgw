@@ -41,15 +41,6 @@
           </div>
         </template>
         <template>
-          <!-- <div class="add">
-            <el-image class="header2" :src="require('@/assets/pc/view_add.png')" fit="fill" round @click="add">
-            </el-image>
-          </div>   -->
-          <!-- <div>
-            <el-button class="add" @click="logout">
-              退出登录
-            </el-button>
-          </div> -->
         </template>
       </div>
       <div style="height: 100%;display: inline;">
@@ -110,9 +101,9 @@
               <div class="ip">
                 <div class="ip_top">
                   <el-image style="width: 15px; height: 15px;" :src="require('@/assets/pc/view_ip.png')" fit="contain"/>
-                  <div class="tip1">“原砍瓜网”网址</div>
+                  <div class="tip1" @click="cardClick">“原砍瓜网”网址</div>
                 </div>
-                <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn/</div>
+                <div class="tip2" @click="cardClick">http://kangua2022.lnu.edu.cn</div>
                 <div class="title">已收录2万余条真实问题</div>
               </div>
             </div>
@@ -150,7 +141,7 @@ export default {
   },
   methods: {
     cardClick () {
-      window.open("http://kangua.lnu.edu.cn", '_blank').location;
+      window.open("http://kangua2022.lnu.edu.cn", '_blank').location;
     },
     goBack () {
       this.$router.back()

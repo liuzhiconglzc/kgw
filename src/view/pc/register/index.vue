@@ -1,7 +1,7 @@
 <template>
   <div class="back">
     <div class="de_back">
-      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal">
+      <el-menu text-color="#42B285" active-text-color="#42B285" mode="horizontal" default-active="1">
         <el-menu-item index="1" style="height: 50px;margin-top: -10px;font-weight:bold;font-size:16px;">注册账号</el-menu-item>
       </el-menu>
       <el-form ref='ruleForm' class="form_back" label-width="auto" label-suffix="" :model="ruleForm" :rules="rules" >
@@ -48,8 +48,16 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="学院(部门)" style="margin: 15px;margin-left: 350px;display: flex;" prop="college">
-          <el-input v-model="ruleForm.college" name="college" label-width="7.5em" placeholder="请输入学院或部门" style="width: 200px;margin-left: -110px;"
-          ></el-input>
+          <!-- <el-input v-model="ruleForm.college" name="college" label-width="7.5em" placeholder="请输入学院或部门" style="width: 200px;margin-left: -110px;"
+          ></el-input> -->
+          <el-autocomplete
+              class="inline-input"
+              v-model="ruleForm.college"
+              :fetch-suggestions="querySearch1"
+              placeholder="请输入学院或部门"
+              @select="handleSelect"
+              style="width: 200px;margin-left: -110px;"
+          ></el-autocomplete>
         </el-form-item>
         <el-form-item label="专业" style="margin: 15px;margin-left: 350px;display: flex;">
           <el-input v-model="ruleForm.major" name="major" label-width="7.5em" placeholder="请输入专业" style="width: 200px;margin-left: -110px;"></el-input>
@@ -113,14 +121,14 @@ export default {
         label: '其他'
       }],
       rules:{
-        username:[{ required: true},{pattern:/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/ ,message: '请输入正确格式的手机号码', trigger: "blur" }],
+        username:[{ required: true,message: '手机号不能为空', trigger: 'blur'},{pattern:/^(0|86|17951)?(13[0-9]|15[012356789]|16[2567]|17[012345678]|18[0-9]|19[012356789]|14[01456789])[0-9]{8}$/ ,message: '请输入正确格式的手机号码', trigger: "blur" }],
         nickname:[{ required: true, message: '真实姓名不能为空', trigger: 'blur' }],
-        password:[{ required: true },{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
+        password:[{ required: true ,message: '请输入密码', trigger: 'blur'},{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
         password_again:[{ required: true ,message: '请再次输入密码',},{ pattern: /(^$)|^(?=.*[a-zA-Z])(?=.*\d).{8,20}$/  , message: '至少8位，由数字和字母组成' }],
         identity:[{ required: true, message: '您还未选择身份', trigger: 'blur' }],
-        title:[{ required: true, message: '请输入职称', trigger: 'blur' }],
+        title:[{ required: true, message: '请输入职称', trigger: 'change' }],
         school:[{ required: true, message: '请输入您的学校或单位', trigger: 'blur' }],
-        college:[{ required: true, message: '请输入您的学院或部门', trigger: 'blur'  }],
+        college:[{ required: true, message: '请输入您的学院或部门', trigger: 'change'  }],
         email:[{type: 'email', message:'请输入正确的邮箱格式', trigger: 'blur'}],
         sms:[{ required: true, message: '请输入验证码', trigger: 'blur'  }],
       }
@@ -208,6 +216,12 @@ export default {
       // 调用 callback 返回建议列表的数据
       cb(results);
     },
+    querySearch1(queryString, cb) {
+      var restaurants1 = this.restaurants1;
+      var results = queryString ? restaurants1.filter(this.createFilter(queryString)) : restaurants1;
+      // 调用 callback 返回建议列表的数据
+      cb(results);
+    },
     createFilter(queryString) {
       return (restaurant) => {
         return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
@@ -221,6 +235,37 @@ export default {
         { "value": "博士生"},
       ];
     },
+    loadAll1() {
+      return [
+        { "value": "新华国际商学院" },
+        { "value": "文学院"},
+        { "value": "国学院"},
+        { "value": "公共管理学院"},
+        { "value": "物理学院"},
+        { "value": "金融与贸易学院"},
+        { "value": "亚澳商学院"},
+        { "value": "国际教育学院"},
+        { "value": "法学院"},
+        { "value": "广播影视学院"},
+        { "value": "哲学院"},
+        { "value": "艺术学院"},
+        { "value": "化学院"},
+        { "value": "马克思主义学院"},
+        { "value": "环境学院"},
+        { "value": "外国语学院（武圣校区）"},
+        { "value": "药学院"},
+        { "value": "经济学院"},
+        { "value": "商学院"},
+        { "value": "轻型产业学院"},
+        { "value": "外国语学院"},
+        { "value": "历史学部"},
+        { "value": "生命科学院"},
+        { "value": "新闻与传播学院"},
+        { "value": "信息学院"},
+        { "value": "国际经济政治学院"},
+        { "value": "数学与统计学院"},
+      ];
+    },
     handleSelect(item) {
       console.log(item);
     },
@@ -229,24 +274,6 @@ export default {
       const replace = this.$route.params.replace
       this.$router.replace({ name: 'Login', params: { replace: replace } })
     },
-    // onSubmit (values) {
-    //   // const params = values
-    //   values.uuid = this.uuid
-    //   this.loading = true
-    //   if(this.password == this.password_again){
-    //     register(values).then(res => {
-    //       this.loading = false
-    //       this.$toast.success('注册成功')
-    //       this.goBack()
-    //     }).catch(() => {
-    //       this.loading = false
-    //       this.getData()
-    //     })
-    //   }else{
-    //     this.$notify('两次输入的密码不一致')
-    //     this.loading = false
-    //   }
-    // },
     onCancel () {
       this.showPicker = false
     },
@@ -266,6 +293,7 @@ export default {
   },
   mounted() {
     this.restaurants = this.loadAll();
+    this.restaurants1 = this.loadAll1();
   },
 }
 </script>
@@ -276,12 +304,12 @@ export default {
   position: fixed;
   left: 55%;
   width: 800px;
-  height: 450px;
+  height: 440px;
   // height: calc(100% - -0px);
   background: white;
   position: relative;
   display: flex;
-  margin-top: 1%;
+  margin-top: 3%;
   // overflow: hidden;
   border-radius: 15px;
   padding: 5px 40px;
@@ -299,11 +327,14 @@ export default {
     .button1 {
       display: inline-block;
       border-radius: 4px;
-      background-color: #42B285;
+      background-color: #FFFFFF;
       border: none;
-      border:1px solid #42B285;
-      color:  #FFFFFF;
+      border: 1px solid #eee;
+      // color:  #42B285;
+      // color:  #FFFFFF;
+      color: black;
       text-align: center;
+      border-radius: 5px;
       font-size: 13px;
       padding: 2px;
       width: 70px;
@@ -312,17 +343,18 @@ export default {
       transition: all 0.5s;
       cursor: pointer;
       // margin-left: 40px;
-
     }
     .button {
       display: inline-block;
       // display:flex;
       border-radius: 4px;
-      background-color: #42B285;
+      background-color: #FFFFFF;
       border: none;
-      border:1px solid #42B285;
-      color:  #FFFFFF;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      // color:  #42B285;
       // text-align: center;
+      color: black;
       font-size: 13px;
       padding: 2px;
       width: 70px;
@@ -333,31 +365,16 @@ export default {
       margin-left: 20px;
 
     }
-
-    // .button span {
-    //   cursor: pointer;
-    //   display: inline-block;
-    //   position: relative;
-    //   transition: 0.5s;
-    // }
-
-    // .button span:after {
-    //   content: '»';
-    //   position: absolute;
-    //   opacity: 0;
-    //   top: 0;
-    //   right: -20px;
-    //   transition: 0.5s;
-    // }
-
-    // .button:hover span {
-    //   padding-right: 25px;
-    // }
-
-    // .button:hover span:after {
-    //   opacity: 1;
-    //   right: 0;
-    // }
+    .button1:hover{
+      // font-size: 14px;
+      background-color: #eee;
+      transition: 0.5s;
+  }
+  .button:hover{
+    // font-size: 14px;
+    background-color: #eee;
+    transition: 0.5s;
+  }
   }
   .title {
     color: var(--themeColor);

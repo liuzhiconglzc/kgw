@@ -14,8 +14,8 @@
     <!-- <div class="tip1">网站已发布真实问题<span class="visit_num">{{proNum}}</span>个</div> -->
     <!-- <div class="tip3" @click="cardClick">原砍瓜网网址：</div>
     <div class="tip2" @click="cardClick">http://kangua.lnu.edu.cn</div> -->
-    <a href='http://kangua.lnu.edu.cn' target="_blank" class="tip3">原砍瓜网网址：</a>
-    <a href='http://kangua.lnu.edu.cn' target="_blank" class="tip2">http://kangua.lnu.edu.cn</a>
+    <a href='http://kangua2022.lnu.edu.cn' target="_blank" class="tip3">原砍瓜网网址：</a>
+    <a href='http://kangua2022.lnu.edu.cn' target="_blank" class="tip2">http://kangua2022.lnu.edu.cn</a>
   </div>
 </template>
 

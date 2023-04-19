@@ -3,21 +3,19 @@
     <div class="login">
       <van-form @submit="onSubmit" class="form_back">
         <!-- <p>Login</p> -->
-        <van-field v-model="username" name="username" type="tel" label="手机号" placeholder="请输入手机号"
-                   :rules="[{ required: true }]" style="margin-top: -5%;font-size: 13px;"/>
-        <van-field v-model="password" name="password" type="password" label="密码" placeholder="请输入密码" autocomplete="off"
-                   :rules="[{ required: true }]" style="margin-top: 5%;font-size: 13px;"/>
+        <h1>Login</h1>
+        <van-field v-model="username" name="username" type="tel" placeholder="手机号"
+                   :rules="[{ required: true }]" class="inp"/>
+        <van-field  v-model="password" name="password" type="password" placeholder="密码" autocomplete="off"
+                   :rules="[{ required: true }]" class="inp"/>
         <div style="margin: 16px;margin-bottom: 10%;">
-          <van-button class="login_btn" block :loading="loading" color="var(--themeColor)"
+          <el-button class="login_btn" block :loading="loading" color="var(--themeColor)"
                       native-type="submit">登录
-          </van-button>
-          <!-- <van-button class="register_btn" block :loading="loading" loading-text="跳转中..." color="var(--themeColor)"
-            @click="register()">还没账号，前往注册
-          </van-button> -->
+          </el-button>
         </div>
         <div class="nextStage">
-          <div class="title" @click="register">新用户注册</div>
-          <div class="title1" @click="forgotPassword">忘记密码</div>
+          <el-button class="title" @click="register">新用户注册</el-button>
+          <el-button class="title1" @click="forgotPassword">忘记密码</el-button>
         </div>
       </van-form>
     </div>
@@ -78,81 +76,128 @@ export default {
 
 <style lang="less" scoped>
 .back {
-  margin-left: -27%;
+  margin-left: -28%;
   position: fixed;
   left: 65%;
-  margin-top: 5%;
+  margin-top: -1%;
   width: 400px;
   display: flex;
+  // background: white;
   flex-direction: column;
-  background: white;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  // background-color: #2c3e50;
   .login{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -51%;
+    margin-top: -100px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 350px;
     background-color: white;
-    width: 400px;
-    height: 250px;
-    border-radius: 15px;
-    text-align: center;
-    padding: 5px 40px;
-    box-sizing: border-box;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(33, 44, 55, .3); 
   }
   .form_back {
     margin-top: 15%;
     margin-left: 5%;
-    // width: 40%;
-    // width:150px;
-    // height: 200px;
-    // display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 230px;
+    /* 提高层级 */
+    z-index: 1;
   }
-  p{
-    font-size: 42px;
-    font-weight: 600;
-  }
+  h1
+{
+  margin-top: -15%;
+  // margin-left: 20%;
+  font-size: 45px;
+  font-weight: 400;
+  /* 提高层级 */
+  z-index: 1;
+  color: var(--themeColor);
+} 
+.inp
+{
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #eee;
+    font-size: 16px;
+    text-indent:1em;
+    outline: none;
+    margin-left: 10px;
+    margin-top: -15px;
+}
+
   .login_btn {
-    margin-left: 30%;
-    width: 93px;
-    height: 33px;
-    border-radius: 8px;
-    margin-top: 30px;
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    background-color: #42B285;
+    // margin-left: 30%;
+    width: 180px;
+    height: 36px;
+    border: 2px solid #eee;
+    border-radius: 18px;
+    background-color: transparent;
+    font-size: 14px;
+    cursor: pointer; 
+    background-color: white;
+    color: var(--themeColor);
   }
   .login_btn:hover{
-    background-color: #59c2c5;
+    background-color: #eee;
   }
+
   .register_btn{
     border-radius: 5px;
     margin-top: 10px;
   }
   .nextStage{
     display: flex;
-    margin-top: -5%;
-    margin-left: 5px;
+    margin-top: -10%;
+    margin-left: -10px;
     .title {
       // display: flex;
       color: var(--themeColor);
-      margin-top: -18%;
+      // margin-top: -18%;
       // text-align: right;
       margin-left: 3%;
       font-size: 13px;
+      border: none;
+      width: 100px;
+      height: 10px;
       // padding: 2px 25px;
     }
+    .title:hover{
+    background-color: white;
+  }
     .title1 {
       // display: flex;
       color: var(--themeColor);
-      margin-top: -10%;
+      // margin-top: -10%;
       // text-align: right;
-      margin-left: -21.5%;
-      font-size: 13px;
+      // margin-left: 20%;
+      font-size: 12px;
+      width: 100px;
+      height: 10px;
+      border: none;
       // padding: 2px 25px;
     }
+    .title1:hover{
+    background-color: white;
   }
+  }
+}
+/deep/.van-field__control::-webkit-input-placeholder {
+  left: 10px;
+  font-size: 13px;
+  color: #bebebe;
 }
 :deep(.van-nav-bar__title) {
   font-size: 20px;

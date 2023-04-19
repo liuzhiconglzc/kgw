@@ -79,6 +79,11 @@ export default {
       scrollTop: 0
     }
   },
+  watch: {
+    '$route' () {
+      this.onRefresh();
+    }
+ },
   created () {
     this.state = this.$route.query.state
     this.params.state = this.state
