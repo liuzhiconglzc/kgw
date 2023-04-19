@@ -58,7 +58,6 @@
       </el-input>
       </div>
       <div style="border:1px solid #c0c4cc;border-top: none;height: 57px;position: relative;color: #c0c4cc">
-        <!--              <div class="image">-->
         <van-uploader  style="" v-model="imageList" preview-size="57px" max-count="3" :max-size="1024 * 1024" @oversize="onOversize"
                        :after-read="afterRead" upload-icon="">
           <el-image style="height: 59px;width: 59px;margin-left: -1px;margin-top: -1px" :src="require('@/assets/pc/add.png')">
