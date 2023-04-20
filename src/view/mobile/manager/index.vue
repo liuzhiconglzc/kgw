@@ -3,7 +3,7 @@
       <van-nav-bar class="nav_bar" title="联系管理员" :border="false" fixed left-arrow @click-left="goBack" />
       <van-cell-group>
         <van-cell class="tip1" title="管理员电话：024-62602028" />
-        <van-cell class="tip1" title="管理员邮箱：123456789@163.com" />
+        <van-cell class="tip1" title="管理员邮箱：kanguawang@163.com" />
       </van-cell-group>
       <div class="bottom">
         <van-image class="logo" fit="contain" :src="require('@/assets/logo_1.png')" style="height:150px; width:150px"/>

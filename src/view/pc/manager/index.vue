@@ -7,7 +7,7 @@
       <div class="text">
         <div style="flex-direction: column;margin-top: 15px;display: flex;position: relative;transform: translate(0px,0px);transform-origin: left top;">
           <div style="margin-top: 15px;font-size: 15px;white-space: pre-line;margin-left: 30px;">管理员电话：024-62602028</div>
-          <div style="margin-top: 15px;margin: 10px 0;font-size: 15px;white-space: pre-line;margin-left: 30px;">管理员邮箱：123456789@163.com</div>
+          <div style="margin-top: 15px;margin: 10px 0;font-size: 15px;white-space: pre-line;margin-left: 30px;">管理员邮箱：kanguawang@163.com</div>
         </div>
         <div style="color: #747474;font-weight: bolder;font-size: 10px;margin-left: 15px;margin-top: 5px;display: flex;position: relative;transform: translate(15px,70px);transform-origin: left top;">问题咨询、问题反馈、学术合作,请通过上述方式联系砍瓜网</div>
         <div style="color: #747474;font-weight: bolder;font-size: 10px;margin-top: 5px;margin-left: 30px;display: flex;position: relative;transform: translate(0px,70px);transform-origin: left top;">(请工作日期间进行联系)</div>
